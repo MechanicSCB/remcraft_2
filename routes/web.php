@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\PageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,17 +17,21 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', [MainController::class,'test']);
+// TEST
+Route::get('/', [MainController::class,'index'])->name('home');
+Route::get('/reverse', [MainController::class,'reverse']);
 
-Route::get('/welcome', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
+// Pages
+Route::get('/{page:slug}', [PageController::class, 'show'])->name('pages.show');
+
+
+// ADMIN
+Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
+    Route::get('/admin', [MainController::class, 'admin'])->name('admin');
 });
 
+
+// Jetstream
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
