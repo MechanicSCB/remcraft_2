@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BlockController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PageController;
 use Illuminate\Foundation\Application;
@@ -23,6 +24,9 @@ Route::get('/reverse', [MainController::class,'reverse']);
 
 // Pages
 Route::get('/{page:slug}', [PageController::class, 'show'])->name('pages.show');
+
+// Get blocks
+Route::get('/get-blocks/{page:slug}', [BlockController::class, 'getBlocks'])->name('blocks.get-blocks');
 
 
 // ADMIN

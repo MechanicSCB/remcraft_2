@@ -61,13 +61,22 @@ let handleScroll = function (event) {
     padding-bottom: 18px;
 }
 
-@media screen and (max-width: 1220px) {
+.block-gray{
+    background: #f3f2f0;
+}
+
+.block-dark
+{
+    background-color: #313334;
+}
+
+@media screen and (max-width: 1280px) {
     .block-container {
         max-width: 840px;
     }
 }
 
-@media screen and (max-width: 1000px) {
+@media screen and (max-width: 1024px) {
     .block-container {
         font-size: 14px;
         width: 90%;

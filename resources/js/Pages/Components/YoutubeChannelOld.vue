@@ -1,17 +1,13 @@
 <script setup>
 let props = defineProps({datum: Object});
-
-//https://disk.yandex.ru/i/nR_a0zIz92KVNQ
 </script>
 <template>
     <div class="relative w-full h-[720px] text-white overflow-hidden">
-        <div class="flex justify-center items-center h-full">
-            <iframe
-                class="absolute mx-auto z-0 w-[300%] h-full xl:h-[150%]"
-                src="https://youtube.com/embed/Vz_TApQvUpk?controls=0&autoplay=1&mute=1&playsinline=1&start=45&loop=1"
-            >
-            </iframe>
-        </div>
+        <video autoplay muted loop
+            class="absolute z-0 w-full h-full object-cover"
+        >
+            <source :src="'/video/'+ datum['video']" type="video/webm" />
+        </video>
 
         <div class="z-1 absolute w-full h-full bg-[rgba(0,0,0,0.5)]"></div>
 

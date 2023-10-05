@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Page;
 use Illuminate\Http\Request;
+use Illuminate\Support\Collection;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 
@@ -12,11 +13,21 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Page $page): Response|ResponseFactory
+    public function show(Request $request, Page $page): Response|ResponseFactory|Collection
+    {
+        $page['blocks'] = $page->blocks()->with('component.galleries')
+            ->take(3)
+            ->get();
+
+        return inertia('Pages/Show', compact('page'));
+    }
+
+    public function showOld(Page $page): Response|ResponseFactory
     {
         $page->load('blocks.component.galleries');
+        $page['time'] = tmr(null, 3);
 
-        return inertia('Pages/Show',  compact('page'));
+        return inertia('Pages/Show', compact('page'));
     }
 
     /**

@@ -3,10 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Block;
+use App\Models\Page;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class BlockController extends Controller
 {
+    public function getBlocks(Request $request, Page $page): Collection
+    {
+        $blocks = $page->blocks()->with('component.galleries')
+            ->skip($request['from'])
+            ->take(3)
+            ->get()
+        ;
+
+        return $blocks;
+    }
     /**
      * Display a listing of the resource.
      */

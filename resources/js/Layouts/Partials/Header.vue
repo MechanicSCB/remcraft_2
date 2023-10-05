@@ -9,7 +9,7 @@ let showMobileMenu = inject('showMobileMenu')
 let menu = [
     {
         'name' : 'Ремонт квартир',
-        'href':'/',
+        'href':'/remont_kvartir',
         'subItems':
             [
                 {'name':'Цены', 'href':'/ceny-na-remont-kvartir-pod-kliuc'},
