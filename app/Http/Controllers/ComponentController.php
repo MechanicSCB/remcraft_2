@@ -2,17 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ComponentRequest;
 use App\Models\Component;
 use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class ComponentController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response|ResponseFactory
     {
-        //
+        $components = Component::query()->get();
+
+        return inertia('Admin/Components/Index', compact('components'));
     }
 
     /**
@@ -42,17 +47,24 @@ class ComponentController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Component $component)
+    public function edit(Component $component): Response|ResponseFactory
     {
-        //
+        $component->load('galleries');
+
+        return inertia('Admin/Components/Edit', compact('component'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Component $component)
+    public function update(ComponentRequest $request, Component $component)
     {
-        //
+        //dd(tmr(), $request->all(), $request->validated(),$component);
+        $validated = $request->validated();
+
+        $component->update($validated);
+
+        return redirect(route('components.edit', $component))->withSuccess('updated!');
     }
 
     /**

@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class Gallery extends Model
 {
@@ -25,7 +26,7 @@ class Gallery extends Model
             get: function(?string $value) {
                 if(is_null($value)){
                     $images = Storage::files("public/galleries/$this->src/webp");
-                    $images = array_map(fn($v) => str_replace('public/galleries/', '/storage/galleries/', $v), $images);
+                    $images = array_map(fn($v) => ['n' => Str::beforeLast(Str::afterLast($v,'/'),'.webp')], $images);
                     $this->images = $images;
                     $this->save();
 

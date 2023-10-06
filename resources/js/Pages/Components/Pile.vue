@@ -10,15 +10,17 @@ let activeGallery = ref(0);
     <div>
         <div class="lg:-mx-16 mt-6 flex flex-col md:flex-row md:h-[320px] lg:h-[480px] gap-8">
             <div class="w-full sm:min-w-[480px] lg:min-w-[720px] h-full">
-                <SwiperSlider :images="galleries[activeGallery]?.images" disableCaption="true"/>
+                <SwiperSlider :gallery="galleries[activeGallery]" disableCaption="true"/>
             </div>
             <!-- Wide gallery selector -->
             <div class="hidden md:flex flex-col space-y-3 overflow-y-auto">
-                <div @click="activeGallery=id" v-for="(gallery,id) in galleries"
+                <div @click="activeGallery=index"
+                     v-for="(gallery,index) in galleries"
+                     :key="gallery.id"
                      class="flex space-x-4 group cursor-pointer">
                     <div class="w-1/2 h-fit bg-[#313334]">
                         <img class="group-hover:opacity-70 transition-all duration-500"
-                             :src="gallery.images[0]" :class="{'!opacity-40':activeGallery===id}"/>
+                             :src="'storage/galleries/' + gallery.src + '/w360/' + gallery.images[0]?.n + '.webp'" :class="{'!opacity-40':activeGallery===index}"/>
                     </div>
                     <div class="w-1/2">{{gallery.title}}</div>
                 </div>

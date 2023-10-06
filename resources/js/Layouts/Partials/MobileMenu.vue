@@ -84,14 +84,14 @@ let menu = [
             <!-- Main Items -->
             <div class="px-10 border-t flex justify-between items-center" :class="expandedItem===itemKey ? 'bg-[#1071ff] text-white' : ''">
                 <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="item.href">{{ item.name }}</Link>
-                <CollapseIcon v-if="item.subItems && expandedItem!==itemKey" @click="expandedItem=itemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
-                <ExpandIcon v-if="item.subItems && expandedItem===itemKey" @click="expandedItem=null" class="w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+                <ExpandIcon v-if="item.subItems && expandedItem!==itemKey" @click="expandedItem=itemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+                <CollapseIcon v-if="item.subItems && expandedItem===itemKey" @click="expandedItem=null" class="w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
             </div>
 
             <!-- Expanded SubItems -->
             <div v-if="expandedItem===itemKey" v-for="(subItem, subItemKey) in item.subItems" class="pl-20 border-t flex justify-between items-center pr-10 bg-[rgba(232,232,232,0.54)]">
                 <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="subItem.href">{{ subItem.name }}</Link>
-                <CollapseIcon v-if="subItem.subItems" @click="expandedItem=itemKey + '.' + subItemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+                <ExpandIcon v-if="subItem.subItems" @click="expandedItem=itemKey + '.' + subItemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
             </div>
         </div>
     </div>

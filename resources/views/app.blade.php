@@ -6,6 +6,11 @@
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 
+        <!-- SUMMERNOTE -->
+        {{--    TODO Replace to component    --}}
+        <script src="{{ asset('plugins/jquery-3.4.1.slim.min.js') }}"></script>
+        <script src="{{ asset('plugins/summernote-0.8.18-dist/summernote-lite.min.js') }}"></script>
+
 
         <!-- Scripts -->
         @routes

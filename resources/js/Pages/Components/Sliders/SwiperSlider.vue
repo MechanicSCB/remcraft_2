@@ -8,7 +8,17 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-defineProps({images:Object});
+let props = defineProps({gallery:Object});
+
+function getImagesPaths(){
+    let paths = [];
+
+    for(let image of props.gallery?.images ?? []){
+        paths.push('storage/galleries/' + props.gallery.src + '/w720/' + image.n + '.webp');
+    }
+
+    return paths;
+}
 
 let modules = [Navigation, Pagination, Scrollbar, A11y];
 
@@ -33,7 +43,7 @@ const onSlideChange = () => {
         navigation
         :scrollbar="{ draggable: true }"
     >
-        <swiper-slide  class="max-w-[480px] sm:max-w-[720px]" v-for="(src, id) in images">
+        <swiper-slide  class="max-w-[480px] sm:max-w-[720px]" v-for="(src, id) in getImagesPaths()">
             <img :loading="id ? 'lazy' : 'eager'" :src="src" alt="">
         </swiper-slide>
     </swiper>
@@ -43,5 +53,9 @@ const onSlideChange = () => {
 .swiper-button-next{
     color: #333;
     background: rgba(255,255,255,0.3);
+}
+.swiper-button-prev:hover,
+.swiper-button-next:hover{
+    background: rgba(255,255,255,0.7);
 }
 </style>

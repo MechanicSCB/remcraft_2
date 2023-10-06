@@ -1,7 +1,7 @@
 <script setup>
 import {provide, ref} from "vue";
-import TabBookmark from "@/Pages/Components/TabBookmark.vue";
-import TabBookmarkSmall from "@/Pages/Components/TabBookmarkSmall.vue";
+import TabBookmark from "@/Pages/Components/Calculator/TabBookmark.vue";
+import TabBookmarkSmall from "@/Pages/Components/Calculator/TabBookmarkSmall.vue";
 
 let props = defineProps({datum:Object});
 let activeTab = ref('standard');

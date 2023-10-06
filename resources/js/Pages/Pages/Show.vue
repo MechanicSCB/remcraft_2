@@ -7,7 +7,7 @@ import {onMounted} from "vue";
 import axios from "axios";
 import Pile from "@/Pages/Components/Pile.vue";
 import Cost from "@/Pages/Components/Cost.vue";
-import Calculator from "@/Pages/Components/Calculator.vue";
+import Calculator from "@/Pages/Components/Calculator/Calculator.vue";
 import Recommendation from "@/Pages/Components/Recommendation.vue";
 
 let props = defineProps({page: Object, time: String})
@@ -54,6 +54,9 @@ onMounted(() => {
 
 <template>
     <div>
+        <Head :title="page['title']">
+            <meta typeof="description" :content="page['title']">
+        </Head>
         <!-- TODO DEV! -->
         <div class="absolute z-50">{{ page?.time }}</div>
         <div v-for="block in page['blocks']">

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\PageRequest;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
@@ -15,6 +16,7 @@ class PageController extends Controller
      */
     public function show(Request $request, Page $page): Response|ResponseFactory|Collection
     {
+        //$page->load('blocks.component.galleries');
         $page['blocks'] = $page->blocks()->with('component.galleries')
             ->take(3)
             ->get();
@@ -22,53 +24,57 @@ class PageController extends Controller
         return inertia('Pages/Show', compact('page'));
     }
 
-    public function showOld(Page $page): Response|ResponseFactory
-    {
-        $page->load('blocks.component.galleries');
-        $page['time'] = tmr(null, 3);
-
-        return inertia('Pages/Show', compact('page'));
-    }
-
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): Response|ResponseFactory
     {
-        //
+        $pages = Page::query()->get();
+
+        return inertia('Admin/Pages/Index', compact('pages'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response|ResponseFactory
     {
-        //
+        return inertia('Admin/Pages/Create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(PageRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        Page::query()->create($validated);
+
+        return redirect(route('pages.index'))->withSuccess('created!');
     }
 
 
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Page $page)
+    public function edit(Page $page): Response|ResponseFactory
     {
-        //
+        $page->load('blocks.component');
+
+        return inertia('Admin/Pages/Edit', compact('page'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, Page $page)
+    public function update(PageRequest $request, Page $page)
     {
-        //
+        $validated = $request->validated();
+
+        $page->update($validated);
+
+        return redirect(route('pages.edit', $page))->withSuccess('updated!');
     }
 
     /**
@@ -76,6 +82,8 @@ class PageController extends Controller
      */
     public function destroy(Page $page)
     {
-        //
+        $page->delete();
+
+        return redirect(route('pages.index'))->withSuccess('deleted!');
     }
 }

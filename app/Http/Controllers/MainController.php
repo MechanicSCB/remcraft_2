@@ -31,6 +31,11 @@ class MainController extends Controller
         return inertia('Test', compact('images'));
     }
 
+    public function admin(): Response|ResponseFactory
+    {
+       return inertia('Admin/Index');
+    }
+
     public function index(): Response|ResponseFactory
     {
         // TODO load galleries only for galleries
