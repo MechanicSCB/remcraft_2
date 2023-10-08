@@ -20,12 +20,13 @@ class DatabaseSeeder extends Seeder
             ComponentSeeder::class,
             GallerySeeder::class,
             BlockSeeder::class,
+            ImageSeeder::class,
         ]);
     }
 
     protected function seedTables(): void
     {
-        $tables = ['pages', 'components', 'galleries', 'blocks'];
+        $tables = ['pages', 'components', 'galleries', 'blocks', 'images'];
 
         foreach ($tables as $table){
             $this->seedTable($table);
@@ -46,7 +47,7 @@ class DatabaseSeeder extends Seeder
      */
     public function reverse(): void
     {
-        $tables = ['pages', 'components', 'galleries', 'blocks'];
+        $tables = ['pages', 'components', 'galleries', 'blocks', 'images'];
 
         foreach ($tables as $table){
             $keys = Schema::getColumnListing($table);

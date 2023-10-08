@@ -11,17 +11,21 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('galleries', function (Blueprint $table) {
+        Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->string('slug')->unique();
-            $table->string('title');
-            $table->foreignId('component_id')
+            $table->unsignedDecimal('o')->nullable();
+            $table->string('n');
+            $table->string('e')->nullable();
+            $table->string('t')->nullable();
+            $table->string('a')->nullable();
+            $table->foreignId('gallery_id')
                 ->nullable()
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('set null');
-            $table->unsignedInteger('order')->nullable();
             $table->timestamps();
+
+            $table->unique(['gallery_id', 'n']);
         });
     }
 
@@ -30,6 +34,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('galleries');
+        Schema::dropIfExists('images');
     }
 };

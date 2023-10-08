@@ -16,10 +16,13 @@ class PageController extends Controller
      */
     public function show(Request $request, Page $page): Response|ResponseFactory|Collection
     {
-        //$page->load('blocks.component.galleries');
-        $page['blocks'] = $page->blocks()->with('component.galleries')
-            ->take(3)
-            ->get();
+        $limit = 3;
+
+        // Get only limited number of blocks
+        $page->setRelation(
+            'blocks',
+            $page->blocks()->with('component.galleries.images')->take($limit)->get()
+        );
 
         return inertia('Pages/Show', compact('page'));
     }

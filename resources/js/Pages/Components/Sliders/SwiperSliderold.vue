@@ -14,7 +14,7 @@ function getImagesPaths(){
     let paths = [];
 
     for(let image of props.gallery?.images ?? []){
-        paths.push('/storage/galleries/' + props.gallery.slug + '/w720/' + image.n + '.webp');
+        paths.push('storage/galleries/' + props.gallery.src + '/w720/' + image.orig.split('.', 1)[0] + '.webp');
     }
 
     return paths;

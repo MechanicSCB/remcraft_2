@@ -11,7 +11,7 @@ class BlockController extends Controller
 {
     public function getBlocks(Request $request, Page $page): Collection
     {
-        $blocks = $page->blocks()->with('component.galleries')
+        $blocks = $page->blocks()->with('component.galleries.images')
             ->skip($request['from'])
             ->take(3)
             ->get()

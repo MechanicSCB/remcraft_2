@@ -3,6 +3,7 @@
 use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\GalleryController;
+use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MainController;
 use App\Http\Controllers\PageController;
 use Illuminate\Foundation\Application;
@@ -23,14 +24,21 @@ use Inertia\Inertia;
 // TEST
 Route::get('/', [MainController::class,'index'])->name('home');
 Route::get('/reverse', [MainController::class,'reverse']);
+Route::get('/test', [MainController::class,'test']);
 
 
 // ADMIN
 Route::middleware(['auth:sanctum', config('jetstream.auth_session'), 'verified',])->group(function () {
     Route::get('/admin', [MainController::class, 'admin'])->name('admin');
 
-    Route::post('/upload/{gallery}', [GalleryController::class, 'upload'])->name('galleries.upload');
-    Route::post('/resize/{gallery}', [GalleryController::class, 'resize'])->name('galleries.resize');
+    // Admin Galleries
+
+    // Admin Images
+    Route::post('/upload/{gallery}', [ImageController::class, 'upload'])->name('images.upload');
+    Route::post('/sync/{gallery}', [ImageController::class, 'sync'])->name('images.sync');
+    Route::delete('/delete/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
+    Route::post('/reorder/{image}/{order}', [ImageController::class, 'reorder'])->name('images.reorder');
+
 
     Route::resources([
         'pages' => PageController::class,

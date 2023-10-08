@@ -8,7 +8,7 @@ use App\Models\Image;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
-class ImageHandler
+class ImageHandlerOld
 {
     public function createAndSaveOptimizedWepb(Image $image)
     {
@@ -18,8 +18,7 @@ class ImageHandler
             $targetPath = str_replace('/orig/',"/$format/", $srcPath);
             $targetPath = str_replace('.jpg','.webp', $targetPath);
 
-            $targetDir = Str::beforeLast($targetPath, "/");
-
+            $targetDir = Str::beforeLast($targetPath, "/$format/");
             if (! file_exists($targetDir)) {
                 mkdir($targetDir);
             }

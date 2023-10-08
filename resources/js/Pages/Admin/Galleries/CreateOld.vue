@@ -3,17 +3,18 @@ import {router, useForm} from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputError from "@/Components/InputError.vue";
 import {ref} from "vue";
+import CloseCross from "@/Svg/CloseCross.vue";
 
 let props = defineProps({gallery: Object,});
 
 let form = useForm({
-    title: props.gallery.title,
-    slug: props.gallery.slug,
-    component_id: props.gallery.component_id,
-    order: props.gallery.order,
-    src: props.gallery.src,
-    images: props.gallery.images,
-    datum: props.gallery.datum,
+    title: props.gallery?.title ?? '',
+    slug: props.gallery?.slug ?? '',
+    component_id: props.gallery?.component_id ?? '',
+    order: props.gallery?.order ?? '',
+    src: props.gallery?.src ?? '',
+    images: props.gallery?.images ?? [],
+    datum: props.gallery?.datum ?? {},
 });
 
 let uploadForm = useForm({
@@ -21,15 +22,22 @@ let uploadForm = useForm({
 });
 
 let submit = () => {
-    form.patch(route('galleries.update', props.gallery));
+    if (props.gallery) {
+        form.patch(route('galleries.update', props.gallery));
+    } else {
+        form.post(route('galleries.store'));
+    }
 };
 
+let deleteImage = (imageId) => {
+    router.delete(route('images.destroy', imageId));
+};
+
+// Upload Photos
 let uploadPhotos = () => {
-    uploadForm.post(route('galleries.upload', props.gallery));
-};
-
-let resize = () => {
-    router.post(route('galleries.resize', props.gallery));
+    uploadForm.post(route('images.upload', props.gallery));
+    uploadForm.photos = [];
+    photos.value = [];
 };
 
 const photos = ref([]);
@@ -53,6 +61,12 @@ const addPhoto = () => {
 
     reader.readAsDataURL(photo);
 };
+
+const removeFromUpload = (index) => {
+    index = uploadForm.photos.length - index - 1;
+    uploadForm.photos.splice(index, 1);
+    photos.value.splice(index, 1);
+};
 </script>
 <script>
 import AdminLayout from "@/Layouts/AdminLayout.vue";
@@ -61,14 +75,23 @@ export default {layout: AdminLayout}
 </script>
 
 <template>
-    <Head title="Редактировать компонент"/>
+    <Head title="Редактировать галерею"/>
 
     <div class="">
-        <div @click="resize">resize</div>
+        <div @click="sync">sync</div>
         <!-- Title -->
-        <h1 class="mb-3 text-3xl font-bold">Редактировать компонент</h1>
+        <h1 class="mb-3 text-3xl font-bold">Редактировать галерею</h1>
 
-        <form @submit.prevent="uploadPhotos" class="">
+        <!-- Show gallery's images -->
+        <div class="flex flex-wrap gap-3">
+            <div v-for="image in gallery.images" :key="image.id" class="max-w-[200px]">
+                <img :src="'/storage/galleries/' + gallery.slug + '/orig/' + image.n + '.' + image.e" alt="">
+                <div @click="deleteImage(image.id)">del</div>
+            </div>
+        </div>
+
+        <!-- Upload Photos -->
+        <form v-if="gallery" @submit.prevent="uploadPhotos" class="">
             <div class="">
                 <!-- Profile Photo File Input -->
                 <input
@@ -80,19 +103,19 @@ export default {layout: AdminLayout}
                 >
                 <label for="photo">Фотографии</label>
                 <button @click.prevent="selectNewPhoto" type="button"
-                        class="mt-2 w-full rounded bg-[#f4f4f4] border border-[#ced4da] py-3 mb-6">Загрузить фотографии
+                        class="mt-2 rounded bg-[#f4f4f4] border border-[#ced4da] py-3 mb-6">Загрузить фотографии
                 </button>
 
                 <!-- New Profile Photo Preview -->
-                <div class="grid grid-cols-4 gap-4">
-                    <div v-for="(photo, index) in photos.slice().reverse()"
-                         class="relative w-full aspect-square text-right text-white bg-cover bg-no-repeat bg-center"
+                <div class="grid grid-cols-10 gap-4">
+                    <div v-for="(photo, index) in photos.slice()"
+                         class="relative w-full aspect-square bg-cover bg-no-repeat bg-center"
                     >
                         <img class="w-full h-full object-cover rounded" :src="photo" alt="">
                         <button class="absolute top-1 right-1 text-3xl font-bold opacity-50 hover:opacity-75"
-                                type="button" @click="removePhoto(index)"
+                                type="button" @click="removeFromUpload(index)"
                         >
-                            <i class="bi bi-x"></i>
+                            <CloseCross/>
                         </button>
                     </div>
                 </div>
@@ -102,17 +125,17 @@ export default {layout: AdminLayout}
                            class="mt-12 !block !bg-blue-500 hover:!bg-blue-600 !text-lg normal-case py-2 font-normal !mb-7"
                            :disabled="uploadForm.processing">загрузить
             </PrimaryButton>
-
         </form>
 
+        <!-- Gallery form ('title', 'slug', 'component_id', ...) -->
         <form @submit.prevent="submit">
             <div class="mb-6">
-                <label class="block mb-2 text-sm" for="title">Название компонента</label>
+                <label class="block mb-2 text-sm" for="title">Название галереи</label>
 
                 <input v-model="form.title" class="border border-gray-400 p-2 w-full rounded" type="text"
                        name="title"
                        id="title"
-                       placeholder="Введите название компонента"
+                       placeholder="Введите название галереи"
                        required/>
 
                 <InputError :message="form.errors.title" class="h-0"/>
@@ -152,18 +175,6 @@ export default {layout: AdminLayout}
                 />
 
                 <InputError :message="form.errors.order" class="h-0"/>
-            </div>
-
-            <div class="mb-6">
-                <label class="block mb-2 text-sm" for="src">Имя папки</label>
-
-                <input v-model="form.src" class="border border-gray-400 p-2 w-full rounded" type="text"
-                       name="src"
-                       id="src"
-                       placeholder="Введите имя папки с изображениями"
-                />
-
-                <InputError :message="form.errors.src" class="h-0"/>
             </div>
 
             <PrimaryButton type="submit"

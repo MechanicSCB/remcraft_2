@@ -30,6 +30,8 @@ class GalleryRequest extends FormRequest
                 'min:3',
                 Rule::unique('galleries')->ignore($this->gallery),
             ],
+            'component_id' => 'exists:components,id|nullable',
+            'order' => 'numeric|nullable',
         ];
     }
 }

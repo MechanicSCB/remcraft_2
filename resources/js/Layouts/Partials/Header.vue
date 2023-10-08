@@ -47,7 +47,7 @@ let menu = [
     },
     {
         'name' : 'Дизайн интерьера',
-        'href':'/dizayn-proekt',
+        'href':'/dizayn-interera',
         'subItems':
             [
                 {'name':'Стоимость ', 'href':'/otdelka_price'},
