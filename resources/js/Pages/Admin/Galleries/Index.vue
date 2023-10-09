@@ -20,7 +20,7 @@ export default {layout: AdminLayout}
     </PrimaryButton>
 
     <div v-for="gallery in galleries" class="flex space-x-4">
-        <Link :href="route('galleries.show', gallery.slug)">{{ gallery.title }}</Link>
+        <Link :href="route('galleries.show', gallery.id)">{{ gallery.title }}</Link>
         <Link :href="route('galleries.edit', gallery.id)">edit</Link>
         <button @click="router.delete(route('galleries.destroy', gallery))">del</button>
     </div>

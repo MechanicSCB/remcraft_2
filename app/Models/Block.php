@@ -14,4 +14,9 @@ class Block extends Model
     {
         return $this->belongsTo(Component::class);
     }
+
+    public function page(): BelongsTo
+    {
+        return $this->belongsTo(Page::class);
+    }
 }

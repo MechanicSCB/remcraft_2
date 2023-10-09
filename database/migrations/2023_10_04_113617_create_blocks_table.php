@@ -22,7 +22,7 @@ return new class extends Migration
                 ->nullable()
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onDelete('cascade');
             $table->string('classes')->nullable();
             $table->string('inner_classes')->nullable();
             $table->string('padding')->default('20px 0');

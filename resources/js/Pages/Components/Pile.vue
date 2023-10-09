@@ -21,7 +21,7 @@ let activeGallery = ref(0);
                     <div class="w-1/2 h-fit bg-[#313334]">
                         <!-- TODO сравнять размер блока превью с размером файла -->
                         <img class="group-hover:opacity-70 transition-all duration-500"
-                             :src="'storage/galleries/' + gallery.slug + '/w360/' + gallery?.images[0]?.n + '.webp'" :class="{'!opacity-40':activeGallery===index}"/>
+                             :src="'/storage/galleries/' + gallery.slug + '/w360/' + gallery?.images[0]?.n + '.webp'" :class="{'!opacity-40':activeGallery===index}"/>
                     </div>
                     <div class="w-1/2">{{gallery.title}}</div>
                 </div>
@@ -29,7 +29,7 @@ let activeGallery = ref(0);
 
             <!-- Mobile gallery selector -->
             <div class="max-h-56 overflow-y-auto block md:hidden w-full bg-repeat bg-contain"
-                 :style="'background-image: url(storage/galleries/' + galleries[activeGallery]?.slug + '/webp/' + galleries[activeGallery]?.images[0].n +'.webp); scrollbar-width: none;'"
+                 :style="'background-image: url(/storage/galleries/' + galleries[activeGallery]?.slug + '/webp/' + galleries[activeGallery]?.images[0].n +'.webp); scrollbar-width: none;'"
             >
                 <div @click="activeGallery=id" v-for="(gallery,id) in galleries"
                      class="py-2 px-2 bg-[rgba(45,52,62,0.72)] text-white text-[15px]"

@@ -1,8 +1,9 @@
 <script setup>
-import {inject} from "vue";
+import {inject, onMounted} from "vue";
 import SecondaryButton from "@/Components/SecondaryButton.vue";
 
 let form = inject('form');
+
 </script>
 <template>
     <div class="masonry-edit">
@@ -63,23 +64,23 @@ let form = inject('form');
                                class="text-sm text-[#2563eb] underline"
                                placeholder="введите url ссылки"
                                required/>
-                        <button @click="form.datum.bricks[brickId].links.splice(linkId, 1)"
-                             class="px-1.5 pb-0.5 font-bold bg-red-600 text-white rounded-full">
+                        <div @click="form.datum.bricks[brickId].links.splice(linkId, 1)"
+                             class="px-1.5 pb-0.5 font-bold bg-red-600 text-white rounded-full cursor-pointer">
                             ×
-                        </button>
+                        </div>
                     </div>
-                    <button @click="form.datum.bricks[brickId].links.push({'text':'', 'href':''})"
-                        class="my-2 border rounded px-1 w-fit"
+                    <div @click="form.datum.bricks[brickId].links.push({'text':'', 'href':''})"
+                        class="my-2 border rounded px-1 w-fit cursor-pointer"
                     >
                         добавить ссылку
-                    </button>
+                    </div>
                 </div>
 
                 <SecondaryButton class="!bg-red-600 text-white" @click="form.datum.bricks.splice(brickId, 1)">
                     Удалить элемент
                 </SecondaryButton>
             </div>
-            <SecondaryButton @click="form.datum.bricks.push({'icon':null,'title':null,'body':null,'bg':null,'links':[]})">
+            <SecondaryButton @click="(form.datum.bricks ??= []).push({'icon':null,'title':null,'body':null,'bg':null,'links':[]})">
                 Добавить элемент
             </SecondaryButton>
         </div>

@@ -11,3 +11,15 @@
         scrollbar-width: thin;
     }
 }
+
+@layer components {
+    .btn {
+        @apply inline-block px-2 py-1 rounded cursor-pointer;
+    }
+    .btn-green {
+        @apply bg-green-500 hover:bg-green-600 text-white;
+    }
+    .btn-blue {
+        @apply bg-blue-500 hover:bg-blue-600 text-white;
+    }
+}

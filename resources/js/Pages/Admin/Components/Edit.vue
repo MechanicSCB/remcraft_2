@@ -5,17 +5,19 @@ import InputError from "@/Components/InputError.vue";
 import {provide} from "vue";
 import HtmlForm from "@/Pages/Admin/Components/Datum/HtmlForm.vue";
 import MasonryForm from "@/Pages/Admin/Components/Datum/MasonryForm.vue";
-import DatumForm from "@/Pages/Admin/Components/Datum/DatumForm.vue";
 import CalculatorForm from "@/Pages/Admin/Components/Datum/Calculator/CalculatorForm.vue";
 
 let props = defineProps({component: Object,});
 
 let form = useForm({
-    title: props.component.title,
-    slug: props.component.slug,
-    type: props.component.type,
-    datum: props.component.datum,
+    title: props.component?.title ?? '',
+    slug: props.component?.slug ?? '',
+    type: props.component?.type ?? '',
+    datum: props.component?.datum ?? {},
 });
+
+//  TODO replace to common shared data
+const types = ['Html','Masonry','Calculator','Cost','Gallery','Pile','Recommendation','YoutubeChannel'];
 
 const typeForms = {
     'Html': HtmlForm,
@@ -26,7 +28,11 @@ const typeForms = {
 provide('form', form);
 
 let submit = () => {
-    form.patch(route('components.update', props.component));
+    if(props.component){
+        form.patch(route('components.update', props.component));
+    }else {
+        form.post(route('components.store'));
+    }
 };
 </script>
 <script>
@@ -40,7 +46,7 @@ export default {layout: AdminLayout}
 
     <div class="">
         <!-- Title -->
-        <h1 class="mb-3 text-3xl font-bold">Редактировать компонент</h1>
+        <h1 class="mb-3 text-3xl font-bold">{{ component ? 'Редактировать' : 'Создать' }} компонент</h1>
 
         <form @submit.prevent="submit" class="">
             <div class="mb-6">
@@ -70,17 +76,14 @@ export default {layout: AdminLayout}
             <div class="mb-6">
                 <label class="block mb-2 text-sm" for="type">Тип</label>
 
-                <input v-model="form.type" class="border border-gray-400 p-2 w-full rounded" type="text"
-                       name="type"
-                       id="type"
-                       placeholder="Введите тип"
-                />
+                <select v-model="form.type" id="type">
+                    <option v-for="type in types" :value="type">{{ type }}</option>
+                </select>
 
                 <InputError :message="form.errors.type" class="h-0"/>
             </div>
 
             <hr class="mb-4">
-            <!--<DatumForm/>-->
             <component :is="typeForms[form.type]"/>
 
             <PrimaryButton type="submit"

@@ -1,27 +1,9 @@
 <script setup>
-import Html from "@/Pages/Components/Html.vue";
-import Gallery from "@/Pages/Components/Gallery.vue";
-import Masonry from "@/Pages/Components/Masonry.vue";
-import YoutubeChannel from "@/Pages/Components/YoutubeChannel.vue";
 import {onMounted} from "vue";
 import axios from "axios";
-import Pile from "@/Pages/Components/Pile.vue";
-import Cost from "@/Pages/Components/Cost.vue";
-import Calculator from "@/Pages/Components/Calculator/Calculator.vue";
-import Recommendation from "@/Pages/Components/Recommendation.vue";
+import BlockShow from "@/Pages/Pages/Partials/BlockShow.vue";
 
-let props = defineProps({page: Object, time: String})
-
-const components = {
-    'Html': Html,
-    'Gallery': Gallery,
-    'Masonry': Masonry,
-    'YoutubeChannel': YoutubeChannel,
-    'Pile': Pile,
-    'Cost': Cost,
-    'Calculator': Calculator,
-    'Recommendation': Recommendation,
-}
+let props = defineProps({page: Object})
 
 onMounted(() => {
     window.onscroll = () => {
@@ -57,17 +39,9 @@ onMounted(() => {
         <Head :title="page['title']">
             <meta typeof="description" :content="page['title']">
         </Head>
-        <!-- TODO DEV! -->
-        <div class="absolute z-50">{{ page?.time }}</div>
+
         <div v-for="block in page['blocks']">
-            <div :class="block.classes" class="overflow-hidden">
-                <component :is="components[block['component'].type]"
-                           :style="'padding:' + block.padding"
-                           :class="block.inner_classes"
-                           :datum="block['component'].datum"
-                           :galleries="block['component'].galleries"
-                />
-            </div>
+            <BlockShow :block="block"/>
         </div>
     </div>
 </template>

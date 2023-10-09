@@ -6,6 +6,8 @@ use App\Models\Block;
 use App\Models\Page;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Inertia\Response;
+use Inertia\ResponseFactory;
 
 class BlockController extends Controller
 {
@@ -46,9 +48,11 @@ class BlockController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Block $block)
+    public function show(Block $block): Response|ResponseFactory
     {
-        //
+        $block->load('component.galleries.images');
+
+        return inertia('Admin/Blocks/Show', compact('block'));
     }
 
     /**
