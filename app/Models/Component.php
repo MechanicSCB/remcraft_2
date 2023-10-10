@@ -2,16 +2,17 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Component extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, HasSlug;
 
     protected $guarded = [];
 
@@ -33,8 +34,15 @@ class Component extends Model
         return $this->hasOne(Block::class);
     }
 
-    public function sluggable(): array
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
     {
-        return ['slug' => ['source' => 'title']];
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->usingLanguage('ru')
+            ->startSlugSuffixFrom(2);
     }
 }

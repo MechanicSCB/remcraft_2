@@ -12,7 +12,6 @@ let form = useForm({
     slug: props.gallery?.slug ?? '',
     component_id: props.gallery?.component_id ?? '',
     order: props.gallery?.order ?? '',
-    src: props.gallery?.src ?? '',
     images: props.gallery?.images ?? [],
     datum: props.gallery?.datum ?? {},
 });
@@ -95,16 +94,16 @@ export default {layout: AdminLayout}
 </script>
 
 <template>
-    <Head title="Редактировать галерею"/>
+    <Head :title="gallery ? 'Редактировать галерею' : 'Создать галерею'"/>
 
     <div class="">
         <div @click="sync">sync</div>
         <!-- Title -->
-        <h1 class="mb-3 text-3xl font-bold">Редактировать галерею</h1>
+        <h1 class="mb-3 text-3xl font-bold">{{ gallery ? 'Редактировать' : 'Создать' }} галерею</h1>
 
         <!-- Show gallery's images -->
         <div class="flex flex-wrap gap-3">
-            <div v-for="image in gallery.images" :key="image.id" class="max-w-[200px]">
+            <div v-for="image in gallery?.images" :key="image.id" class="max-w-[200px]">
                 <img :src="'/storage/galleries/' + gallery.slug + '/orig/' + image.n + '.' + image.e"
                      alt=""
                      @drop.prevent="dragDrop($event,image.o)"
@@ -147,10 +146,10 @@ export default {layout: AdminLayout}
                 </div>
             </div>
 
-            <PrimaryButton type="submit"
-                           class="mt-12 !block !bg-blue-500 hover:!bg-blue-600 !text-lg normal-case py-2 font-normal !mb-7"
+            <button type="submit"
+                           class="mt-6 btn btn-blue"
                            :disabled="uploadForm.processing">загрузить
-            </PrimaryButton>
+            </button>
         </form>
 
         <!-- Gallery form ('title', 'slug', 'component_id', ...) -->
@@ -203,10 +202,10 @@ export default {layout: AdminLayout}
                 <InputError :message="form.errors.order" class="h-0"/>
             </div>
 
-            <PrimaryButton type="submit"
-                           class="mt-12 !block !bg-blue-500 hover:!bg-blue-600 !text-lg normal-case py-2 font-normal !mb-7"
+            <button type="submit"
+                           class="mt-8 btn btn-blue"
                            :disabled="form.processing">Опубликовать
-            </PrimaryButton>
+            </button>
         </form>
     </div>
 </template>

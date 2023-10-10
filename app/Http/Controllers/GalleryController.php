@@ -29,7 +29,7 @@ class GalleryController extends Controller
      */
     public function create(): Response|ResponseFactory
     {
-        return inertia('Admin/Galleries/Create');
+        return inertia('Admin/Galleries/CreateEdit');
     }
 
     /**
@@ -37,7 +37,6 @@ class GalleryController extends Controller
      */
     public function store(GalleryRequest $request)
     {
-        //dd(tmr(), $request->all(), $request->validated());
         $validated = $request->validated();
 
         $gallery = Gallery::query()->create($validated);
@@ -46,7 +45,6 @@ class GalleryController extends Controller
         Storage::makeDirectory("public/galleries/$gallery->slug/orig");
 
         return redirect(route('galleries.index'))->withSuccess('created!');
-
     }
 
     /**
@@ -66,7 +64,7 @@ class GalleryController extends Controller
     {
         $gallery->load('images');
 
-        return inertia('Admin/Galleries/Create', compact('gallery'));
+        return inertia('Admin/Galleries/CreateEdit', compact('gallery'));
     }
 
     /**

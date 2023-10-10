@@ -38,7 +38,7 @@ class ComponentController extends Controller
      */
     public function create(): Response|ResponseFactory
     {
-        return inertia('Admin/Components/Edit');
+        return inertia('Admin/Components/CreateEdit');
     }
 
     /**
@@ -70,7 +70,7 @@ class ComponentController extends Controller
     {
         $component->load('galleries');
 
-        return inertia('Admin/Components/Edit', compact('component'));
+        return inertia('Admin/Components/CreateEdit', compact('component'));
     }
 
     /**

@@ -2,15 +2,16 @@
 
 namespace App\Models;
 
-use Cviebrock\EloquentSluggable\Sluggable;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Sluggable\HasSlug;
+use Spatie\Sluggable\SlugOptions;
 
 class Page extends Model
 {
-    use HasFactory, Sluggable;
+    use HasFactory, HasSlug;
 
     protected $guarded = [];
     protected $appends = ['len'];
@@ -27,8 +28,15 @@ class Page extends Model
         );
     }
 
-    public function sluggable(): array
+    /**
+     * Get the options for generating the slug.
+     */
+    public function getSlugOptions(): SlugOptions
     {
-        return ['slug' => ['source' => ['title', 'type']]];
+        return SlugOptions::create()
+            ->generateSlugsFrom('title')
+            ->saveSlugsTo('slug')
+            ->usingLanguage('ru')
+            ->startSlugSuffixFrom(2);
     }
 }
