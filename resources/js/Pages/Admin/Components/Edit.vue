@@ -44,7 +44,10 @@ export default {layout: AdminLayout}
 <template>
     <Head title="Редактировать компонент"/>
 
-    <div class="">
+    <div class="pr-3">
+        <!-- Back -->
+        <Link :href="route('components.index')" >к списку компонентов</Link>
+
         <!-- Title -->
         <h1 class="mb-3 text-3xl font-bold">{{ component ? 'Редактировать' : 'Создать' }} компонент</h1>
 
