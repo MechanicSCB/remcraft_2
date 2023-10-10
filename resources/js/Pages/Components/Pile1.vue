@@ -1,0 +1,43 @@
+<script setup>
+import {ref} from "vue";
+import SwiperSlider from "@/Pages/Components/Sliders/SwiperSlider.vue";
+
+
+defineProps({datum: Object, galleries:Object});
+let activeGallery = ref(0);
+</script>
+<template>
+    <div>
+        <div class="lg:-mx-16 mt-6 flex flex-col md:flex-row md:h-[320px] lg:h-[480px] gap-8">
+            <div class="w-full sm:min-w-[480px] lg:min-w-[720px] h-full">
+                <SwiperSlider :gallery="galleries[activeGallery]" disableCaption="true"/>
+            </div>
+            <!-- Wide gallery selector -->
+            <div class="hidden md:flex flex-col space-y-3 overflow-y-auto">
+                <div @click="activeGallery=index"
+                     v-for="(gallery,index) in galleries"
+                     :key="gallery.id"
+                     class="flex space-x-4 group cursor-pointer">
+                    <div class="w-1/2 h-fit bg-[#313334]">
+                        <!-- TODO сравнять размер блока превью с размером файла -->
+                        <img class="group-hover:opacity-70 transition-all duration-500"
+                             :src="'/storage/galleries/' + gallery.slug + '/w360/' + gallery?.images[0]?.n + '.webp'" :class="{'!opacity-40':activeGallery===index}"/>
+                    </div>
+                    <div class="w-1/2">{{gallery.title}}</div>
+                </div>
+            </div>
+
+            <!-- Mobile gallery selector -->
+            <div class="max-h-56 overflow-y-auto block md:hidden w-full bg-repeat bg-contain"
+                 :style="'background-image: url(/storage/galleries/' + galleries[activeGallery]?.slug + '/webp/' + galleries[activeGallery]?.images[0].n +'.webp); scrollbar-width: none;'"
+            >
+                <div @click="activeGallery=id" v-for="(gallery,id) in galleries"
+                     class="py-2 px-2 bg-[rgba(45,52,62,0.72)] text-white text-[15px]"
+                     :class="activeGallery===id ? '!bg-[rgba(17,101,226,0.82)]' : 'cursor-pointer'"
+                >
+                    {{ gallery.title }}
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

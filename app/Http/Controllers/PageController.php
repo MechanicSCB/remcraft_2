@@ -63,7 +63,7 @@ class PageController extends Controller
      */
     public function edit(Page $page): Response|ResponseFactory
     {
-        $page->load('blocks.component');
+        $page->load('blocks.component.galleries.images');
 
         return inertia('Admin/Pages/Edit', compact('page'));
     }

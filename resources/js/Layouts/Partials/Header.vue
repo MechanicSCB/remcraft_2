@@ -134,7 +134,7 @@ let menu = [
         <!-- Right -->
         <div class="hidden md:flex space-x-8 items-center">
             <div class="hidden xl:flex">
-                <Link :href="route('admin')" class="hover:text-ui-link-hover">+7&nbsp;(985)&nbsp;740-30-30</Link>
+                <Link href="#" class="hover:text-ui-link-hover">+7&nbsp;(985)&nbsp;740-30-30</Link>
             </div>
             <Link :href="route('admin')" class="bg-[#1071ff] text-white px-6 py-3">Оставить&nbsp;заявку</Link>
         </div>

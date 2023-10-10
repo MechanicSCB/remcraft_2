@@ -35,7 +35,7 @@ export default {
 </template>
 
 <style>
-@import 'Summernote/summernote-lite_orig.css';
+@import 'summernote-lite_orig.css';
 
 .note-editing-area .note-editable{
     border: 1px solid #999 !important;

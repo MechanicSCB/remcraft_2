@@ -15,10 +15,7 @@ import Flash from "@/Layouts/Partials/Flash.vue";
     <div class="flex">
         <Flash/>
         <!-- Left Menu -->
-        <div id="admin-menu"
-             class="pt-2 text-xs fixed h-full bg-black text-white w-6 1hover:w-28 overflow-hidden"
-
-        >
+        <div id="admin-menu" class="pt-2 text-xs fixed h-full bg-black text-white w-6 1hover:w-28 overflow-hidden">
             <Link :href="route('home')" class="" title="Сайт">
                 <GlobeIcon/>
                 Сайт
@@ -31,6 +28,10 @@ import Flash from "@/Layouts/Partials/Flash.vue";
                 <PageIcon/>
                 Страницы
             </Link>
+            <Link :href="route('blocks.index')" class="" title="Блоки">
+                <BlocksIcon/>
+                Блоки
+            </Link>
             <Link :href="route('components.index')" class="" title="Компоненты">
                 <NodePlusIcon/>
                 Компоненты
@@ -42,10 +43,6 @@ import Flash from "@/Layouts/Partials/Flash.vue";
             <Link :href="'#'" class="" title="Меню">
                 <DiagramIcon/>
                 Меню
-            </Link>
-            <Link :href="route('blocks.index')" class="" title="Блоки">
-                <BlocksIcon/>
-                Блоки
             </Link>
         </div>
 

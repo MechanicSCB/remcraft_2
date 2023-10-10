@@ -8,12 +8,11 @@ import CloseCross from "@/Svg/CloseCross.vue";
 let filterForm = useForm({
     title: '',
     sort_by: 'id',
-    type: '',
     page_id: '',
 });
 
 let submit = () => {
-    filterForm.get(route('components.index'), {
+    filterForm.get(route('galleries.index'), {
         preserveScroll: true,
         preserveState: true,
     })
@@ -31,9 +30,6 @@ let setQueryArgsToFilterForm = () => {
         filterForm[field] = val;
     }
 };
-
-//  TODO replace to common shared data
-const types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Recommendation', 'YoutubeChannel'];
 </script>
 <template>
     <form @submit.prevent class="flex gap-1 text-sm items-end">
@@ -43,20 +39,13 @@ const types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Reco
         </div>
         <div class="flex flex-col">
             <label for="page">стр.</label>
-            <select class="text-sm py-0 pl-1 pr-7 w-16" id="page" v-model="filterForm.page_id" @change="submit">
+            <select class="text-sm py-0 pl-1 pr-7" id="page" v-model="filterForm.page_id" @change="submit">
                 <option value="">все</option>
                 <option value="0">без блока</option>
                 <option v-for="page in $page.props.pages" :value="page.id">{{ page.id }} - {{ page.title }}</option>
             </select>
         </div>
-        <div class="flex flex-col">
-            <label for="type">тип</label>
-            <select class="text-sm py-0 pl-1 pr-7 w-28" id="type" v-model="filterForm.type" @change="submit">
-                <option value="">все</option>
-                <option v-for="type in types">{{ type }}</option>
-            </select>
-        </div>
-        <Link :href="route('components.index')" class="" title="очистить фильтр">
+        <Link :href="route('galleries.index')" class="" title="очистить фильтр">
             <CloseCross class="w-5"/>
         </Link>
     </form>

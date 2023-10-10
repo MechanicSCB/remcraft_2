@@ -2,6 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Component;
+use App\Models\Image;
+use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 use Tightenco\Ziggy\Ziggy;
@@ -30,19 +33,50 @@ class HandleInertiaRequests extends Middleware
      */
     public function share(Request $request): array
     {
-        return [
+        $return = [
             ...parent::share($request),
-            'ziggy' => fn () => [
+            'ziggy' => fn() => [
                 ...(new Ziggy)->toArray(),
                 'location' => $request->url(),
                 'request_all' => $request->all(),
             ],
             'flash' => [
-                'message' => fn () => $request->session()->get('message'),
-                'success' => fn () => $request->session()->get('success'),
-                'warning' => fn () => $request->session()->get('warning'),
-                'error' => fn () => $request->session()->get('error'),
+                'message' => fn() => $request->session()->get('message'),
+                'success' => fn() => $request->session()->get('success'),
+                'warning' => fn() => $request->session()->get('warning'),
+                'error' => fn() => $request->session()->get('error'),
             ],
+            'imgFormats' => Image::$formats,
         ];
+
+        // Add shared data to admin pages
+        if(in_array('auth',$request->route()->middleware())){
+            $return = [
+                ...$return,
+                'pages' => Page::query()->get(),
+                'components' => Component::query()->get(),
+            ];
+        }
+
+        return $return;
     }
+
+    // public function shareOrig(Request $request): array
+    // {
+    //     return [
+    //         ...parent::share($request),
+    //         'ziggy' => fn() => [
+    //             ...(new Ziggy)->toArray(),
+    //             'location' => $request->url(),
+    //             'request_all' => $request->all(),
+    //         ],
+    //         'flash' => [
+    //             'message' => fn() => $request->session()->get('message'),
+    //             'success' => fn() => $request->session()->get('success'),
+    //             'warning' => fn() => $request->session()->get('warning'),
+    //             'error' => fn() => $request->session()->get('error'),
+    //         ],
+    //         'imgFormats' => Image::$formats,
+    //     ];
+    // }
 }

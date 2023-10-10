@@ -34,12 +34,6 @@ let submit = () => {
     }
 };
 </script>
-<script>
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-
-export default {layout: AdminLayout}
-</script>
-
 <template>
     <Head title="Редактировать компонент"/>
 
@@ -51,38 +45,24 @@ export default {layout: AdminLayout}
         <h1 class="mb-3 text-3xl font-bold">{{ component ? 'Редактировать' : 'Создать' }} компонент</h1>
 
         <form @submit.prevent="submit" class="">
-            <div class="mb-6">
-                <label class="block mb-2 text-sm" for="title">Название компонента</label>
-
-                <input v-model="form.title" class="border border-gray-400 p-2 w-full rounded" type="text"
-                       name="title"
-                       id="title"
-                       placeholder="Введите название компонента"
-                       required/>
-
-                <InputError :message="form.errors.title" class="h-0"/>
+            <div class="input-block">
+                <label for="title">Название компонента</label>
+                <input v-model="form.title" name="title" id="title" placeholder="Введите название компонента" required/>
+                <InputError class="input-error" :message="form.errors.title"/>
             </div>
 
-            <div class="mb-6">
-                <label class="block mb-2 text-sm" for="slug">slug</label>
-
-                <input v-model="form.slug" class="border border-gray-400 p-2 w-full rounded" type="text"
-                       name="slug"
-                       id="slug"
-                       placeholder="Введите слаг"
-                />
-
-                <InputError :message="form.errors.slug" class="h-0"/>
+            <div class="input-block">
+                <label for="slug">slug</label>
+                <input v-model="form.slug" name="slug" id="slug" placeholder="Введите слаг"/>
+                <InputError class="input-error" :message="form.errors.slug"/>
             </div>
 
-            <div class="mb-6">
-                <label class="block mb-2 text-sm" for="type">Тип</label>
-
+            <div class="input-block">
+                <label for="type">Тип</label>
                 <select v-model="form.type" id="type">
                     <option v-for="type in types" :value="type">{{ type }}</option>
                 </select>
-
-                <InputError :message="form.errors.type" class="h-0"/>
+                <InputError class="input-error" :message="form.errors.type"/>
             </div>
 
             <hr class="mb-4">
@@ -95,3 +75,8 @@ export default {layout: AdminLayout}
         </form>
     </div>
 </template>
+<script>
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+
+export default {layout: AdminLayout}
+</script>

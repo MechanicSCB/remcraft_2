@@ -41,6 +41,7 @@ const onSlideChange = () => {
         :space-between="1"
         :modules="modules"
         navigation
+        :pagination="{ clickable: true }"
         :scrollbar="{ draggable: true }"
     >
         <swiper-slide  class="max-w-[480px] sm:max-w-[720px]" v-for="(src, id) in getImagesPaths()">
@@ -54,8 +55,31 @@ const onSlideChange = () => {
     color: #333;
     background: rgba(255,255,255,0.3);
 }
+
 .swiper-button-prev:hover,
 .swiper-button-next:hover{
     background: rgba(255,255,255,0.7);
 }
+
+.swiper-pagination-bullet{
+    width: 30px;
+    height: 4px;
+    background: #fff !important;
+    border-radius: 0;
+    opacity: 1;
+}
+
+.swiper-pagination-bullet-active{
+    background: #1071ff !important;
+}
+
+.swiper-pagination{
+    margin-bottom: -30px;
+    transition: all 300ms ease;
+}
+
+.swiper:hover .swiper-pagination{
+    margin-bottom: 30px;
+}
+
 </style>

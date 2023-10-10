@@ -15,22 +15,28 @@ class ComponentController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
-        $query = Component::query()->with('galleries.images', 'block.component.galleries.images', 'block.page');
+        $query = Component::query()->with('blocks');
 
         // FILTER
         if (@$request['title']) {
             $query->where('title', 'like', "%$request->title%");
         }
-        if (@$request['page_id']) {
-            $query->whereRelation('block', 'page_id', '=', $request['page_id']);
+        if (! is_null($request['page_id'])) {
+            if($request['page_id'] === '0'){
+                $query->doesntHave('blocks');
+            }else{
+                $query->whereRelation('blocks', 'page_id', '=', $request['page_id']);
+            }
         }
         if (@$request['type']) {
             $query->where('type', '=', $request['type']);
         }
 
-        $components = $query->get();
+        $query->latest();
 
-        return inertia('Admin/Components/Index', compact('components'));
+        $components = $query->get(['id','slug','title','type']);
+
+        return inertia('Admin/Components/ComponentsIndex', compact('components'));
     }
 
     /**
@@ -38,7 +44,7 @@ class ComponentController extends Controller
      */
     public function create(): Response|ResponseFactory
     {
-        return inertia('Admin/Components/CreateEdit');
+        return inertia('Admin/Components/ComponentCreateEdit');
     }
 
     /**
@@ -60,7 +66,7 @@ class ComponentController extends Controller
     {
         $component->load('galleries.images');
 
-        return inertia('Admin/Components/Show', compact('component'));
+        return inertia('Admin/Components/ComponentShow', compact('component'));
     }
 
     /**
@@ -70,7 +76,7 @@ class ComponentController extends Controller
     {
         $component->load('galleries');
 
-        return inertia('Admin/Components/CreateEdit', compact('component'));
+        return inertia('Admin/Components/ComponentCreateEdit', compact('component'));
     }
 
     /**
@@ -79,9 +85,7 @@ class ComponentController extends Controller
     public function update(ComponentRequest $request, Component $component)
     {
         //dd(tmr(), $request->all(), $request->validated(),$component);
-        $validated = $request->validated();
-
-        $component->update($validated);
+        $component->update($request->validated());
 
         return redirect(route('components.edit', $component))->withSuccess('updated!');
     }

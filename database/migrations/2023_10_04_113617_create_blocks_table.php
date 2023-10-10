@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('classes')->nullable();
             $table->string('inner_classes')->nullable();
             $table->string('padding')->default('20px 0');
+            $table->jsonb('datum')->nullable();
             $table->timestamps();
         });
     }

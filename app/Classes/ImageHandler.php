@@ -14,7 +14,7 @@ class ImageHandler
     {
         $srcPath = $image->origPath;
 
-        foreach (['webp', 'w720', 'w480', 'w360', 'w200'] as $format){
+        foreach (Image::$formats as $format){
             $targetPath = str_replace('/orig/',"/$format/", $srcPath);
             $targetPath = str_replace('.jpg','.webp', $targetPath);
 
@@ -40,7 +40,7 @@ class ImageHandler
         $dir = "public/galleries/$gallery->slug";
 
         // Delete all previous resized directories
-        foreach (['webp', 'w720', 'w480', 'w360', 'w200'] as $subDir){
+        foreach (Image::$formats as $subDir){
             Storage::deleteDirectory("$dir/$subDir");
         }
 
@@ -50,7 +50,7 @@ class ImageHandler
             $origExt = Str::afterLast($from, '.');
             $from = storage_path('app/' . $from);
 
-            foreach (['webp', 'w720', 'w480', 'w360', 'w200'] as $size) {
+            foreach (Image::$formats as $size) {
                 $to = str_replace('/orig/', "/$size/", $from);
                 $to = str_replace(".$origExt", '.webp', $to);
 
@@ -73,6 +73,7 @@ class ImageHandler
     public function jpgToWebp(string $srcPath, string $targetPath, int $quality = 80): void
     {
         try {
+            // TODO add other extension
             $srcImg = imagecreatefromjpeg($srcPath);
         } catch (\Exception $e) {
             // log
@@ -92,6 +93,7 @@ class ImageHandler
     public function copyResizeJpgAspectRatio(string $srcPath, string $storePath, int $newWidth, int $newHeight = null): void
     {
         try {
+            // TODO add other extension
             $srcImg = imagecreatefromjpeg($srcPath);
         } catch (\Exception $e) {
             // log
@@ -111,16 +113,12 @@ class ImageHandler
         }
 
         $newImg = imagecreatetruecolor($newWidth, $newHeight); //Создаем полноцветное изображение
-        //imagealphablending($newImg, false); //Отключаем режим сопряжения цветов
-        //imagesavealpha($newImg, true); //Включаем сохранение альфа канала
 
         //Ресайз
         imagecopyresampled($newImg, $srcImg, 0, 0, 0, 0, $newWidth, $newHeight, $srcWidth, $srcHeight);
 
         //Сохранение
-        //imagepng($newImg, $storePath);
         $storePath = str_replace('.jpg', '.webp', $storePath);
         imagewebp($newImg, $storePath);
-        // imagejpeg($newImg, $storePath);
     }
 }

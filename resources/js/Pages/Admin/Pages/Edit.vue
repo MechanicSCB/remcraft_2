@@ -2,6 +2,7 @@
 import {useForm} from "@inertiajs/vue3";
 import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputError from "@/Components/InputError.vue";
+import BlockShow from "@/Pages/Pages/Partials/BlockShow.vue";
 
 let props = defineProps({page: Object,});
 
@@ -11,59 +12,95 @@ let form = useForm({
     blocks: props.page.blocks,
 });
 
+let blockForm = useForm({
+    page_id: props.page.id,
+    order: 0,
+    component_id: null,
+    classes: null,
+    inner_classes: null,
+});
+
 let submit = () => {
     form.patch(route('pages.update', props.page));
 };
-</script>
-<script>
-import AdminLayout from "@/Layouts/AdminLayout.vue";
 
-export default {layout: AdminLayout}
+let submitBlock = () => {
+    blockForm.post(route('blocks.store'));
+};
 </script>
-
 <template>
     <Head title="Редактировать страницу"/>
 
     <div class="">
         <!-- Title -->
-        <h1 class="mb-3 text-3xl font-bold">Редактировать страницу</h1>
+        <h1 class="mb-3 text-xl font-bold">Редактировать страницу</h1>
 
-        <form @submit.prevent="submit" class="">
-            <div class="">
-                <div class="mb-6">
-                    <label class="block mb-2 text-sm" for="title">Название страницы</label>
-
-                    <input v-model="form.title" class="border border-gray-400 p-2 w-full rounded" type="text"
-                           name="title"
-                           id="title"
-                           placeholder="Введите название страницы"
-                           required/>
-
-                    <InputError :message="form.errors.title" class="h-0"/>
+        <!-- Title&Slug Form -->
+        <form @submit.prevent="submit">
+            <div class="flex gap-6">
+                <div class="input-block">
+                    <label for="title">Название страницы</label>
+                    <input v-model="form.title" id="title" placeholder="Введите название страницы" required/>
+                    <InputError :message="form.errors.title" class="input-error"/>
                 </div>
 
-                <div class="mb-6">
-                    <label class="block mb-2 text-sm" for="slug">slug</label>
-
-                    <input v-model="form.slug" class="border border-gray-400 p-2 w-full rounded" type="text"
-                           name="slug"
-                           id="slug"
-                           placeholder="Введите слаг"
-                    />
-
-                    <InputError :message="form.errors.slug" class="h-0"/>
+                <div class="input-block">
+                    <label for="slug">slug</label>
+                    <input v-model="form.slug" id="slug" placeholder="Введите слаг"/>
+                    <InputError :message="form.errors.slug" class="input-error"/>
                 </div>
 
-                <!-- Page Blocks -->
-                <div v-for="(block, id) in page.blocks" class="my-3">
-                    <Link :href="route('blocks.edit', block.id)">Блок {{ id }} - {{ block.component }}</Link>
-                </div>
-
-                <PrimaryButton type="submit"
-                               class="mt-12 !block !bg-blue-500 hover:!bg-blue-600 !text-lg normal-case py-2 font-normal !mb-7"
-                               :disabled="form.processing">Опубликовать
-                </PrimaryButton>
+                <button type="submit" class="btn btn-blue" :disabled="form.processing">Опубликовать</button>
             </div>
         </form>
+
+
+        <!-- Add Block -->
+        <div>
+            <form @submit.prevent="submitBlock">
+                <div class="">
+                    <div class="input-block">
+                        <label for="component_id">Компонент</label>
+                        <input v-model="blockForm.component_id" id="component_id" placeholder="Выберите компонент" required/>
+                        <InputError :message="blockForm.errors.component_id" class="input-error"/>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="classes">Классы</label>
+                        <select v-model="blockForm.classes" id="classes">
+                            <option value="">--</option>
+                            <option value="block-gray">block-gray</option>
+                            <option value="block-dark">block-dark</option>
+                        </select>
+                        <InputError :message="blockForm.errors.classes" class="input-error"/>
+                    </div>
+
+                    <div class="input-block">
+                        <label for="inner_classes">Внутренние классы</label>
+                        <select v-model="blockForm.inner_classes" id="inner_classes">
+                            <option value="">--</option>
+                            <option value="block-container">block-container</option>
+                        </select>
+                        <InputError :message="blockForm.errors.inner_classes" class="input-error"/>
+                    </div>
+
+                    <button type="submit" class="btn btn-blue" :disabled="blockForm.processing">Опубликовать</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- Page Blocks -->
+        <div class="max-h-[calc(100vh-300px)] overflow-y-auto">
+            <div v-for="(block, id) in page.blocks">
+                <Link :href="route('blocks.edit', block.id)">
+                    <BlockShow class="main" :block="block"/>
+                </Link>
+            </div>
+        </div>
     </div>
 </template>
+<script>
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+
+export default {layout: AdminLayout}
+</script>

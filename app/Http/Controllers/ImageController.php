@@ -54,6 +54,6 @@ class ImageController extends Controller
         $image->save();
         $image->gallery->refreshOrders();
 
-        return redirect()->back()->with('success', 'Deleted!');
+        return redirect()->back()->with('success', 'порядок изменён');
     }
 }

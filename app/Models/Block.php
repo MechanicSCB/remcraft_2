@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Block extends Model
 {
-    use HasFactory;
+    use HasFactory, HasDatum;
+
+    protected $guarded = [];
 
     public function component(): BelongsTo
     {
