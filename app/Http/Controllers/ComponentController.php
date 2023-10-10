@@ -15,10 +15,8 @@ class ComponentController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
-
         $query = Component::query()->with('galleries.images', 'block.component.galleries.images', 'block.page');
 
-        // TODO replace to filter class
         // FILTER
         if (@$request['title']) {
             $query->where('title', 'like', "%$request->title%");
@@ -29,7 +27,6 @@ class ComponentController extends Controller
         if (@$request['type']) {
             $query->where('type', '=', $request['type']);
         }
-
 
         $components = $query->get();
 

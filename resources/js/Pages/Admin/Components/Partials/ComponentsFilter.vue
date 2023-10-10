@@ -24,22 +24,11 @@ onMounted(() => {
 });
 
 let setQueryArgsToFilterForm = () => {
-    let uri  = decodeURIComponent(router.page.url).split('?');
+    // request_all added to HandleInertiaRequests.php
+    let fields = router.page.props.ziggy.request_all;
 
-    if (uri.length === 2) {
-        let vars = uri[1].split('&');
-        let tmp = '';
-
-        vars.forEach(function (v) {
-            tmp = v.split('=');
-
-            if (tmp.length === 2) {
-                if (tmp[0] === 'title') filterForm.title = tmp[1];
-                if (tmp[0] === 'sort_by') filterForm.sort_by = tmp[1];
-                if (tmp[0].startsWith('type')) filterForm.type=tmp[1];
-                if (tmp[0].startsWith('page_id')) filterForm.page_id=tmp[1];
-            }
-        });
+    for(let [field, val] of Object.entries(fields)){
+        filterForm[field] = val;
     }
 };
 
@@ -68,7 +57,7 @@ const types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Reco
             </select>
         </div>
         <Link :href="route('components.index')" class="" title="очистить фильтр">
-            <CloseCross/>
+            <CloseCross class="w-5"/>
         </Link>
     </form>
 </template>

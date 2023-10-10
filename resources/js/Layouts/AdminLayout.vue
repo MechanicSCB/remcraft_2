@@ -6,12 +6,14 @@ import BlocksIcon from "@/Svg/BlocksIcon.vue";
 import ImagesIcon from "@/Svg/ImagesIcon.vue";
 import DiagramIcon from "@/Svg/DiagramIcon.vue";
 import NodePlusIcon from "@/Svg/NodePlusIcon.vue";
+import Flash from "@/Layouts/Partials/Flash.vue";
 
 
 </script>
 
 <template>
     <div class="flex">
+        <Flash/>
         <!-- Left Menu -->
         <div id="admin-menu"
              class="pt-2 text-xs fixed h-full bg-black text-white w-6 1hover:w-28 overflow-hidden"

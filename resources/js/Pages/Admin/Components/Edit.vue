@@ -1,6 +1,5 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
 import InputError from "@/Components/InputError.vue";
 import {provide} from "vue";
 import HtmlForm from "@/Pages/Admin/Components/Datum/HtmlForm.vue";
@@ -89,10 +88,10 @@ export default {layout: AdminLayout}
             <hr class="mb-4">
             <component :is="typeForms[form.type]"/>
 
-            <PrimaryButton type="submit"
-                           class="mt-12 !block !bg-blue-500 hover:!bg-blue-600 !text-lg normal-case py-2 font-normal !mb-7"
-                           :disabled="form.processing">Опубликовать
-            </PrimaryButton>
+            <button type="submit" class="mt-8 btn btn-blue"
+                           :disabled="form.processing">
+                Сохранить
+            </button>
         </form>
     </div>
 </template>

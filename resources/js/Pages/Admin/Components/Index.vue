@@ -51,9 +51,9 @@ let deleteComponent = (component) => {
                         <a :href="route('components.show', component.id)" class="hover:text-red-700" target="_blank">
                             <LinkIcon class="w-3.5"/>
                         </a>
-                        <button @click="deleteComponent(component)" class="hover:text-red-700">
+                        <div @click="deleteComponent(component)" class="cursor-pointer hover:text-red-700">
                             <CloseCross class="w-4"/>
-                        </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -61,8 +61,9 @@ let deleteComponent = (component) => {
 
         <!-- RIGHT -->
         <div class="main w-full h-full overflow-y-auto">
-            <BlockShow v-if="showedComponent.block" :block="showedComponent.block"/>
-            <ComponentShow v-else :class="{'mx-16':['Masonry','Pile'].includes(showedComponent.type)}"
+            <BlockShow v-if="showedComponent?.block" :block="showedComponent?.block"/>
+            <ComponentShow v-else-if="showedComponent"
+                           :class="{'mx-16':['Masonry','Pile'].includes(showedComponent?.type)}"
                            :component="showedComponent"/>
         </div>
     </div>
