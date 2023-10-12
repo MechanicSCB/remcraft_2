@@ -10,7 +10,6 @@ trait HasDatum
     {
         return Attribute::make(
             get: fn(?string $value) => json_decode($value, 1),
-            set: fn(?array $value) => json_encode($value, JSON_UNESCAPED_UNICODE),
         );
     }
 }

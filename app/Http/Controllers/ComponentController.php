@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ComponentRequest;
 use App\Models\Component;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
 use Inertia\ResponseFactory;
@@ -21,10 +22,10 @@ class ComponentController extends Controller
         if (@$request['title']) {
             $query->where('title', 'like', "%$request->title%");
         }
-        if (! is_null($request['page_id'])) {
-            if($request['page_id'] === '0'){
+        if (!is_null($request['page_id'])) {
+            if ($request['page_id'] === '0') {
                 $query->doesntHave('blocks');
-            }else{
+            } else {
                 $query->whereRelation('blocks', 'page_id', '=', $request['page_id']);
             }
         }
@@ -34,7 +35,7 @@ class ComponentController extends Controller
 
         $query->latest();
 
-        $components = $query->get(['id','slug','title','type']);
+        $components = $query->get(['id', 'slug', 'title', 'type']);
 
         return inertia('Admin/Components/ComponentsIndex', compact('components'));
     }
@@ -50,13 +51,11 @@ class ComponentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(ComponentRequest $request)
+    public function store(ComponentRequest $request): RedirectResponse
     {
-        $validated = $request->validated();
+        Component::query()->create($request->validated());
 
-        Component::query()->create($validated);
-
-        return redirect(route('components.index'))->withSuccess('created!');
+        return redirect(route('components.index'))->with('success', 'created!');
     }
 
     /**
@@ -84,7 +83,6 @@ class ComponentController extends Controller
      */
     public function update(ComponentRequest $request, Component $component)
     {
-        //dd(tmr(), $request->all(), $request->validated(),$component);
         $component->update($request->validated());
 
         return redirect(route('components.edit', $component))->withSuccess('updated!');
@@ -93,10 +91,10 @@ class ComponentController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Component $component)
+    public function destroy(Component $component): RedirectResponse
     {
         $component->delete();
 
-        return redirect(route('components.index'))->withSuccess('deleted!');
+        return redirect(route('components.index'))->with('success', 'deleted!');
     }
 }

@@ -15,6 +15,7 @@ let form = useForm({
     classes: props.block?.classes ?? '',
     inner_classes: props.block?.inner_classes ?? '',
     padding: props.block?.padding ?? '',
+    datum: JSON.stringify(props.block?.datum) ?? '',
 });
 
 provide('form', form);
@@ -40,8 +41,13 @@ let submit = () => {
         <h1 class="mb-3 text-xl font-bold">{{ block ? 'Редактировать' : 'Создать' }} блок</h1>
 
         <form @submit.prevent="submit" class="">
-            <SelectBlock label="Страница" field="page_id" :options="$page.props.pages" valueField="id"
-                         name-field="title"/>
+            <SelectBlock label="Страница"
+                         field="page_id"
+                         :options="$page.props.pages"
+                         valueField="id"
+                         name-field="title"
+            />
+
             <div class="mb-5">
                 <label class="inline-block min-w-[100px]" for="component_id">Компонент</label>
                 <!-- TODO replace with custom improved select -->
@@ -53,10 +59,12 @@ let submit = () => {
 
                 <InputError :message="form.errors.component_id" class="absolute bg-white"/>
             </div>
+
             <InputBlock label="Порядок" field="order" input-type="number"/>
             <InputBlock label="Классы" field="classes"/>
             <InputBlock label="Классы" field="inner_classes"/>
             <InputBlock label="Отступы" field="padding"/>
+            <InputBlock label="Данные" field="datum"/>
 
             <button type="submit" class="mt-8 btn btn-blue" :disabled="form.processing">Сохранить</button>
         </form>

@@ -37,8 +37,10 @@ Route::middleware('auth')->group(function () {
     Route::post('/upload/{gallery}', [ImageController::class, 'upload'])->name('images.upload');
     Route::post('/sync/{gallery}', [ImageController::class, 'sync'])->name('images.sync');
     Route::delete('/delete/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
-    Route::post('/reorder/{image}/{order}', [ImageController::class, 'reorder'])->name('images.reorder');
+    Route::post('/reorder-image/{image}/{order}', [ImageController::class, 'reorder'])->name('images.reorder');
 
+    // Admin Blocks
+    Route::post('/reorder-block/{block}/{order}', [BlockController::class, 'reorder'])->name('blocks.reorder');
 
     Route::resources([
         'pages' => PageController::class,

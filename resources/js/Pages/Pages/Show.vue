@@ -40,8 +40,6 @@ onMounted(() => {
             <meta typeof="description" :content="page['title']">
         </Head>
 
-        <div v-for="block in page['blocks']">
-            <BlockShow :block="block"/>
-        </div>
+        <BlockShow v-for="block in page['blocks']" :block="block"/>
     </div>
 </template>

@@ -1,1 +1,17 @@
-[{"id":1,"slug":"remont_kvartir","title":"Ремонт квартир"},{"id":2,"slug":"otdelka_kottedjey","title":"Отделка коттеджей"},{"id":3,"slug":"dizayn-interera","title":"Дизайн интерьера"}]
+[
+    {
+        "id": 1,
+        "slug": "remont_kvartir",
+        "title": "Ремонт квартир"
+    },
+    {
+        "id": 2,
+        "slug": "otdelka_kottedjey",
+        "title": "Отделка коттеджей"
+    },
+    {
+        "id": 3,
+        "slug": "dizayn-interera",
+        "title": "Дизайн интерьера"
+    }
+]

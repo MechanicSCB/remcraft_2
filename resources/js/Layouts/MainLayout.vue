@@ -27,7 +27,7 @@ let handleScroll = function (event) {
         <Header/>
         <MobileMenu class="block xl:hidden " v-if="showMobileMenu"/>
 
-        <main class="mt-16 pt-10 min-h-screen main">
+        <main class="mt-24 min-h-screen main">
             <slot/>
         </main>
 

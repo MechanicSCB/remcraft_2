@@ -17,7 +17,7 @@ return new class extends Migration
                 ->constrained()
                 ->onUpdate('cascade')
                 ->onDelete('cascade');
-            $table->unsignedInteger('order');
+            $table->decimal('order');
             $table->foreignId('component_id')
                 ->nullable()
                 ->constrained()

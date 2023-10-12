@@ -13,6 +13,10 @@ use Inertia\ResponseFactory;
 
 class BlockController extends Controller
 {
+    /**
+     * Get not loaded blocks while page scrolling.
+     */
+
     public function getBlocks(Request $request, Page $page): Collection
     {
         $blocks = $page->blocks()->with('component.galleries.images')
@@ -21,6 +25,18 @@ class BlockController extends Controller
             ->get();
 
         return $blocks;
+    }
+
+    /**
+     * Reorder block position
+     */
+    public function reorder(Block $block, int|float $order): RedirectResponse
+    {
+        $block['order'] = $order-0.5;
+        $block->save();
+        $block->page->refreshBlockOrders();
+
+        return redirect()->back()->with('success', 'порядок изменён');
     }
 
     /**
@@ -59,7 +75,7 @@ class BlockController extends Controller
      */
     public function store(BlockRequest $request): RedirectResponse
     {
-        $block = Block::query()->create(array_filter($request->validated(), fn($v) => $v!==null));
+        $block = Block::query()->create(array_filter($request->validated(), fn($v) => $v !== null));
 
         return redirect(route('blocks.edit', $block))->with('success', 'Сохранено!');
     }
@@ -89,7 +105,7 @@ class BlockController extends Controller
      */
     public function update(BlockRequest $request, Block $block): RedirectResponse
     {
-        $block->update(array_filter($request->validated()));
+        $block->update($request->validated());
 
         return back()->with('success', 'updated!');
     }

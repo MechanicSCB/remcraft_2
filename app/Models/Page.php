@@ -39,4 +39,18 @@ class Page extends Model
             ->usingLanguage('ru')
             ->startSlugSuffixFrom(2);
     }
+
+    /**
+     * Refresh blocks ordering.
+     */
+    public function refreshBlockOrders()
+    {
+        $blocks = $this->blocks()->get(['id', 'order','page_id'])->toArray();
+
+        foreach ($blocks as $key => &$block) {
+            $block['order'] = $key + 1;
+        }
+
+        Block::query()->upsert($blocks, 'id');
+    }
 }

@@ -14,7 +14,7 @@ defineProps({
 </script>
 <template>
     <div class="mb-5">
-        <label class="inline-block min-w-[100px]" :for="field">{{ label }}</label>
+        <label v-if="label" class="inline-block min-w-[100px]" :for="field">{{ label }}</label>
         <input class="ml-2 py-0 rounded"
                v-model="form[field]"
                :id="field"

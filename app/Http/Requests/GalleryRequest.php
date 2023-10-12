@@ -31,7 +31,7 @@ class GalleryRequest extends FormRequest
                 Rule::unique('galleries')->ignore($this->gallery),
             ],
             'component_id' => 'exists:components,id|nullable',
-            'order' => 'numeric|nullable',
+            'order' => 'numeric|nullable|min:0',
         ];
     }
 }

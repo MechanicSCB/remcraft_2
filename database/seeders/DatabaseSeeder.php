@@ -55,7 +55,7 @@ class DatabaseSeeder extends Seeder
 
             $items = DB::table($table)->get($keys);
 
-            file_put_contents(database_path("seeders/src/$table.json"), json_encode($items, JSON_UNESCAPED_UNICODE));
+            file_put_contents(database_path("seeders/src/$table.json"), json_encode($items, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
         }
     }
 }

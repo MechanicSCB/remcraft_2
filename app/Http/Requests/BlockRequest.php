@@ -24,10 +24,11 @@ class BlockRequest extends FormRequest
         return [
             'page_id' => 'exists:pages,id',
             'component_id' => 'exists:components,id',
-            'order' => 'numeric|nullable',
+            'order' => 'numeric|nullable|min:0',
             'classes' => 'string|nullable',
             'inner_classes' => 'string|nullable',
             'padding' => 'string|nullable',
+            'datum' => 'json|nullable',
         ];
     }
 }
