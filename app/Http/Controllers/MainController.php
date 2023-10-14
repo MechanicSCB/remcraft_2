@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Block;
+use App\Models\Component;
 use App\Models\Image;
 use App\Models\Page;
 use Database\Seeders\DatabaseSeeder;
@@ -23,7 +25,9 @@ class MainController extends Controller
 
     public function admin(): Response|ResponseFactory
     {
-       return inertia('Admin/Index');
+        $page = Page::query()->with('blocks.component.galleries.images')->first();
+
+        return inertia('Admin/Pages/Edit', compact('page'));
     }
 
     public function index(): Response|ResponseFactory

@@ -1,12 +1,14 @@
 <script setup>
-import {useForm} from "@inertiajs/vue3";
+import {router, useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-import {provide} from "vue";
+import {onMounted, provide} from "vue";
 import InputBlock from "@/Pages/Admin/Partials/InputBlock.vue";
 import SelectBlock from "@/Pages/Admin/Partials/SelectBlock.vue";
-import ArrowLeft from "vue-material-design-icons/ArrowLeft.vue";
+import ComponentCreateEdit from "@/Pages/Admin/Components/ComponentCreateEdit.vue";
+import ArrowLeftIcon from "@/Svg/ArrowLeft.vue";
+import SelectComponent from "@/Pages/Admin/Blocks/Partials/SelectComponent.vue";
 
-let props = defineProps({block: Object,});
+let props = defineProps({block: Object});
 
 let form = useForm({
     page_id: props.block?.page_id ?? '',
@@ -14,7 +16,9 @@ let form = useForm({
     order: props.block?.order ?? '',
     classes: props.block?.classes ?? '',
     inner_classes: props.block?.inner_classes ?? '',
-    padding: props.block?.padding ?? '',
+    style: props.block?.style ?? '',
+    pt: props.block?.pt ?? '',
+    pb: props.block?.pb ?? '',
     datum: JSON.stringify(props.block?.datum) ?? '',
 });
 
@@ -27,14 +31,28 @@ let submit = () => {
         form.post(route('blocks.store'));
     }
 };
+
+onMounted(() => {
+    setQueryArgsToFilterForm();
+});
+
+let setQueryArgsToFilterForm = () => {
+    // request_all added to HandleInertiaRequests.php
+    let fields = router.page.props.ziggy.request_all;
+
+    for(let [field, val] of Object.entries(fields)){
+        form[field] = val;
+    }
+};
+
 </script>
 <template>
     <Head title="Редактировать блок"/>
 
     <div class="pr-3">
         <!-- Back -->
-        <Link :href="route('blocks.index')" class="w-fit hover:text-blue-500 flex items-center">
-            <ArrowLeft class="text-xl pt-1 mr-3"/> к списку блоков
+        <Link v-if="block" :href="route('pages.edit', block.page_id)" class="w-fit hover:text-blue-500 flex items-center">
+            <ArrowLeftIcon class="text-xl pt-1 mr-3"/> к странице
         </Link>
 
         <!-- Title -->
@@ -50,24 +68,25 @@ let submit = () => {
 
             <div class="mb-5">
                 <label class="inline-block min-w-[100px]" for="component_id">Компонент</label>
-                <!-- TODO replace with custom improved select -->
-                <select class="ml-2 py-1.5 rounded w-48 text-xs" id="component_id" v-model="form.component_id">
-                    <option v-for="component in $page.props.components" :value="component.id">
-                        {{ component.id }} - {{ component.title }} - {{ component.type }}
-                    </option>
-                </select>
+
+                <SelectComponent/>
 
                 <InputError :message="form.errors.component_id" class="absolute bg-white"/>
             </div>
 
             <InputBlock label="Порядок" field="order" input-type="number"/>
             <InputBlock label="Классы" field="classes"/>
-            <InputBlock label="Классы" field="inner_classes"/>
-            <InputBlock label="Отступы" field="padding"/>
+            <InputBlock label="Внутренние классы" field="inner_classes"/>
+            <InputBlock label="Css стили" field="style"/>
+            <InputBlock label="отступ сверху" field="pt"/>
+            <InputBlock label="отступ снизу" field="pb"/>
             <InputBlock label="Данные" field="datum"/>
 
             <button type="submit" class="mt-8 btn btn-blue" :disabled="form.processing">Сохранить</button>
         </form>
+
+        <!--  Component Edit  -->
+        <ComponentCreateEdit :component="block?.component"/>
     </div>
 </template>
 <script>

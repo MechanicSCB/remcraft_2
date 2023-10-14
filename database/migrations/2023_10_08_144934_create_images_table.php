@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->decimal('o')->nullable();
+            $table->unsignedFloat('o', 4, 1)->nullable();
             $table->string('n');
             $table->string('e')->nullable();
             $table->string('t')->nullable();

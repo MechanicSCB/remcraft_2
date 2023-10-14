@@ -6,73 +6,7 @@ import CollapseIcon from "@/Svg/CollapseIcon.vue";
 let isScrolled = inject('isScrolled');
 let showMobileMenu = inject('showMobileMenu')
 let expandedItem = ref(null);
-let menu = [
-    {
-        'name' : 'Ремонт квартир',
-        'href':'/',
-        'subItems':
-            [
-                {'name':'Цены', 'href':'/ceny-na-remont-kvartir-pod-kliuc'},
-                {
-                    'name':'Этапы ремонта',
-                    'href':'/etapy-remonta-kvartir-fotografii-i-opisanie',
-                    'subItems':[
-                        {'name':'Демонтажные работы', 'href':'/demontazhnye_raboty'},
-                        {'name':'Устройство перегородок', 'href':'/demontazhnye_raboty'},
-                        {'name':'Штукатурные работы', 'href':'/demontazhnye_raboty'},
-                        {'name':'Устройство цементной стяжки', 'href':'/demontazhnye_raboty'},
-                        {'name':'Гипсокартонные работы', 'href':'/demontazhnye_raboty'},
-                        {'name':'Плиточные работы', 'href':'/demontazhnye_raboty'},
-                        {'name':'Монтаж пластиковых окон', 'href':'/demontazhnye_raboty'},
-                        {'name':'Шумоизоляция квартиры', 'href':'/demontazhnye_raboty'},
-                    ],
-                },
-                {'name':'Портфолио', 'href':'/portfolio'},
-                {'name':'Статьи', 'href':'/articles'},
-            ],
-    },
-    {
-        'name' : 'Отделка коттеджей',
-        'href':'/otdelka_kottedjey',
-        'subItems':
-            [
-                {'name':'Стоимость ', 'href':'/otdelka_price'},
-                {'name':'Портфолио ', 'href':'/portfolio'},
-                {'name':'Ремонт коттеджей ', 'href':'/otdelka_etap'},
-                {'name':'Ремонт таунхаусов', 'href':'/town_houses'},
-                {'name':'Отделка фасада', 'href':'/otdelka-fasada'},
-                {'name':'Ремонт деревянного дома', 'href':'/otdelka-fasada'},
-                {'name':'Статьи', 'href':'/articles'},
-            ],
-    },
-    {
-        'name' : 'Дизайн интерьера',
-        'href':'/dizayn-proekt',
-        'subItems':
-            [
-                {'name':'Стоимость ', 'href':'/otdelka_price'},
-                {'name':'Портфолио ', 'href':'/portfolio'},
-                {'name':'Ремонт коттеджей ', 'href':'/otdelka_etap'},
-                {'name':'Ремонт таунхаусов', 'href':'/town_houses'},
-            ],
-    },
-    {'name' : 'Инженерные системы', 'href':'/inzenernye-sistemy' },
-    {
-        'name' : 'Компания',
-        'href':'/',
-        'subItems':
-            [
-                {'name':'Наше качество', 'href':'/otdelka_price'},
-                {'name':'Отзывы ', 'href':'/otzyvy'},
-                {'name':'Ремонт коттеджей ', 'href':'/otdelka_etap'},
-                {'name':'Ремонт таунхаусов', 'href':'/town_houses'},
-                {'name':'Отделка фасада', 'href':'/otdelka-fasada'},
-                {'name':'Ремонт деревянного дома', 'href':'/otdelka-fasada'},
-                {'name':'Статьи', 'href':'/articles'},
-            ],
-
-    },
-];
+let expandedSubItem = ref(null);
 
 </script>
 
@@ -80,18 +14,33 @@ let menu = [
     <div class="fixed z-50  w-full text-[#909597] bg-[#fbfafa] transition-all duration-300 overflow-y-auto max-h-screen"
          :class="isScrolled ? 'top-16' : 'top-24'"
     >
-        <div v-for="(item, itemKey) in menu" class=" flex flex-col">
+        <div v-for="(item, itemKey) in $page.props.menu" class=" flex flex-col">
             <!-- Main Items -->
-            <div class="px-10 border-t flex justify-between items-center" :class="expandedItem===itemKey ? 'bg-[#1071ff] text-white' : ''">
-                <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="item.href">{{ item.name }}</Link>
-                <ExpandIcon v-if="item.subItems && expandedItem!==itemKey" @click="expandedItem=itemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
-                <CollapseIcon v-if="item.subItems && expandedItem===itemKey" @click="expandedItem=null" class="w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
-            </div>
+            <Link class="px-10 border-t flex justify-between items-center"
+                  :class="expandedItem===itemKey ? 'bg-[#1071ff] text-white' : ''"
+                  :href="item.href"
+                  @click="showMobileMenu=false"
+            >
+                <div class="py-4">{{ item.title }}</div>
+                <ExpandIcon v-if="Object.keys(item.sub_items).length && expandedItem!==itemKey" @click.prevent.stop="expandedItem=itemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+                <CollapseIcon v-if="Object.keys(item.sub_items).length && expandedItem===itemKey" @click.prevent.stop="expandedItem=null" class="w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+            </Link>
 
             <!-- Expanded SubItems -->
-            <div v-if="expandedItem===itemKey" v-for="(subItem, subItemKey) in item.subItems" class="pl-20 border-t flex justify-between items-center pr-10 bg-[rgba(232,232,232,0.54)]">
-                <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="subItem.href">{{ subItem.name }}</Link>
-                <ExpandIcon v-if="subItem.subItems" @click="expandedItem=itemKey + '.' + subItemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+            <div v-if="expandedItem===itemKey"
+                 v-for="(subItem, subItemKey) in item.sub_items"
+                 class="border-t bg-[rgba(232,232,232,0.54)] flex flex-col"
+            >
+                <div class="ml-20 flex items-center mr-10">
+                    <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="subItem.href">{{ subItem.title }}</Link>
+                    <ExpandIcon v-if="Object.keys(subItem.sub_items).length && expandedSubItem!==subItemKey" @click="expandedSubItem=subItemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+                    <CollapseIcon v-if="Object.keys(subItem.sub_items).length && expandedSubItem===subItemKey" @click="expandedSubItem=null" class="w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
+                </div>
+
+                <!-- Expanded SubSubItems -->
+                <div v-if="expandedSubItem===subItemKey" v-for="(subSubItem, subSubItemKey) in subItem.sub_items" class="pl-20 border-t flex justify-between items-center pr-10 bg-[rgba(232,232,232,0.54)]">
+                    <Link @click="showMobileMenu=false" class="ml-10 w-full h-full py-4" :href="subSubItem.href">{{ subSubItem.title }}</Link>
+                </div>
             </div>
         </div>
     </div>

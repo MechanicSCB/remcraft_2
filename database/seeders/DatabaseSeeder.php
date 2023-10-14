@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             GallerySeeder::class,
             BlockSeeder::class,
             ImageSeeder::class,
+            ItemSeeder::class,
         ]);
     }
 
@@ -29,11 +30,11 @@ class DatabaseSeeder extends Seeder
         $tables = ['pages', 'components', 'galleries', 'blocks', 'images'];
 
         foreach ($tables as $table){
-            $this->seedTable($table);
+            $this->seedTableFromJsonFile($table);
         }
     }
 
-    public function seedTable(string $table): void
+    public function seedTableFromJsonFile(string $table): void
     {
         $items = json_decode(file_get_contents(database_path("seeders/src/$table.json")), 1);
 

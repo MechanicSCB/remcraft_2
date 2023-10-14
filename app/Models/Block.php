@@ -12,6 +12,20 @@ class Block extends Model
 
     protected $guarded = [];
 
+    /**
+     * The "booted" method of the model.
+     */
+    protected static function booted(): void
+    {
+        static::saved(function (Block $block) {
+            // if order has been changed and saved refresh page ordering of blocks
+            if($block->isDirty('order')){
+                $block->page->refreshBlockOrders();
+            }
+
+        });
+    }
+
     public function component(): BelongsTo
     {
         return $this->belongsTo(Component::class);

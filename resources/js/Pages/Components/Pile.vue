@@ -8,7 +8,7 @@ let activeGallery = ref(0);
 </script>
 <template>
     <div>
-        <div class="lg:-mx-16 mt-6 flex flex-col md:flex-row md:h-[380px] lg:h-[500px] gap-8">
+        <div class="lg:-mx-16 flex flex-col md:flex-row md:h-[380px] lg:h-[500px] gap-8">
             <!-- Main Gallery Slider -->
             <div class="w-full sm:min-w-[480px] lg:w-[720px] h-full">
                 <SwiperSlider :gallery="galleries[activeGallery]" disableCaption="true"/>

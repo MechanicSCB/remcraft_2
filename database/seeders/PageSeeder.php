@@ -12,6 +12,6 @@ class PageSeeder extends Seeder
      */
     public function run(): void
     {
-        (new DatabaseSeeder())->seedTable('pages');
+        (new DatabaseSeeder())->seedTableFromJsonFile('pages');
     }
 }

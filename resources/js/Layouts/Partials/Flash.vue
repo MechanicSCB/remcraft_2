@@ -1,13 +1,13 @@
-<script>
-export default {
-    updated() {
-        setTimeout(() => {
-            document.querySelector('div#flash-container').classList.add('fade')
-        }, 2000);
+<script setup>
+import {onUpdated} from "vue";
 
-        document.querySelector('div#flash-container').classList.remove('fade')
-    }
-}
+onUpdated(() =>{
+    setTimeout(() => {
+        document.querySelector('div#flash-container').classList.add('fade')
+    }, 2000);
+
+    document.querySelector('div#flash-container').classList.remove('fade')
+});
 </script>
 
 <template>

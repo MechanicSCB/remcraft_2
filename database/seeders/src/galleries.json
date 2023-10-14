@@ -1,366 +1,415 @@
 [
     {
-        "component_id": 2,
         "id": 1,
-        "order": 0,
         "slug": "remont-kvartir-v-moskve",
-        "title": "Ремонт квартир в Москве"
+        "title": "Ремонт квартир в Москве",
+        "component_id": 2,
+        "order": 0
     },
     {
-        "component_id": 5,
         "id": 2,
-        "order": 0,
         "slug": "otdelka-kottedzei-pod-kliuc",
-        "title": "Отделка коттеджей под ключ"
+        "title": "Отделка коттеджей под ключ",
+        "component_id": 5,
+        "order": 0
     },
     {
-        "component_id": 7,
         "id": 3,
-        "order": 1,
         "slug": "zhk-prime-park-120-mkv",
-        "title": "ЖК Prime Park 120 м.кв"
+        "title": "ЖК Prime Park 120 м.кв",
+        "component_id": 7,
+        "order": 1
     },
     {
-        "component_id": 7,
         "id": 4,
-        "order": 2,
         "slug": "zhk-dinastiya-110-mkv",
-        "title": "ЖК Династия 110 м.кв"
+        "title": "ЖК Династия 110 м.кв",
+        "component_id": 7,
+        "order": 2
     },
     {
-        "component_id": 7,
         "id": 5,
-        "order": 3,
         "slug": "zhk-mosfilmovskiy-120-mkv",
-        "title": "ЖК Мосфильмовский 120 м.кв"
+        "title": "ЖК Мосфильмовский 120 м.кв",
+        "component_id": 7,
+        "order": 3
     },
     {
-        "component_id": 7,
         "id": 6,
-        "order": 4,
         "slug": "zhk-vesterdam-100-mkv",
-        "title": "ЖК Вестердам 100 м.кв"
+        "title": "ЖК Вестердам 100 м.кв",
+        "component_id": 7,
+        "order": 4
     },
     {
-        "component_id": 7,
         "id": 7,
-        "order": 5,
         "slug": "zhk-vavilova-120-mkv",
-        "title": "ЖК Вавилова 120 м.кв"
+        "title": "ЖК Вавилова 120 м.кв",
+        "component_id": 7,
+        "order": 5
     },
     {
-        "component_id": 7,
         "id": 8,
-        "order": 6,
         "slug": "mytischi-zhk-nyuton-100-mkv",
-        "title": "Мытищи ЖК Ньютон 100 м.кв "
+        "title": "Мытищи ЖК Ньютон 100 м.кв ",
+        "component_id": 7,
+        "order": 6
     },
     {
-        "component_id": 7,
         "id": 9,
-        "order": 7,
         "slug": "zhk-dominion-180-mkv",
-        "title": "ЖК Доминион 180 м.кв."
+        "title": "ЖК Доминион 180 м.кв.",
+        "component_id": 7,
+        "order": 7
     },
     {
-        "component_id": 7,
         "id": 10,
-        "order": 8,
         "slug": "italyanskiy-kvartal-100-mkv",
-        "title": "Итальянский квартал 100 м.кв"
+        "title": "Итальянский квартал 100 м.кв",
+        "component_id": 7,
+        "order": 8
     },
     {
-        "component_id": 7,
         "id": 11,
-        "order": 9,
         "slug": "zhk-skayfort-1-y-nagatinskiy-proezd-kvartira-140-mkv",
-        "title": "ЖК Скайфорт, 1-й Нагатинский проезд | Квартира 140 м.кв"
+        "title": "ЖК Скайфорт, 1-й Нагатинский проезд | Квартира 140 м.кв",
+        "component_id": 7,
+        "order": 9
     },
     {
-        "component_id": 7,
         "id": 12,
-        "order": 10,
         "slug": "zhk-skayfort-1-y-nagatinskiy-proezd-kvartira-120-mkv",
-        "title": "ЖК Скайфорт, 1-й Нагатинский проезд | Квартира 120 м.кв"
+        "title": "ЖК Скайфорт, 1-й Нагатинский проезд | Квартира 120 м.кв",
+        "component_id": 7,
+        "order": 10
     },
     {
-        "component_id": 7,
         "id": 13,
-        "order": 11,
         "slug": "krasnogorsk-podmoskovnyy-bulvar-kvartira-100-mkv",
-        "title": "Красногорск, Подмосковный бульвар | Квартира 100 м.кв."
+        "title": "Красногорск, Подмосковный бульвар | Квартира 100 м.кв.",
+        "component_id": 7,
+        "order": 11
     },
     {
-        "component_id": 7,
         "id": 14,
-        "order": 12,
         "slug": "akademika-volgina-kvartira-100-mkv",
-        "title": "Академика Волгина квартира 100 м.кв"
+        "title": "Академика Волгина квартира 100 м.кв",
+        "component_id": 7,
+        "order": 12
     },
     {
-        "component_id": 7,
         "id": 15,
-        "order": 13,
         "slug": "kurkino-ulrodionovskaya-10-kvartira-120-mkv",
-        "title": "Куркино, ул.Родионовская 10 | Квартира 120 м.кв"
-    },
-    {
+        "title": "Куркино, ул.Родионовская 10 | Квартира 120 м.кв",
         "component_id": 7,
+        "order": 13
+    },
+    {
         "id": 16,
-        "order": 14,
         "slug": "aprelevka-ul-parkovaya-d-11-kvartira-120-mkv",
-        "title": "Апрелевка, ул. Парковая д 11 | Квартира 120 м.кв"
+        "title": "Апрелевка, ул. Парковая д 11 | Квартира 120 м.кв",
+        "component_id": 7,
+        "order": 14
     },
     {
-        "component_id": 10,
         "id": 17,
-        "order": 1,
         "slug": "shtukaturka-sten",
-        "title": "Штукатурка стен"
+        "title": "Штукатурка стен",
+        "component_id": 10,
+        "order": 1
     },
     {
-        "component_id": 10,
         "id": 18,
-        "order": 2,
         "slug": "demontazhnye-raboty",
-        "title": "Демонтажные работы"
+        "title": "Демонтажные работы",
+        "component_id": 10,
+        "order": 2
     },
     {
-        "component_id": 10,
         "id": 19,
-        "order": 3,
         "slug": "ustroystvo-peregorodok",
-        "title": "Устройство перегородок"
+        "title": "Устройство перегородок",
+        "component_id": 10,
+        "order": 3
     },
     {
-        "component_id": 10,
         "id": 20,
-        "order": 4,
         "slug": "uteplenie-balkona-i-lodzhii",
-        "title": "Утепление балкона и лоджии"
+        "title": "Утепление балкона и лоджии",
+        "component_id": 10,
+        "order": 4
     },
     {
-        "component_id": 10,
         "id": 21,
-        "order": 5,
         "slug": "shumoizolyatsiya-kvartiry",
-        "title": "Шумоизоляция квартиры"
+        "title": "Шумоизоляция квартиры",
+        "component_id": 10,
+        "order": 5
     },
     {
-        "component_id": 10,
         "id": 22,
-        "order": 6,
         "slug": "styazhka-pola",
-        "title": "Стяжка пола"
-    },
-    {
+        "title": "Стяжка пола",
         "component_id": 10,
+        "order": 6
+    },
+    {
         "id": 23,
-        "order": 7,
         "slug": "ustanovka-plastikovyh-okon",
-        "title": "Установка пластиковых окон"
+        "title": "Установка пластиковых окон",
+        "component_id": 10,
+        "order": 7
     },
     {
-        "component_id": 11,
         "id": 24,
-        "order": 1,
         "slug": "montazh-sistem-otopleniya",
-        "title": "Монтаж систем отопления"
+        "title": "Монтаж систем отопления",
+        "component_id": 11,
+        "order": 1
     },
     {
-        "component_id": 11,
         "id": 25,
-        "order": 2,
         "slug": "montazh-sistem-vodosnabzheniya",
-        "title": "Монтаж систем водоснабжения"
+        "title": "Монтаж систем водоснабжения",
+        "component_id": 11,
+        "order": 2
     },
     {
-        "component_id": 11,
         "id": 26,
-        "order": 3,
         "slug": "elektromontazhnye-raboty",
-        "title": "Электромонтажные работы"
-    },
-    {
+        "title": "Электромонтажные работы",
         "component_id": 11,
+        "order": 3
+    },
+    {
         "id": 27,
-        "order": 4,
         "slug": "ustanovka-konditsionerov",
-        "title": "Установка кондиционеров"
+        "title": "Установка кондиционеров",
+        "component_id": 11,
+        "order": 4
     },
     {
-        "component_id": 12,
         "id": 28,
-        "order": 1,
         "slug": "montazh-gipsokartona",
-        "title": "Монтаж гипсокартона"
+        "title": "Монтаж гипсокартона",
+        "component_id": 12,
+        "order": 1
     },
     {
-        "component_id": 12,
         "id": 33,
-        "order": 2,
         "slug": "plitochnye-raboty",
-        "title": "Плиточные работы"
+        "title": "Плиточные работы",
+        "component_id": 12,
+        "order": 2
     },
     {
-        "component_id": 12,
         "id": 34,
-        "order": 3,
         "slug": "malyarnye-raboty",
-        "title": "Малярные работы"
+        "title": "Малярные работы",
+        "component_id": 12,
+        "order": 3
     },
     {
-        "component_id": 12,
         "id": 35,
-        "order": 4,
         "slug": "dekorativnaya-shtukaturka",
-        "title": "Декоративная штукатурка"
+        "title": "Декоративная штукатурка",
+        "component_id": 12,
+        "order": 4
     },
     {
-        "component_id": 12,
         "id": 36,
-        "order": 5,
         "slug": "ukladka-napolnyh-pokrytiy",
-        "title": "Укладка напольных покрытий"
+        "title": "Укладка напольных покрытий",
+        "component_id": 12,
+        "order": 5
     },
     {
-        "component_id": 12,
         "id": 37,
-        "order": 6,
         "slug": "montazh-natyazhnyh-potolkov",
-        "title": "Монтаж натяжных потолков"
-    },
-    {
+        "title": "Монтаж натяжных потолков",
         "component_id": 12,
+        "order": 6
+    },
+    {
         "id": 38,
-        "order": 7,
         "slug": "finishnaya-otdelka",
-        "title": "Финишная отделка"
+        "title": "Финишная отделка",
+        "component_id": 12,
+        "order": 7
     },
     {
-        "component_id": 17,
         "id": 39,
-        "order": 1,
         "slug": "montevil-260-mkv",
-        "title": "Монтевиль 260 м.кв."
+        "title": "Монтевиль 260 м.кв.",
+        "component_id": 17,
+        "order": 1
     },
     {
-        "component_id": 17,
         "id": 40,
-        "order": 2,
         "slug": "pavlovo-800-mkv",
-        "title": "Павлово 800 м.кв"
+        "title": "Павлово 800 м.кв",
+        "component_id": 17,
+        "order": 2
     },
     {
-        "component_id": 17,
         "id": 41,
-        "order": 3,
         "slug": "montevil-560-mkv",
-        "title": "Монтевиль 560 м.кв. "
+        "title": "Монтевиль 560 м.кв. ",
+        "component_id": 17,
+        "order": 3
     },
     {
-        "component_id": 17,
         "id": 42,
-        "order": 4,
         "slug": "millenium-park-450-mkv",
-        "title": "Миллениум парк 450 м.кв. "
+        "title": "Миллениум парк 450 м.кв. ",
+        "component_id": 17,
+        "order": 4
     },
     {
-        "component_id": 17,
         "id": 43,
-        "order": 5,
         "slug": "kotton-veyn-dom-600-mkv",
-        "title": "Коттон вейн дом 600 м.кв "
+        "title": "Коттон вейн дом 600 м.кв ",
+        "component_id": 17,
+        "order": 5
     },
     {
-        "component_id": 17,
         "id": 44,
-        "order": 6,
         "slug": "palitsy-260-mkv",
-        "title": "Палицы 260 м.кв. "
+        "title": "Палицы 260 м.кв. ",
+        "component_id": 17,
+        "order": 6
     },
     {
-        "component_id": 17,
         "id": 45,
-        "order": 7,
         "slug": "rozhdestvenno-500-mkv",
-        "title": "Рождественно 500 м.кв. "
+        "title": "Рождественно 500 м.кв. ",
+        "component_id": 17,
+        "order": 7
     },
     {
-        "component_id": 17,
         "id": 46,
-        "order": 8,
         "slug": "taym-1-450-mkv",
-        "title": "Тайм-1 450 м.кв. "
+        "title": "Тайм-1 450 м.кв. ",
+        "component_id": 17,
+        "order": 8
     },
     {
-        "component_id": 17,
         "id": 47,
-        "order": 9,
         "slug": "ivakino-pokrovskoe-240-mkv",
-        "title": "Ивакино покровское 240 м.кв "
-    },
-    {
+        "title": "Ивакино покровское 240 м.кв ",
         "component_id": 17,
+        "order": 9
+    },
+    {
         "id": 48,
-        "order": 10,
         "slug": "novorizhskiy-260-mkv",
-        "title": "Новорижский 260 м.кв "
+        "title": "Новорижский 260 м.кв ",
+        "component_id": 17,
+        "order": 10
     },
     {
-        "component_id": 21,
         "id": 49,
-        "order": 0,
         "slug": "vizualnoe-i-tehnologicheskoe-kachestvo",
-        "title": "Визуальное и технологическое качество"
+        "title": "Визуальное и технологическое качество",
+        "component_id": 21,
+        "order": 0
     },
     {
-        "component_id": 22,
         "id": 51,
-        "order": 1,
         "slug": "stroitelstvo-garazhi-bani",
-        "title": "Строительство (гаражи, бани)"
+        "title": "Строительство (гаражи, бани)",
+        "component_id": 22,
+        "order": 1
     },
     {
-        "component_id": 22,
         "id": 52,
-        "order": 2,
         "slug": "monolitnye-konstrukcii",
-        "title": "Монолитные конструкции"
+        "title": "Монолитные конструкции",
+        "component_id": 22,
+        "order": 2
     },
     {
-        "component_id": 22,
         "id": 53,
-        "order": 3,
         "slug": "remont-krovli",
-        "title": "Ремонт кровли"
-    },
-    {
+        "title": "Ремонт кровли",
         "component_id": 22,
+        "order": 3
+    },
+    {
         "id": 54,
-        "order": 4,
         "slug": "ustroystvo-drenazha-otmostki",
-        "title": "Устройство дренажа, отмостки"
+        "title": "Устройство дренажа, отмостки",
+        "component_id": 22,
+        "order": 4
     },
     {
-        "component_id": 29,
         "id": 55,
-        "order": null,
         "slug": "dizayn-intererov",
-        "title": "Дизайн интерьеров"
+        "title": "Дизайн интерьеров",
+        "component_id": 29,
+        "order": null
     },
     {
-        "component_id": 34,
         "id": 56,
-        "order": null,
         "slug": "spetsializirovannye-brigady",
-        "title": "специализированные бригады"
+        "title": "специализированные бригады",
+        "component_id": 34,
+        "order": null
     },
     {
-        "component_id": 36,
         "id": 57,
-        "order": null,
         "slug": "otdelka-fotografii-nashih-rabot",
-        "title": "Отделка - Фотографии наших работ"
+        "title": "Отделка - Фотографии наших работ",
+        "component_id": 36,
+        "order": null
+    },
+    {
+        "id": 58,
+        "slug": "inzhenernye-sistemy",
+        "title": "Инженерные системы",
+        "component_id": 45,
+        "order": null
+    },
+    {
+        "id": 59,
+        "slug": "montazh-elektroprovodki",
+        "title": "Монтаж электропроводки",
+        "component_id": 48,
+        "order": 1
+    },
+    {
+        "id": 60,
+        "slug": "sborka-elektricheskih-schitov",
+        "title": "Сборка электрических щитов",
+        "component_id": 48,
+        "order": 2
+    },
+    {
+        "id": 61,
+        "slug": "montazh-vodosnabzheniya",
+        "title": "Монтаж водоснабжения",
+        "component_id": 48,
+        "order": 3
+    },
+    {
+        "id": 62,
+        "slug": "montazh-otopleniya",
+        "title": "Монтаж отопления",
+        "component_id": 48,
+        "order": 4
+    },
+    {
+        "id": 63,
+        "slug": "sborka-kotelnoy",
+        "title": "Сборка котельной",
+        "component_id": 48,
+        "order": 5
+    },
+    {
+        "id": 64,
+        "slug": "montazh-ventilyatsii-i-konditsionerov",
+        "title": "Монтаж вентиляции и кондиционеров",
+        "component_id": 48,
+        "order": 6
     }
 ]

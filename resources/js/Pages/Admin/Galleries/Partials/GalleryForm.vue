@@ -1,6 +1,8 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
+import SelectComponent from "@/Pages/Admin/Blocks/Partials/SelectComponent.vue";
+import {provide} from "vue";
 
 let props = defineProps({gallery: Object,});
 
@@ -12,6 +14,9 @@ let form = useForm({
     images: props.gallery?.images ?? [],
     datum: props.gallery?.datum ?? {},
 });
+
+provide('form', form);
+
 
 let submit = () => {
     if (props.gallery) {
@@ -35,11 +40,7 @@ let submit = () => {
             <InputError :message="form.errors.slug" class="h-0"/>
         </div>
 
-        <div class="input-block">
-            <label for="component_id">Id компонента</label>
-            <input v-model="form.component_id" id="component_id" placeholder="Введите Id компонента"/>
-            <InputError :message="form.errors.component_id" class="h-0"/>
-        </div>
+        <SelectComponent/>
 
         <div class="input-block">
             <label for="order">Порядковый номер</label>

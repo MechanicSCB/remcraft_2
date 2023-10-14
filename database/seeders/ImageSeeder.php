@@ -15,7 +15,7 @@ class ImageSeeder extends Seeder
      */
     public function run(): void
     {
-        (new DatabaseSeeder())->seedTable('images');
+        (new DatabaseSeeder())->seedTableFromJsonFile('images');
     }
 
     public function getImagesFromStorageFiles(): void

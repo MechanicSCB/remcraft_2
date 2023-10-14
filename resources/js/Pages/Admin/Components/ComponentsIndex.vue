@@ -33,22 +33,27 @@ let deleteComponent = (component) => {
                 <ComponentsFilter/>
             </div>
 
+            <!-- Components list -->
+            <!-- TODO replace with table -->
             <div class="pt-28 h-full">
                 <div class="h-full overflow-y-auto pb-6">
                     <div v-for="component in components"
                          @click="showedComponent=component"
-                         class="py-1 flex items-center space-x-4 text-xs hover:bg-blue-100 cursor-pointer"
+                         class="py-1 flex items-center space-x-4 text-xs hover:bg-blue-100 cursor-pointer flex justify-between"
                          :class="{'bg-blue-200':showedComponent===component}"
                     >
-                        <span>{{ component.title }} - {{ component.type }} - с.{{ component.blocks[0]?.page_id ?? 0 }}</span>
-                        <Link :href="route('components.edit', component.id)" class="hover:text-red-700">
-                            <PencilIcon class="w-3.5"/>
-                        </Link>
-                        <a :href="route('components.show', component.id)" class="hover:text-red-700" target="_blank">
-                            <LinkIcon class="w-3.5"/>
-                        </a>
-                        <div @click="deleteComponent(component)" class="cursor-pointer hover:text-red-700">
-                            <CloseCross class="w-4"/>
+                        <div>{{ component.title }} - {{ component.type }}</div>
+                        <div class="flex gap-2">
+                            <div class="flex">с. <span v-for="block in component.blocks">{{ block.page_id}};</span></div>
+                            <Link :href="route('components.edit', component.id)" class="hover:text-red-700">
+                                <PencilIcon class="w-3.5"/>
+                            </Link>
+                            <a :href="route('components.show', component.id)" class="hover:text-red-700" target="_blank">
+                                <LinkIcon class="w-3.5"/>
+                            </a>
+                            <div @click="deleteComponent(component)" class="cursor-pointer hover:text-red-700">
+                                <CloseCross class="w-4"/>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -56,7 +61,7 @@ let deleteComponent = (component) => {
         </div>
 
         <!-- RIGHT -->
-        <iframe v-if="showedComponent?.blocks[0]" class="w-full" :src="'/blocks/' + showedComponent.blocks[0].id"></iframe>
+        <iframe v-if="showedComponent?.blocks[0]" class="w-full" :src="'/blocks/' + showedComponent.blocks[0]?.id"></iframe>
         <iframe class="w-full" v-else :src="'/components/'+ showedComponent.id"></iframe>
     </div>
 </template>

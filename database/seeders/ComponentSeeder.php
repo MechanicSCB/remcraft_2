@@ -12,6 +12,6 @@ class ComponentSeeder extends Seeder
      */
     public function run(): void
     {
-        (new DatabaseSeeder())->seedTable('components');
+        (new DatabaseSeeder())->seedTableFromJsonFile('components');
     }
 }

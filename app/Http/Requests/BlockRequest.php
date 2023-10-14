@@ -27,7 +27,9 @@ class BlockRequest extends FormRequest
             'order' => 'numeric|nullable|min:0',
             'classes' => 'string|nullable',
             'inner_classes' => 'string|nullable',
-            'padding' => 'string|nullable',
+            'style' => 'string|nullable',
+            'pt' => 'integer|nullable|min:0',
+            'pb' => 'integer|nullable|min:0',
             'datum' => 'json|nullable',
         ];
     }

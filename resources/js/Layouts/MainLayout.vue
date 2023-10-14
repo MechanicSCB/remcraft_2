@@ -71,6 +71,11 @@ let handleScroll = function (event) {
     background-color: #313334;
 }
 
+.mobile-px
+{
+    @apply px-2.5 lg:px-0;
+}
+
 @media screen and (max-width: 1280px) {
     .block-container {
         max-width: 840px;
@@ -80,7 +85,6 @@ let handleScroll = function (event) {
 @media screen and (max-width: 1024px) {
     .block-container {
         font-size: 14px;
-        width: 90%;
         max-width: none;
         line-height: 24px;
     }

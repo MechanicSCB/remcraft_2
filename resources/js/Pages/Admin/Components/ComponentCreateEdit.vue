@@ -42,7 +42,18 @@ let submit = () => {
         <Link :href="route('components.index')" >к списку компонентов</Link>
 
         <!-- Title -->
-        <h1 class="mb-3 text-3xl font-bold">{{ component ? 'Редактировать' : 'Создать' }} компонент</h1>
+        <h1 class="mb-3 text-3xl font-bold">
+            <span v-if="component">Редактировать компонент id: {{ component.id }}</span>
+            <span v-else>Создать компонент</span>
+        </h1>
+
+        <!-- Component's pages -->
+        <div v-if="component" class="flex gap-2 items-end">
+            <span>страницы:</span>
+            <div v-for="block in component.blocks" class="text-xl">
+                {{ block.page_id }}
+            </div>
+        </div>
 
         <form @submit.prevent="submit" class="">
             <div class="input-block">

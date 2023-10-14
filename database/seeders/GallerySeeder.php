@@ -12,6 +12,6 @@ class GallerySeeder extends Seeder
      */
     public function run(): void
     {
-        (new DatabaseSeeder())->seedTable('galleries');
+        (new DatabaseSeeder())->seedTableFromJsonFile('galleries');
     }
 }

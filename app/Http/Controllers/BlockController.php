@@ -95,7 +95,7 @@ class BlockController extends Controller
      */
     public function edit(Block $block): Response|ResponseFactory
     {
-        $block->load('component.galleries');
+        $block->load('component.galleries', 'component.blocks');
 
         return inertia('Admin/Blocks/BlockCreateEdit', compact('block'));
     }
@@ -107,7 +107,7 @@ class BlockController extends Controller
     {
         $block->update($request->validated());
 
-        return back()->with('success', 'updated!');
+        return back()->with('success', 'Сохранено!');
     }
 
     /**

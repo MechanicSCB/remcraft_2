@@ -12,6 +12,6 @@ class BlockSeeder extends Seeder
      */
     public function run(): void
     {
-        (new DatabaseSeeder())->seedTable('blocks');
+        (new DatabaseSeeder())->seedTableFromJsonFile('blocks');
     }
 }

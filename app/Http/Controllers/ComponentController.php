@@ -55,7 +55,7 @@ class ComponentController extends Controller
     {
         Component::query()->create($request->validated());
 
-        return redirect(route('components.index'))->with('success', 'created!');
+        return back()->with('success', 'Компонент создан!');
     }
 
     /**
@@ -73,7 +73,7 @@ class ComponentController extends Controller
      */
     public function edit(Component $component): Response|ResponseFactory
     {
-        $component->load('galleries');
+        $component->load('galleries', 'blocks');
 
         return inertia('Admin/Components/ComponentCreateEdit', compact('component'));
     }
@@ -81,11 +81,11 @@ class ComponentController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(ComponentRequest $request, Component $component)
+    public function update(ComponentRequest $request, Component $component): RedirectResponse
     {
         $component->update($request->validated());
 
-        return redirect(route('components.edit', $component))->withSuccess('updated!');
+        return back()->with('success', 'Компонент обновлён!');
     }
 
     /**
@@ -95,6 +95,6 @@ class ComponentController extends Controller
     {
         $component->delete();
 
-        return redirect(route('components.index'))->with('success', 'deleted!');
+        return back()->with('success', 'Компонент удалён!');
     }
 }

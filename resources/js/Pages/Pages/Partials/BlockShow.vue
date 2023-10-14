@@ -12,7 +12,10 @@ onBeforeMount(() => {
 })
 </script>
 <template>
-    <div :class="block.classes" class="overflow-hidden" :style="'padding:' + block.padding">
+    <div :class="block.classes"
+         class="overflow-hidden"
+         :style="block.style +'; padding-top:' + block.pt + 'px;' + 'padding-bottom:' + block.pb + 'px;'"
+    >
         <ComponentShow :class="block.inner_classes" :component="block.component"/>
     </div>
 </template>

@@ -15,7 +15,7 @@ defineProps({
 <template>
     <div class="mb-5">
         <label v-if="label" class="inline-block min-w-[100px]" :for="field">{{ label }}</label>
-        <input class="ml-2 py-0 rounded"
+        <input class="ml-2 py-0 rounded border-gray-200"
                v-model="form[field]"
                :id="field"
                :placeholder="placeholder"

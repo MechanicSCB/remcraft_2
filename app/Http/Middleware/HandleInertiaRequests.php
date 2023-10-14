@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use App\Models\Component;
 use App\Models\Image;
+use App\Models\Item;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -46,6 +47,7 @@ class HandleInertiaRequests extends Middleware
                 'warning' => fn() => $request->session()->get('warning'),
                 'error' => fn() => $request->session()->get('error'),
             ],
+            'menu' => Item::query()->with(['subItems','page'])->where('parent_id', '=', null)->get(),
             'imgFormats' => Image::$formats,
         ];
 
@@ -53,8 +55,8 @@ class HandleInertiaRequests extends Middleware
         if(in_array('auth',$request->route()->middleware())){
             $return = [
                 ...$return,
-                'pages' => Page::query()->get(),
-                'components' => Component::query()->get(),
+                'pages' => Page::query()->get()->keyBy('id'),
+                'components' => Component::query()->get()->keyBy('id'),
             ];
         }
 
