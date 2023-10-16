@@ -13,19 +13,18 @@ return new class extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->id();
-            $table->unsignedFloat('o', 4, 1)->nullable();
-            $table->string('n');
-            $table->string('e')->nullable();
-            $table->string('t')->nullable();
-            $table->string('a')->nullable();
+            $table->unsignedFloat('order', 4, 1)->nullable();
+            $table->string('name');
+            $table->string('ext')->nullable();
+            $table->string('title')->nullable();
+            $table->string('alt')->nullable();
             $table->foreignId('gallery_id')
-                ->nullable()
                 ->constrained()
                 ->onUpdate('cascade')
-                ->onDelete('set null');
+                ->onDelete('cascade');
             $table->timestamps();
 
-            $table->unique(['gallery_id', 'n']);
+            $table->unique(['gallery_id', 'name']);
         });
     }
 

@@ -6,11 +6,11 @@ let props = defineProps({gallery: Object});
 let showModalImg = ref(false)
 let selectedImage = ref(0);
 
-function getImagePath(image, format = 'w720') {
-    let path = '/storage/galleries/' + props.gallery.slug + '/' + format + '/' + image.n + '.';
+function getImagePath(image, format = '720x480') {
+    let path = '/storage/galleries/' + props.gallery.slug + '/' + format + '/' + image.name + '.';
 
     if (format === 'orig') {
-        path += image.e;
+        path += image.ext;
     } else {
         path += 'webp';
     }
@@ -41,7 +41,7 @@ function slideRight() {
             </button>
 
             <div class="max-h-screen w-full flex items-center">
-                <img :src="getImagePath(gallery.images[selectedImage],'orig')" alt=""
+                <img :src="getImagePath(gallery.images[selectedImage],'webp')" alt=""
                      class="mx-auto max-h-full max-w-full"
                 >
             </div>
@@ -60,7 +60,7 @@ function slideRight() {
             <div v-for="(image, imgIndex) in gallery.images" :key="image.id"
                  class="relative float-left"
             >
-                <LazyImg :src="getImagePath(image,imgIndex%3 === 0 ? 'w720' : 'w360')"
+                <LazyImg :src="getImagePath(image,imgIndex%3 === 0 ? '720x480' : '360x240')"
                          class=""
                          :class="imgIndex%3 === 0 ? 'w-[720px]' : 'w-[360px]'"
                          alt=""
@@ -76,7 +76,7 @@ function slideRight() {
             <div v-for="(image, imgIndex) in gallery.images" :key="image.id"
                  class="relative w-full max-w-[720px] min-h-[240px]"
             >
-                <LazyImg :src="getImagePath(image,'w720')"
+                <LazyImg :src="getImagePath(image,'720x480')"
                          class="w-[720px]"
                          alt=""
                 />
@@ -91,7 +91,7 @@ function slideRight() {
             <div v-for="(image, imgIndex) in gallery.images" :key="image.id"
                  class="relative w-full max-w-[480px] min-h-[150px]"
             >
-                <LazyImg :src="getImagePath(image,'w480')"
+                <LazyImg :src="getImagePath(image,'480x320')"
                          class="w-[480px]"
                          alt=""
                 />

@@ -14,7 +14,13 @@ class Image extends Model
     use HasFactory;
 
     protected $guarded = [];
-    public static array $formats = ['webp', 'w720', 'w480', 'w360', 'w200'];
+    public static array $formats = [
+        'webp',
+        '720x480',
+        '360x240',
+        '480x320',
+        '195x130'
+    ];
 
     public function gallery(): BelongsTo
     {
@@ -24,7 +30,7 @@ class Image extends Model
     protected function origPath(): Attribute
     {
         return Attribute::make(
-            get: fn() => storage_path("app/public/galleries/{$this->gallery->slug}/orig/$this->n.$this->e")
+            get: fn() => storage_path("app/public/galleries/{$this->gallery?->slug}/orig/$this->name.$this->ext")
         );
     }
 

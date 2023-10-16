@@ -2,7 +2,7 @@
 let props = defineProps({src:String, prev:String});
 
 function getPrev(src){
-    return src.replace('/w720/', '/w200/');
+    return src.replace('/720x480/', '/195x130/');
 }
 
 const vLazyload = {

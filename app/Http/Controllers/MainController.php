@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Block;
-use App\Models\Component;
-use App\Models\Image;
 use App\Models\Page;
 use Database\Seeders\DatabaseSeeder;
-use Database\Seeders\ImageSeeder;
 use Inertia\Response;
 use Inertia\ResponseFactory;
 

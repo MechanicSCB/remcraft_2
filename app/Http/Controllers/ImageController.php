@@ -22,9 +22,9 @@ class ImageController extends Controller
             $ext = Str::afterLast($photo->guessExtension(), '/');
             $photo->storePubliclyAs($dir, "$filename.$ext", ['disk' => 'public']);
             $image = Image::query()->create([
-                'o' => intval($filename),
-                'n' => $filename,
-                'e' => $ext,
+                'order' => intval($filename),
+                'name' => $filename,
+                'ext' => $ext,
                 'gallery_id' => $gallery['id'],
             ]);
 

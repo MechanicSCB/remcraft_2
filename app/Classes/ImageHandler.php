@@ -5,12 +5,14 @@ namespace App\Classes;
 
 use App\Models\Gallery;
 use App\Models\Image;
+use GdImage;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 
 class ImageHandler
 {
-    public function createAndSaveOptimizedWepb(Image $image)
+    public function createAndSaveOptimizedWepb(Image $image): void
     {
         $srcPath = $image->origPath;
 
@@ -24,63 +26,18 @@ class ImageHandler
                 mkdir($targetDir);
             }
 
-            $this->jpgToWebp($srcPath, $targetPath);
             if ($format === 'webp') {
                 $this->jpgToWebp($srcPath, $targetPath);
             } else {
-                $size = +substr($format, 1);
-                $this->copyResizeJpgAspectRatio($srcPath, $targetPath, $size);
+                [$width, $height] = explode('x',$format);
+                $this->copyResizeToWebp($srcPath, $targetPath, $width, $height);
             }
         }
-
-    }
-
-    public function createResized(Gallery $gallery): bool
-    {
-        $dir = "public/galleries/$gallery->slug";
-
-        // Delete all previous resized directories
-        foreach (Image::$formats as $subDir){
-            Storage::deleteDirectory("$dir/$subDir");
-        }
-
-        $imgPaths = Storage::files("$dir/orig");
-
-        foreach ($imgPaths as $from) {
-            $origExt = Str::afterLast($from, '.');
-            $from = storage_path('app/' . $from);
-
-            foreach (Image::$formats as $size) {
-                $to = str_replace('/orig/', "/$size/", $from);
-                $to = str_replace(".$origExt", '.webp', $to);
-
-                if (!Storage::exists($to)) {
-                    Storage::makeDirectory(Str::beforeLast(Str::after($to, 'storage/app/'), '/'));
-                }
-
-                if ($size === 'webp') {
-                    $this->jpgToWebp($from, $to);
-                } else {
-                    $size = +substr($size, 1);
-                    $this->copyResizeJpgAspectRatio($from, $to, $size);
-                }
-            }
-        }
-
-        return true;
     }
 
     public function jpgToWebp(string $srcPath, string $targetPath, int $quality = 80): void
     {
-        try {
-            // TODO add other extension
-            $srcImg = imagecreatefromjpeg($srcPath);
-        } catch (\Exception $e) {
-            // log
-            dd(tmr(), $e);
-            return;
-        }
-
+        $srcImg = $this->createImageFromPath($srcPath);
         $w = imagesx($srcImg);
         $h = imagesy($srcImg);
         $newImg = imagecreatetruecolor($w, $h);
@@ -90,17 +47,72 @@ class ImageHandler
         imagewebp($newImg, $targetPath, $quality);
     }
 
-    public function copyResizeJpgAspectRatio(string $srcPath, string $storePath, int $newWidth, int $newHeight = null): void
+    public function copyResizeToWebp(string $srcPath, string $storePath, int $newWidth, int $newHeight = null): ?string
     {
-        try {
-            // TODO add other extension
-            $srcImg = imagecreatefromjpeg($srcPath);
-        } catch (\Exception $e) {
-            // log
-            dd(tmr(), $e);
-            return;
+        $srcImg = $this->createImageFromPath($srcPath);
+
+        $srcSize = getimagesize($srcPath);
+        $srcWidth = $srcSize[0];
+        $srcHeight = $srcSize[1];
+
+
+        $ratio_orig = $srcWidth / $srcHeight;
+        $ratio_target = $newWidth / $newHeight;
+
+        if ( $ratio_orig >= $ratio_target )
+        {
+            // If src image is wider than target (in aspect ratio sense)
+            $height = $newHeight;
+            $width = $srcWidth / ($srcHeight / $newHeight);
+        }
+        else
+        {
+            // If the target is wider than the src image
+            $width = $newWidth;
+            $height = $srcHeight / ($srcWidth / $newWidth);
         }
 
+        $newImg = imagecreatetruecolor($newWidth, $newHeight); //Создаем полноцветное изображение
+
+        // Resize and crop
+        imagecopyresampled($newImg, $srcImg, 0 - ($width - $newWidth) / 2, 0 - ($height - $newHeight) / 2, 0, 0, $width, $height, $srcWidth, $srcHeight);
+
+        // Saving
+        $storePath = str_replace('.jpg', '.webp', $storePath);
+        imagewebp($newImg, $storePath);
+
+        return 'Преобразование изображения выполнено без ошибок.';
+    }
+
+    protected function createImageFromPath(string $srcPath): GdImage|string
+    {
+        try {
+            $fileType = Str::after(mime_content_type($srcPath), '/');
+
+            if($fileType === 'jpeg'){
+                $srcImg = imagecreatefromjpeg($srcPath);
+            }elseif ($fileType === 'png'){
+                $srcImg = imagecreatefrompng($srcPath);
+            }elseif ($fileType === 'webp'){
+                $srcImg = imagecreatefromwebp($srcPath);
+            }elseif ($fileType === 'avif'){
+                $srcImg = imagecreatefromavif($srcPath);
+            }else{
+                // TODO throw exception?
+                return "$fileType формат не поддерживается!";
+            }
+        } catch (\Exception $e) {
+            Log::alert($e->getMessage());
+
+            return $e->getMessage();
+        }
+
+        return $srcImg;
+    }
+
+    public function copyResizeToWebpAspectRatio(string $srcPath, string $storePath, int $newWidth, int $newHeight = null): void
+    {
+        $srcImg = $this->createImageFromPath($srcPath);
         $srcSize = getimagesize($srcPath);
         $srcWidth = $srcSize[0];
         $srcHeight = $srcSize[1];

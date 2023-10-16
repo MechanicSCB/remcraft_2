@@ -10,10 +10,10 @@ let showModal = ref(null);
 let imgFormat = ref('orig');
 
 let getSrc = (image) => {
-    let src = '/storage/galleries/' + props.gallery.slug + '/' + imgFormat.value + '/' + image.n + '.';
+    let src = '/storage/galleries/' + props.gallery.slug + '/' + imgFormat.value + '/' + image.name + '.';
 
     if(imgFormat.value==='orig'){
-        src+=image.e;
+        src+=image.ext;
     }else {
         src+='webp';
     }
@@ -46,7 +46,7 @@ function dragDrop(event, order) {
     <div class="flex flex-wrap gap-3">
         <div v-for="image in gallery?.images" :key="image.id"
              class="relative border cursor-grab"
-             @drop.prevent="dragDrop($event,image.o)"
+             @drop.prevent="dragDrop($event,image.order)"
              @dragstart="dragStart($event,image.id)"
              @dragenter.prevent="dragEnter($event, $el)"
              @dragover.prevent="dragOver($event, $el)"

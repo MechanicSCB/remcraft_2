@@ -22,7 +22,7 @@ class Gallery extends Model
      */
     public function images(): HasMany
     {
-        return $this->hasMany(Image::class)->orderBy('o');
+        return $this->hasMany(Image::class)->orderBy('order');
     }
 
     /**
@@ -47,10 +47,10 @@ class Gallery extends Model
 
     public function refreshOrders()
     {
-        $images = $this->images()->get(['id', 'o', 'n'])->toArray();
+        $images = $this->images()->get(['id', 'order', 'name'])->toArray();
 
         foreach ($images as $key => &$image) {
-            $image['o'] = $key + 1;
+            $image['order'] = $key + 1;
         }
 
         Image::query()->upsert($images, 'id');
