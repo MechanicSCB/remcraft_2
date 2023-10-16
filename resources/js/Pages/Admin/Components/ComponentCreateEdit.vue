@@ -5,6 +5,9 @@ import {provide} from "vue";
 import HtmlForm from "@/Pages/Admin/Components/Datum/HtmlForm.vue";
 import MasonryForm from "@/Pages/Admin/Components/Datum/MasonryForm.vue";
 import CalculatorForm from "@/Pages/Admin/Components/Datum/Calculator/CalculatorForm.vue";
+import RecommendationForm from "@/Pages/Admin/Components/Datum/RecommendationForm.vue";
+import CostForm from "@/Pages/Admin/Components/Datum/CostForm.vue";
+import BannerForm from "@/Pages/Admin/Components/Datum/BannerForm.vue";
 
 let props = defineProps({component: Object,});
 
@@ -16,12 +19,16 @@ let form = useForm({
 });
 
 //  TODO replace to common shared data
-const types = ['Html','Masonry','Calculator','Cost','Gallery','Pile','Recommendation','YoutubeChannel'];
+const types = ['Html','Masonry','Calculator','Cost','Gallery','Pile','Recommendation','YoutubeChannel','Banner'];
+
 
 const typeForms = {
     'Html': HtmlForm,
     'Masonry': MasonryForm,
     'Calculator': CalculatorForm,
+    'Recommendation': RecommendationForm,
+    'Cost': CostForm,
+    'Banner': BannerForm,
 };
 
 provide('form', form);

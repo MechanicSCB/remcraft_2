@@ -30,7 +30,7 @@ class Component extends Model
     public function getSlugOptions(): SlugOptions
     {
         return SlugOptions::create()
-            ->generateSlugsFrom('title')
+            ->generateSlugsFrom(['title', 'type'])
             ->saveSlugsTo('slug')
             ->usingLanguage('ru')
             ->startSlugSuffixFrom(2);

@@ -57,7 +57,7 @@ function slideRight() {
 
         <!-- Wide Screen > 1024px -->
         <div class="hidden lg:block mx-auto max-w-[720px] xl:max-w-none">
-            <div v-for="(image, imgIndex) in gallery.images" :key="image.id"
+            <div v-for="(image, imgIndex) in gallery?.images" :key="image.id"
                  class="relative float-left"
             >
                 <LazyImg :src="getImagePath(image,imgIndex%3 === 0 ? '720x480' : '360x240')"
@@ -73,7 +73,7 @@ function slideRight() {
 
         <!-- 640px < Laptop Screen < 1024px -->
         <div class="hidden sm:block lg:hidden mx-auto max-w-[720px] xl:max-w-none">
-            <div v-for="(image, imgIndex) in gallery.images" :key="image.id"
+            <div v-for="(image, imgIndex) in gallery?.images" :key="image.id"
                  class="relative w-full max-w-[720px] min-h-[240px]"
             >
                 <LazyImg :src="getImagePath(image,'720x480')"
@@ -88,7 +88,7 @@ function slideRight() {
 
         <!-- Mobile Screen < 640px -->
         <div class="block sm:hidden mx-auto max-w-[480px] xl:max-w-none">
-            <div v-for="(image, imgIndex) in gallery.images" :key="image.id"
+            <div v-for="(image, imgIndex) in gallery?.images" :key="image.id"
                  class="relative w-full max-w-[480px] min-h-[150px]"
             >
                 <LazyImg :src="getImagePath(image,'480x320')"

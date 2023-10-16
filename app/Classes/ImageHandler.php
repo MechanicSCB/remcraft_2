@@ -18,7 +18,7 @@ class ImageHandler
 
         foreach (Image::$formats as $format){
             $targetPath = str_replace('/orig/',"/$format/", $srcPath);
-            $targetPath = str_replace('.jpg','.webp', $targetPath);
+            $targetPath = Str::beforeLast($targetPath,'.').'.webp';
 
             $targetDir = Str::beforeLast($targetPath, "/");
 
@@ -78,7 +78,6 @@ class ImageHandler
         imagecopyresampled($newImg, $srcImg, 0 - ($width - $newWidth) / 2, 0 - ($height - $newHeight) / 2, 0, 0, $width, $height, $srcWidth, $srcHeight);
 
         // Saving
-        $storePath = str_replace('.jpg', '.webp', $storePath);
         imagewebp($newImg, $storePath);
 
         return 'Преобразование изображения выполнено без ошибок.';

@@ -7,12 +7,6 @@ let props = defineProps({
 });
 
 </script>
-<script>
-import AdminLayout from "@/Layouts/AdminLayout.vue";
-
-export default {layout: AdminLayout}
-</script>
-
 <template>
     <Head title="Страницы сайта">
         <meta typeof="description" content="Страницы сайта">
@@ -29,3 +23,8 @@ export default {layout: AdminLayout}
         <button @click="router.delete(route('pages.destroy', page))">del</button>
     </div>
 </template>
+<script>
+import AdminLayout from "@/Layouts/AdminLayout.vue";
+
+export default {layout: AdminLayout}
+</script>

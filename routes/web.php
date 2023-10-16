@@ -4,7 +4,9 @@ use App\Http\Controllers\BlockController;
 use App\Http\Controllers\ComponentController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ImageController;
+use App\Http\Controllers\ItemController;
 use App\Http\Controllers\MainController;
+use App\Http\Controllers\NodeController;
 use App\Http\Controllers\PageController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -31,13 +33,16 @@ Route::get('/test', [MainController::class,'test']);
 Route::middleware('auth')->group(function () {
     Route::get('/admin', [MainController::class, 'admin'])->name('admin');
 
-    // Admin Galleries
-
     // Admin Images
     Route::post('/upload/{gallery}', [ImageController::class, 'upload'])->name('images.upload');
     Route::post('/sync/{gallery}', [ImageController::class, 'sync'])->name('images.sync');
     Route::delete('/delete/{image}', [ImageController::class, 'destroy'])->name('images.destroy');
     Route::post('/reorder-image/{image}/{order}', [ImageController::class, 'reorder'])->name('images.reorder');
+
+    // Admin Menu Items
+    Route::post('/nodes/reorder/{target_node}/to/{dest_node}', [NodeController::class, 'reorder'])->name('nodes.reorder');
+    Route::post('/nodes/move/{target_node}/to/{dest_node}', [NodeController::class, 'move'])->name('nodes.move');
+
 
     // Admin Blocks
     Route::post('/reorder-block/{block}/{order}', [BlockController::class, 'reorder'])->name('blocks.reorder');
@@ -47,11 +52,10 @@ Route::middleware('auth')->group(function () {
         'galleries' => GalleryController::class,
         'components' => ComponentController::class,
         'blocks' => BlockController::class,
+        'items' => ItemController::class,
+        'nodes' => NodeController::class,
     ]);
 });
-
-// Pages
-Route::get('/{page:slug}', [PageController::class, 'show'])->name('pages.show');
 
 // Get blocks ajax request
 Route::get('/get-blocks/{page:slug}', [BlockController::class, 'getBlocks'])->name('blocks.get-blocks');
@@ -66,3 +70,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
+
+// Pages
+Route::get('/{page:slug}', [PageController::class, 'show'])->name('pages.show');

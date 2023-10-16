@@ -11,7 +11,7 @@
         "href": "\/price",
         "id": 2,
         "order": 1,
-        "page_id": null,
+        "page_id": 5,
         "parent_id": 1,
         "title": "Цены"
     },

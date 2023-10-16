@@ -411,5 +411,117 @@
         "order": 6,
         "slug": "montazh-ventilyatsii-i-konditsionerov",
         "title": "Монтаж вентиляции и кондиционеров"
+    },
+    {
+        "component_id": 49,
+        "id": 67,
+        "order": null,
+        "slug": "otdelka-rekomendatsii",
+        "title": "Отделка - Рекомендации"
+    },
+    {
+        "component_id": 16,
+        "id": 68,
+        "order": null,
+        "slug": "remont-kvartir-rekomendatsii",
+        "title": "Ремонт квартир - Рекомендации"
+    },
+    {
+        "component_id": 50,
+        "id": 69,
+        "order": null,
+        "slug": "dizayn-interera-rekomendatsii",
+        "title": "Дизайн интерьера - рекомендации"
+    },
+    {
+        "component_id": 51,
+        "id": 70,
+        "order": null,
+        "slug": "inzhenernye-sistemy-rekomendatsii",
+        "title": "Инженерные системы - Рекомендации"
+    },
+    {
+        "component_id": 14,
+        "id": 71,
+        "order": null,
+        "slug": "stoimost-remonta-kvartiry-cost",
+        "title": "Стоимость ремонта квартиры - Cost"
+    },
+    {
+        "component_id": 52,
+        "id": 72,
+        "order": null,
+        "slug": "otdelka-cost",
+        "title": "Отделка - Cost"
+    },
+    {
+        "component_id": 53,
+        "id": 73,
+        "order": null,
+        "slug": "stoimost-uslug-po-dizaynu-intererov",
+        "title": "Стоимость услуг по дизайну интерьеров"
+    },
+    {
+        "component_id": 54,
+        "id": 75,
+        "order": null,
+        "slug": "dizayn-intererov-i-minimalizm",
+        "title": "Дизайн интерьеров и минимализм"
+    },
+    {
+        "component_id": 56,
+        "id": 76,
+        "order": null,
+        "slug": "vy-poluchite-realnoe-predstavlenie-o-buduschem-interere",
+        "title": "Вы получите реальное представление о будущем интерьере"
+    },
+    {
+        "component_id": 58,
+        "id": 77,
+        "order": null,
+        "slug": "a-teper-vizualizatsii-teh-zhe-intererov",
+        "title": "А теперь визуализации тех же интерьеров"
+    },
+    {
+        "component_id": 60,
+        "id": 79,
+        "order": null,
+        "slug": "nasha-ideya-zaklyuchaetsya-v-tom",
+        "title": "Наша идея заключается в том"
+    },
+    {
+        "component_id": 75,
+        "id": 83,
+        "order": null,
+        "slug": "osnovnoy-spektr-nashih-uslug",
+        "title": "Основной спектр наших услуг"
+    },
+    {
+        "component_id": 77,
+        "id": 84,
+        "order": null,
+        "slug": "tseny-na-remont-kvartir-pod-klyuch",
+        "title": "Цены на ремонт квартир под ключ"
+    },
+    {
+        "component_id": 80,
+        "id": 85,
+        "order": null,
+        "slug": "stoimost-otdelki",
+        "title": "Стоимость отделки"
+    },
+    {
+        "component_id": 83,
+        "id": 86,
+        "order": null,
+        "slug": "primery-dizayn-proektov",
+        "title": "Примеры дизайн проектов"
+    },
+    {
+        "component_id": 84,
+        "id": 87,
+        "order": null,
+        "slug": "bystraya-i-tochnaya-predvaritelnaya-otsenka-stoimosti",
+        "title": "Быстрая и точная предварительная оценка стоимости"
     }
 ]

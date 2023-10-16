@@ -34,7 +34,7 @@ function flatten(array $array, string $parentKey = null)
     return $return;
 }
 
-if (! function_exists('df')) {
+if (!function_exists('df')) {
     function df(...$vars)
     {
         $file = str_replace(base_path(), '', debug_backtrace()[0]['file']);
@@ -50,7 +50,7 @@ if (! function_exists('df')) {
     }
 }
 
-if (! function_exists('array_group_by')) {
+if (!function_exists('array_group_by')) {
     /**
      * Groups an array by a given key.
      *
@@ -76,13 +76,13 @@ if (! function_exists('array_group_by')) {
      */
     function array_group_by(array $array, $key)
     {
-        if (! is_string($key) && ! is_int($key) && ! is_float($key) && ! is_callable($key)) {
+        if (!is_string($key) && !is_int($key) && !is_float($key) && !is_callable($key)) {
             trigger_error('array_group_by(): The key should be a string, an integer, or a callback', E_USER_ERROR);
 
             return null;
         }
 
-        $func = (! is_string($key) && is_callable($key) ? $key : null);
+        $func = (!is_string($key) && is_callable($key) ? $key : null);
         $_key = $key;
 
         // Load the new array, splitting by the target key
@@ -120,14 +120,14 @@ if (! function_exists('array_group_by')) {
     }
 }
 
-if (! function_exists('utf_ucfirst')) {
+if (!function_exists('utf_ucfirst')) {
     function utf_ucfirst(string $str): string
     {
         return mb_strtoupper(substr($str, 0, 2), "utf-8") . substr($str, 2);
     }
 }
 
-if (! function_exists('truncate')) {
+if (!function_exists('truncate')) {
     function truncate($number, $precision = 0)
     {
         // warning: precision is limited by the size of the int type
@@ -137,10 +137,10 @@ if (! function_exists('truncate')) {
     }
 }
 
-if (! function_exists('getNonExistedInDbValues')) {
+if (!function_exists('getNonExistedInDbValues')) {
     function getNonExistedInDbValues(array $values, string $table, string $column = 'id'): array
     {
-        if (! $values) {
+        if (!$values) {
             return [];
         }
 
@@ -166,8 +166,8 @@ if (! function_exists('getNonExistedInDbValues')) {
     }
 }
 
-if (! function_exists('isJoined')) {
-    function isJoined($query, $table):bool
+if (!function_exists('isJoined')) {
+    function isJoined($query, $table): bool
     {
         $joins = collect($query->joins);
 
@@ -175,8 +175,9 @@ if (! function_exists('isJoined')) {
     }
 }
 
-if (! function_exists('flat_parents')) {
-    function flat_parents($model) {
+if (!function_exists('flat_parents')) {
+    function flat_parents($model)
+    {
         $result = [];
         if ($model->parent) {
             $result[] = $model->parent;
@@ -186,8 +187,9 @@ if (! function_exists('flat_parents')) {
     }
 }
 
-if (! function_exists('flat_children')) {
-    function flat_children($model) {
+if (!function_exists('flat_children')) {
+    function flat_children($model)
+    {
         $result = [];
         foreach ($model->children as $child) {
             $result[] = $child;
@@ -200,16 +202,17 @@ if (! function_exists('flat_children')) {
 }
 
 
-if (! function_exists('slug')) {
+if (!function_exists('slug')) {
     function slug(string $str, $separator = '-'): string
     {
         return Str::slug($str, $separator, 'ru');
     }
 }
 
-if (! function_exists('isJson')) {
-    function isJson($string) {
-        if(! is_string($string)){
+if (!function_exists('isJson')) {
+    function isJson($string)
+    {
+        if (!is_string($string)) {
             return false;
         }
 
@@ -218,10 +221,10 @@ if (! function_exists('isJson')) {
     }
 }
 
-if (! function_exists('clearDbTable')) {
+if (!function_exists('clearDbTable')) {
     function clearDbTable(string $tableName)
     {
-        switch(DB::getDriverName()) {
+        switch (DB::getDriverName()) {
             case 'mysql':
                 DB::statement('SET FOREIGN_KEY_CHECKS=0');
                 break;
@@ -235,6 +238,15 @@ if (! function_exists('clearDbTable')) {
         //Schema::disableForeignKeyConstraints();
         // DB::statement('SET FOREIGN_KEY_CHECKS=1;');
         // Schema::enableForeignKeyConstraints();
+    }
+
+    if (!function_exists('getNextModelId')) {
+        function getNextTableId(string $table)
+        {
+            $statement = DB::select("show table status like '$table'");
+
+            return $statement[0]->Auto_increment;
+        }
     }
 
 }

@@ -9,11 +9,14 @@ use Inertia\ResponseFactory;
 
 class MainController extends Controller
 {
+    // TODO dev!
     public function reverse()
     {
         (new DatabaseSeeder())->reverse();
+        echo 'reversed';
     }
 
+    // TODO dev!
     public function test()
     {
         dd(tmr(),'test');

@@ -1,0 +1,254 @@
+[
+    {
+        "href": null,
+        "id": 1,
+        "order": 1,
+        "page_id": null,
+        "parent_path": null,
+        "path": "1",
+        "title": "Главное меню"
+    },
+    {
+        "href": null,
+        "id": 2,
+        "order": 1,
+        "page_id": 1,
+        "parent_path": "1",
+        "path": "1.2",
+        "title": "Ремонт квартир"
+    },
+    {
+        "href": "\/price",
+        "id": 3,
+        "order": 1,
+        "page_id": null,
+        "parent_path": "1.2",
+        "path": "1.2.3",
+        "title": "Цены"
+    },
+    {
+        "href": null,
+        "id": 4,
+        "order": 2,
+        "page_id": 3,
+        "parent_path": "1.2",
+        "path": "1.2.4",
+        "title": "Этапы ремонта"
+    },
+    {
+        "href": null,
+        "id": 5,
+        "order": 1,
+        "page_id": null,
+        "parent_path": "1.2.4",
+        "path": "1.2.4.5",
+        "title": "Демонтажные работы"
+    },
+    {
+        "href": null,
+        "id": 6,
+        "order": 2,
+        "page_id": null,
+        "parent_path": "1.2.4",
+        "path": "1.2.4.6",
+        "title": "Устройство перегородок"
+    },
+    {
+        "href": "\/portfolio",
+        "id": 7,
+        "order": 3,
+        "page_id": null,
+        "parent_path": "1.2",
+        "path": "1.2.7",
+        "title": "Портфолио"
+    },
+    {
+        "href": null,
+        "id": 8,
+        "order": 2,
+        "page_id": 2,
+        "parent_path": "1",
+        "path": "1.8",
+        "title": "Отделка коттеджей"
+    },
+    {
+        "href": "\/otdelka_price",
+        "id": 9,
+        "order": 1,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.9",
+        "title": "Стоимость"
+    },
+    {
+        "href": null,
+        "id": 10,
+        "order": 3,
+        "page_id": 3,
+        "parent_path": "1",
+        "path": "1.10",
+        "title": "Дизайн интерьера"
+    },
+    {
+        "href": null,
+        "id": 11,
+        "order": 4,
+        "page_id": 4,
+        "parent_path": "1",
+        "path": "1.11",
+        "title": "Инженерные системы"
+    },
+    {
+        "href": null,
+        "id": 12,
+        "order": 5,
+        "page_id": null,
+        "parent_path": "1",
+        "path": "1.12",
+        "title": "Компания"
+    },
+    {
+        "href": "articles",
+        "id": 13,
+        "order": 4,
+        "page_id": null,
+        "parent_path": "1.2",
+        "path": "1.2.13",
+        "title": "Статьи"
+    },
+    {
+        "href": null,
+        "id": 15,
+        "order": 2,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.15",
+        "title": "Портфолио"
+    },
+    {
+        "href": null,
+        "id": 16,
+        "order": 3,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.16",
+        "title": "Ремонт коттеджей"
+    },
+    {
+        "href": null,
+        "id": 17,
+        "order": 4,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.17",
+        "title": "Ремонт таунхаусов"
+    },
+    {
+        "href": null,
+        "id": 18,
+        "order": 5,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.18",
+        "title": "Отделка фасада"
+    },
+    {
+        "href": null,
+        "id": 19,
+        "order": 6,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.19",
+        "title": "Ремонт деревянного дома"
+    },
+    {
+        "href": null,
+        "id": 20,
+        "order": 7,
+        "page_id": null,
+        "parent_path": "1.8",
+        "path": "1.8.20",
+        "title": "Статьи"
+    },
+    {
+        "href": null,
+        "id": 21,
+        "order": 1,
+        "page_id": null,
+        "parent_path": "1.8.18",
+        "path": "1.8.18.21",
+        "title": "Варианты отделки фасада, фото"
+    },
+    {
+        "href": null,
+        "id": 22,
+        "order": 2,
+        "page_id": null,
+        "parent_path": "1.8.18",
+        "path": "1.8.18.22",
+        "title": "Отделка штукатуркой"
+    },
+    {
+        "href": null,
+        "id": 23,
+        "order": 1,
+        "page_id": null,
+        "parent_path": "1.8.19",
+        "path": "1.8.19.23",
+        "title": "Цены на отделку деревянных домов"
+    },
+    {
+        "href": null,
+        "id": 24,
+        "order": 2,
+        "page_id": null,
+        "parent_path": "1.8.19",
+        "path": "1.8.19.24",
+        "title": "Внешняя отделка деревянного дома"
+    },
+    {
+        "href": null,
+        "id": 25,
+        "order": 3,
+        "page_id": null,
+        "parent_path": "1.8.19",
+        "path": "1.8.19.25",
+        "title": "Внутренняя отделка деревянного дома"
+    },
+    {
+        "href": null,
+        "id": 26,
+        "order": 1,
+        "page_id": null,
+        "parent_path": "1.10",
+        "path": "1.10.26",
+        "title": "Стоимость"
+    },
+    {
+        "href": null,
+        "id": 27,
+        "order": 2,
+        "page_id": null,
+        "parent_path": "1.10",
+        "path": "1.10.27",
+        "title": "Портфолио"
+    },
+    {
+        "href": null,
+        "id": 28,
+        "order": 3,
+        "page_id": null,
+        "parent_path": "1.10",
+        "path": "1.10.28",
+        "title": "Состав дизайн-проекта"
+    },
+    {
+        "href": null,
+        "id": 29,
+        "order": 4,
+        "page_id": null,
+        "parent_path": "1.10",
+        "path": "1.10.29",
+        "title": "Дизайн-проект квартиры"
+    }
+]

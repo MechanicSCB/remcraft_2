@@ -18,5 +18,10 @@
         "id": 4,
         "slug": "inzhenernye-sistemy",
         "title": "Инженерные системы"
+    },
+    {
+        "id": 5,
+        "slug": "tseny",
+        "title": "Цены"
     }
 ]

@@ -16,13 +16,25 @@ class ComponentRequest extends FormRequest
     }
 
     /**
+     * Prepare the data for validation.
+     *
+     * @return void
+     */
+    protected function prepareForValidation(): void
+    {
+        $this->merge([
+            'datum' => $this['datum'] === [] ? null : $this->datum,
+        ]);
+    }
+
+    /**
      * Get the validation rules that apply to the request.
      *
      * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array<mixed>|string>
      */
     public function rules(): array
     {
-        $types = ['Html','Gallery','Pile','Masonry','Cost','Calculator','Recommendation'];
+        $types = ['Html','Gallery','Pile','Masonry','Cost','Calculator','Recommendation', 'Banner'];
 
         return [
             'title' => 'required|min:3',

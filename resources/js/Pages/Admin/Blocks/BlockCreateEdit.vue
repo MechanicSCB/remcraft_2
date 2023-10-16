@@ -6,6 +6,7 @@ import InputBlock from "@/Pages/Admin/Partials/InputBlock.vue";
 import SelectBlock from "@/Pages/Admin/Partials/SelectBlock.vue";
 import ComponentCreateEdit from "@/Pages/Admin/Components/ComponentCreateEdit.vue";
 import ArrowLeftIcon from "@/Svg/ArrowLeft.vue";
+import CreateNewBlockComponent from "@/Pages/Admin/Blocks/Partials/CreateNewBlockComponent.vue";
 import SelectComponent from "@/Pages/Admin/Blocks/Partials/SelectComponent.vue";
 
 let props = defineProps({block: Object});
@@ -86,7 +87,7 @@ let setQueryArgsToFilterForm = () => {
         </form>
 
         <!--  Component Edit  -->
-        <ComponentCreateEdit :component="block?.component"/>
+        <ComponentCreateEdit v-if="block?.component" :component="block?.component"/>
     </div>
 </template>
 <script>

@@ -22,12 +22,13 @@ class DatabaseSeeder extends Seeder
             BlockSeeder::class,
             ImageSeeder::class,
             ItemSeeder::class,
+            NodeSeeder::class,
         ]);
     }
 
     protected function seedTables(): void
     {
-        $tables = ['pages', 'components', 'galleries', 'blocks', 'images'];
+        $tables = ['pages', 'components', 'galleries', 'blocks', 'images', 'nodes'];
 
         foreach ($tables as $table){
             $this->seedTableFromJsonFile($table);
@@ -48,11 +49,11 @@ class DatabaseSeeder extends Seeder
      */
     public function reverse(): void
     {
-        $tables = ['pages', 'components', 'galleries', 'blocks', 'images', 'items'];
+        $tables = ['pages', 'components', 'galleries', 'blocks', 'images', 'items', 'nodes'];
 
         foreach ($tables as $table){
             $keys = Schema::getColumnListing($table);
-            $keys = array_filter($keys, fn($v) => ! in_array($v, ['created_at', 'updated_at']));
+            $keys = array_filter($keys, fn($v) => ! in_array($v, ['created_at', 'updated_at','level']));
 
             $items = DB::table($table)->get($keys);
 

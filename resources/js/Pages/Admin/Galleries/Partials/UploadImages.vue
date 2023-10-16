@@ -40,9 +40,8 @@ const addPhotos = () => {
 };
 
 const removeFromUpload = (index) => {
-    index = uploadForm.photos.length - index - 1;
-    uploadForm.photos.splice(index, 1);
     photos.value.splice(index, 1);
+    uploadForm.photos.splice(index, 1);
 };
 </script>
 <template>

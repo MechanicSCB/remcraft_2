@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\PageRequest;
 use App\Models\Page;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Collection;
 use Inertia\Response;
@@ -16,7 +17,7 @@ class PageController extends Controller
      */
     public function show(Request $request, Page $page): Response|ResponseFactory|Collection
     {
-        $limit = 3;
+        $limit = 30;
 
         // Get only limited number of blocks
         $page->setRelation(
@@ -77,16 +78,16 @@ class PageController extends Controller
 
         $page->update($validated);
 
-        return redirect(route('pages.edit', $page))->withSuccess('updated!');
+        return back()->with('success', 'updated!');
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Page $page)
+    public function destroy(Page $page): RedirectResponse
     {
         $page->delete();
 
-        return redirect(route('pages.index'))->withSuccess('deleted!');
+        return back()->with('success', 'Удалено!');
     }
 }

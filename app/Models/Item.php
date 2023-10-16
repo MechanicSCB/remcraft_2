@@ -25,7 +25,7 @@ class Item extends Model
     protected function href(): Attribute
     {
         return Attribute::make(
-            get: fn($value) => $this->page?->slug ?? $value,
+            get: fn($value) => $this->page?->slug ? '/' . $this->page->slug : $value,
         );
     }
 }

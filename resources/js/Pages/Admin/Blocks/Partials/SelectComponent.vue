@@ -1,7 +1,7 @@
 <script setup>
 import {inject, ref} from "vue";
 import {router} from "@inertiajs/vue3";
-import CreateAndSelectComponent from "@/Pages/Admin/Blocks/Partials/CreateAndSelectComponent.vue";
+import CreateNewBlockComponent from "@/Pages/Admin/Blocks/Partials/CreateNewBlockComponent.vue";
 
 let form = inject('form');
 
@@ -28,7 +28,7 @@ let submit = (componentId) => {
          @click="showModal=false"
          class="fixed left-0 top-0 w-full h-screen p-10 bg-[rgba(0,0,0,0.7)] cursor-pointer">
         <div @click.stop class="relative w-full h-full bg-white border p-5 cursor-default  overflow-y-auto">
-            <CreateAndSelectComponent/>
+            <CreateNewBlockComponent/>
 
             <!--  Components Table  -->
             <div v-for="component in $page.props.components" :key="component.id">

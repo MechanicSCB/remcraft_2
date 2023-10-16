@@ -40,7 +40,7 @@ import Flash from "@/Layouts/Partials/Flash.vue";
                 <ImagesIcon/>
                 Галереи
             </Link>
-            <Link :href="'#'" class="" title="Меню">
+            <Link :href="route('nodes.index')" class="" title="Меню">
                 <DiagramIcon/>
                 Меню
             </Link>

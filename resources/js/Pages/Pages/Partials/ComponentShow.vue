@@ -7,6 +7,7 @@ import Pile from "@/Pages/Components/Pile.vue";
 import Cost from "@/Pages/Components/Cost.vue";
 import Calculator from "@/Pages/Components/Calculator/Calculator.vue";
 import Recommendation from "@/Pages/Components/Recommendation.vue";
+import Banner from "@/Pages/Components/Banner.vue";
 
 defineProps({component: Object});
 
@@ -19,6 +20,7 @@ const components = {
     'Cost': Cost,
     'Calculator': Calculator,
     'Recommendation': Recommendation,
+    'Banner': Banner,
 }
 </script>
 <template>

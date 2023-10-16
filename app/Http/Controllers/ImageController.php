@@ -50,7 +50,7 @@ class ImageController extends Controller
      */
     public function reorder(Image $image, int $order): RedirectResponse
     {
-        $image['o'] = $order-0.5;
+        $image['order'] = $order-0.5;
         $image->save();
         $image->gallery->refreshOrders();
 

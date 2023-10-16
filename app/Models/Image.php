@@ -41,7 +41,7 @@ class Image extends Model
 
         foreach (self::$formats as $format) {
             $formatPath = str_replace('/orig/', "/$format/", $origPath);
-            $formatPath = str_replace(".$this->e", '.webp', $formatPath);
+            $formatPath = str_replace(".$this->ext", '.webp', $formatPath);
             File::delete($formatPath);
         }
 

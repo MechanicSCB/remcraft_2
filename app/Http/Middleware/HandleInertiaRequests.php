@@ -5,6 +5,7 @@ namespace App\Http\Middleware;
 use App\Models\Component;
 use App\Models\Image;
 use App\Models\Item;
+use App\Models\Node;
 use App\Models\Page;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
@@ -47,7 +48,8 @@ class HandleInertiaRequests extends Middleware
                 'warning' => fn() => $request->session()->get('warning'),
                 'error' => fn() => $request->session()->get('error'),
             ],
-            'menu' => Item::query()->with(['subItems','page'])->where('parent_id', '=', null)->get(),
+            'menu' => Node::getMenu(),
+            'nodesTitles' => Node::query()->pluck('title','path'),
             'imgFormats' => Image::$formats,
         ];
 
