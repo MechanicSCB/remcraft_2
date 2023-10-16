@@ -24,19 +24,19 @@ const selectNewPhoto = () => {
     photoInput.value.click();
 };
 
-const addPhotos = () => {
-    for(let photo of photoInput.value.files){
-        if (!photo) return;
+const addPhoto = () => {
+    const photo = photoInput.value.files[0];
 
-        const reader = new FileReader();
+    if (!photo) return;
 
-        reader.onload = (e) => {
-            uploadForm.photos.push(photo);
-            photos.value.push(e.target.result);
-        };
+    const reader = new FileReader();
 
-        reader.readAsDataURL(photo);
-    }
+    reader.onload = (e) => {
+        uploadForm.photos.push(photo);
+        photos.value.push(e.target.result);
+    };
+
+    reader.readAsDataURL(photo);
 };
 
 const removeFromUpload = (index) => {
@@ -54,8 +54,7 @@ const removeFromUpload = (index) => {
                 type="file"
                 class="hidden"
                 accept="image/*"
-                @change="addPhotos"
-                multiple
+                @change="addPhoto"
             >
             <label for="photo">Фотографии</label>
             <div @click.prevent="selectNewPhoto"

@@ -53,6 +53,7 @@ let handleScroll = function (event) {
 .main h1
 {
     font-size: 48px;
+    line-height: 48px;
     padding-bottom: 24px;
 }
 

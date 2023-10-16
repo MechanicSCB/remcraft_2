@@ -16,8 +16,8 @@ let expandedSubItem = ref(null);
     >
         <div v-for="(item, itemKey) in $page.props.menu" class=" flex flex-col">
             <!-- Main Items -->
-            <Link class="px-10 border-t flex justify-between items-center"
-                  :class="expandedItem===itemKey ? 'bg-[#1071ff] text-white' : ''"
+            <Link class="px-10 border-t flex justify-between items-center hover:text-black"
+                  :class="expandedItem===itemKey ? 'bg-[#1071ff] !text-white' : ''"
                   :href="item.href"
                   @click="showMobileMenu=false"
             >

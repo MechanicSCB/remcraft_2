@@ -48,7 +48,7 @@ class DatabaseSeeder extends Seeder
      */
     public function reverse(): void
     {
-        $tables = ['pages', 'components', 'galleries', 'blocks', 'images'];
+        $tables = ['pages', 'components', 'galleries', 'blocks', 'images', 'items'];
 
         foreach ($tables as $table){
             $keys = Schema::getColumnListing($table);

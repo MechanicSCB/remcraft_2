@@ -13,11 +13,7 @@ class ItemSeeder extends Seeder
      */
     public function run(): void
     {
-        $items = $this->getItems();
-
-        clearDbTable('items');
-
-        DB::table('items')->upsert($items, ['id']);
+        (new DatabaseSeeder())->seedTableFromJsonFile('items');
     }
 
     protected function getItems()
@@ -102,6 +98,4 @@ class ItemSeeder extends Seeder
             ],
         ];
     }
-
-
 }
