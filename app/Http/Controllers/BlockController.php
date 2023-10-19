@@ -44,7 +44,8 @@ class BlockController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
-        $query = Block::query()->with('component');
+        // $query = Block::query()->with('component');
+        $query = Block::query();
 
         // FILTER
         if (@$request['title']) {

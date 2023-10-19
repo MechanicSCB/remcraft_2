@@ -1,27 +1,20 @@
 <script setup>
-import {router} from "@inertiajs/vue3";
-import PrimaryButton from "@/Components/PrimaryButton.vue";
+import Nodes from "@/Pages/Admin/Pages/Partials/Nodes.vue";
+import {provide, ref} from "vue";
 
-let props = defineProps({
-    pages: Object,
-});
+let openedNodes = ref(JSON.parse(sessionStorage.getItem('openedNodes')) ?? [1]);
 
+provide('openedNodes', openedNodes)
 </script>
 <template>
-    <Head title="Страницы сайта">
-        <meta typeof="description" content="Страницы сайта">
+    <Head title="Меню сайта">
+        <meta typeof="description" content="Меню сайта">
     </Head>
     <h1 class="mt-3 text-3xl font-bold mb-6">Страницы</h1>
 
-    <primary-button class="mb-4">
-        <Link :href="route('pages.create')">Создать страницу</Link>
-    </primary-button>
+    <Link class="btn btn-green text-2xl font-bold pt-0 pb-0.5" :href="route('pages.create')">+</Link>
 
-    <div v-for="page in pages" class="flex space-x-4">
-        <Link :href="route('pages.show', page.slug)">{{ page.title }}</Link>
-        <Link :href="route('pages.edit', page.id)">edit</Link>
-        <button @click="router.delete(route('pages.destroy', page))">del</button>
-    </div>
+    <Nodes :parent="{'nodes':$page.props.menu}" type="page"/>
 </template>
 <script>
 import AdminLayout from "@/Layouts/AdminLayout.vue";

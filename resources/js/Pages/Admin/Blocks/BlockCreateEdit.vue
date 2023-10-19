@@ -1,13 +1,11 @@
 <script setup>
 import {router, useForm} from "@inertiajs/vue3";
-import InputError from "@/Components/InputError.vue";
 import {onMounted, provide} from "vue";
 import InputBlock from "@/Pages/Admin/Partials/InputBlock.vue";
 import SelectBlock from "@/Pages/Admin/Partials/SelectBlock.vue";
 import ComponentCreateEdit from "@/Pages/Admin/Components/ComponentCreateEdit.vue";
 import ArrowLeftIcon from "@/Svg/ArrowLeft.vue";
-import CreateNewBlockComponent from "@/Pages/Admin/Blocks/Partials/CreateNewBlockComponent.vue";
-import SelectComponent from "@/Pages/Admin/Blocks/Partials/SelectComponent.vue";
+import SelectComponent from "@/Pages/Admin/Partials/SelectComponent.vue";
 
 let props = defineProps({block: Object});
 
@@ -23,6 +21,7 @@ let form = useForm({
     datum: JSON.stringify(props.block?.datum) ?? '',
 });
 
+// TODO remove provide
 provide('form', form);
 
 let submit = () => {
@@ -67,13 +66,10 @@ let setQueryArgsToFilterForm = () => {
                          name-field="title"
             />
 
-            <div class="mb-5">
-                <label class="inline-block min-w-[100px]" for="component_id">Компонент</label>
-
-                <SelectComponent/>
-
-                <InputError :message="form.errors.component_id" class="absolute bg-white"/>
+            <div class="flex items-center gap-2 mb-5">
+                Компонент: <SelectComponent class="" v-model="form.component_id"/>
             </div>
+
 
             <InputBlock label="Порядок" field="order" input-type="number"/>
             <InputBlock label="Классы" field="classes"/>

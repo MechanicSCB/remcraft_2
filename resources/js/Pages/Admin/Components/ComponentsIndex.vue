@@ -4,7 +4,7 @@ import PencilIcon from "@/Svg/PencilIcon.vue";
 import LinkIcon from "@/Svg/LinkIcon.vue";
 import CloseCross from "@/Svg/CloseCross.vue";
 import {ref} from "vue";
-import ComponentsFilter from "@/Pages/Admin/Components/Partials/ComponentsFilter.vue";
+import ComponentsFilter from "@/Pages/Admin/Components/Partials/FilterComponents.vue";
 
 let props = defineProps({components: Object});
 

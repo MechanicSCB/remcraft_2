@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Block;
+use App\Models\Component;
 use App\Models\Page;
 use Database\Seeders\DatabaseSeeder;
 use Inertia\Response;
@@ -19,7 +21,7 @@ class MainController extends Controller
     // TODO dev!
     public function test()
     {
-        dd(tmr(),'test');
+        dd(tmr(), 'test');
     }
 
     public function admin(): Response|ResponseFactory
@@ -34,6 +36,6 @@ class MainController extends Controller
         // TODO load galleries only for galleries
         $page = Page::query()->with('blocks.component.galleries.images')->find(1);
 
-        return inertia('Pages/Show',  compact('page'));
+        return inertia('Pages/Show', compact('page'));
     }
 }

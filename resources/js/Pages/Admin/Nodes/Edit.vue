@@ -1,10 +1,8 @@
 <script setup>
-import {router, useForm} from "@inertiajs/vue3";
+import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-import NodeSelect from "@/Pages/Admin/Nodes/Partials/NodeSelect.vue";
-import TextInput from "@/Components/TextInput.vue";
-import InputLabel from "@/Components/InputLabel.vue";
-import PageSelect from "@/Pages/Admin/Nodes/Partials/PageSelect.vue";
+import NodeSelect from "@/Pages/Admin/Partials/NodeSelect.vue";
+import PageSelect from "@/Pages/Admin/Partials/PageSelect.vue";
 
 let props = defineProps({node:Object});
 

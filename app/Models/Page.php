@@ -14,7 +14,7 @@ class Page extends Model
     use HasFactory, HasSlug;
 
     protected $guarded = [];
-    protected $appends = ['len'];
+    // protected $appends = ['len'];
 
     public function blocks(): HasMany
     {
@@ -26,6 +26,11 @@ class Page extends Model
         return Attribute::make(
             get: fn() => $this->blocks()->count(),
         );
+    }
+
+    public function nodes(): HasMany
+    {
+        return $this->hasMany(Node::class);
     }
 
     /**

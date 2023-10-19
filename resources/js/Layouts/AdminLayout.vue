@@ -7,6 +7,7 @@ import ImagesIcon from "@/Svg/ImagesIcon.vue";
 import DiagramIcon from "@/Svg/DiagramIcon.vue";
 import NodePlusIcon from "@/Svg/NodePlusIcon.vue";
 import Flash from "@/Layouts/Partials/Flash.vue";
+import RefreshIcon from "@/Svg/RefreshIcon.vue";
 
 
 </script>
@@ -24,6 +25,10 @@ import Flash from "@/Layouts/Partials/Flash.vue";
                 <HomeIcon/>
                 Admin
             </Link>
+            <Link :href="route('nodes.index')" class="" title="Меню">
+                <DiagramIcon/>
+                Меню
+            </Link>
             <Link :href="route('pages.index')" class="" title="Страницы">
                 <PageIcon/>
                 Страницы
@@ -40,9 +45,9 @@ import Flash from "@/Layouts/Partials/Flash.vue";
                 <ImagesIcon/>
                 Галереи
             </Link>
-            <Link :href="route('nodes.index')" class="" title="Меню">
-                <DiagramIcon/>
-                Меню
+            <Link href="" title="Обновить" preserve-scroll>
+                <RefreshIcon class="-ml-0.5 w-5"/>
+                Обновить
             </Link>
         </div>
 

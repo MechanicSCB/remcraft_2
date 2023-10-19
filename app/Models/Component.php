@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
@@ -13,6 +14,7 @@ class Component extends Model
     use HasFactory, HasSlug, HasDatum;
 
     protected $guarded = [];
+    public static array $types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Recommendation', 'YoutubeChannel', 'Banner'];
 
     public function galleries(): HasMany
     {
@@ -35,4 +37,12 @@ class Component extends Model
             ->usingLanguage('ru')
             ->startSlugSuffixFrom(2);
     }
+
+    protected function pages(): Attribute
+    {
+        return Attribute::make(
+            get: fn() => $this->blocks()->pluck('page_id')->toArray(),
+        );
+    }
+
 }

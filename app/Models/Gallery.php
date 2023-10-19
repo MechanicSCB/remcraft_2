@@ -47,7 +47,7 @@ class Gallery extends Model
 
     public function refreshOrders()
     {
-        $images = $this->images()->get(['id', 'order', 'name'])->toArray();
+        $images = $this->images()->get(['id', 'order', 'name', 'gallery_id'])->toArray();
 
         foreach ($images as $key => &$image) {
             $image['order'] = $key + 1;
@@ -63,5 +63,4 @@ class Gallery extends Model
             get: fn() => storage_path("app/public/galleries/{$this->slug}")
         );
     }
-
 }

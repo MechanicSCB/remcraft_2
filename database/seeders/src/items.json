@@ -1,106 +1,106 @@
 [
     {
-        "href": null,
         "id": 1,
-        "order": 1,
+        "title": "Ремонт квартир",
         "page_id": 1,
         "parent_id": null,
-        "title": "Ремонт квартир"
+        "order": 1,
+        "href": null
     },
     {
-        "href": "\/price",
         "id": 2,
-        "order": 1,
+        "title": "Цены",
         "page_id": 5,
         "parent_id": 1,
-        "title": "Цены"
-    },
-    {
-        "href": "\/etapy",
-        "id": 3,
-        "order": 2,
-        "page_id": null,
-        "parent_id": 1,
-        "title": "Этапы ремонта"
-    },
-    {
-        "href": null,
-        "id": 4,
         "order": 1,
-        "page_id": null,
-        "parent_id": 3,
-        "title": "Демонтажные работы"
+        "href": "\/price"
     },
     {
-        "href": "\/peregorodki",
-        "id": 5,
-        "order": 2,
-        "page_id": null,
-        "parent_id": 3,
-        "title": "Устройство перегородок"
-    },
-    {
-        "href": "\/portfolio",
-        "id": 6,
-        "order": 3,
+        "id": 3,
+        "title": "Этапы ремонта",
         "page_id": null,
         "parent_id": 1,
-        "title": "Портфолио"
+        "order": 2,
+        "href": "\/etapy"
     },
     {
-        "href": null,
-        "id": 7,
+        "id": 4,
+        "title": "Демонтажные работы",
+        "page_id": null,
+        "parent_id": 3,
+        "order": 1,
+        "href": null
+    },
+    {
+        "id": 5,
+        "title": "Устройство перегородок",
+        "page_id": null,
+        "parent_id": 3,
         "order": 2,
+        "href": "\/peregorodki"
+    },
+    {
+        "id": 6,
+        "title": "Портфолио",
+        "page_id": null,
+        "parent_id": 1,
+        "order": 3,
+        "href": "\/portfolio"
+    },
+    {
+        "id": 7,
+        "title": "Отделка коттеджей",
         "page_id": 2,
         "parent_id": null,
-        "title": "Отделка коттеджей"
+        "order": 2,
+        "href": null
     },
     {
-        "href": "\/otdelka_price",
         "id": 8,
-        "order": 1,
+        "title": "Стоимость",
         "page_id": null,
         "parent_id": 7,
-        "title": "Стоимость"
+        "order": 1,
+        "href": "\/otdelka_price"
     },
     {
-        "href": null,
         "id": 9,
-        "order": 3,
+        "title": "Дизайн интерьера",
         "page_id": 3,
         "parent_id": null,
-        "title": "Дизайн интерьера"
+        "order": 3,
+        "href": null
     },
     {
-        "href": null,
         "id": 10,
-        "order": 4,
+        "title": "Инженерные системы",
         "page_id": 4,
         "parent_id": null,
-        "title": "Инженерные системы"
+        "order": 4,
+        "href": null
     },
     {
-        "href": "\/",
         "id": 11,
-        "order": 5,
+        "title": "Компания",
         "page_id": null,
         "parent_id": null,
-        "title": "Компания"
+        "order": 5,
+        "href": "\/"
     },
     {
-        "href": "\/price_1",
         "id": 12,
-        "order": 1,
+        "title": "Цены_1",
         "page_id": null,
         "parent_id": 2,
-        "title": "Цены_1"
+        "order": 1,
+        "href": "\/price_1"
     },
     {
-        "href": "\/price_2",
         "id": 13,
-        "order": 2,
+        "title": "Цены_2",
         "page_id": null,
         "parent_id": 2,
-        "title": "Цены_2"
+        "order": 2,
+        "href": "\/price_2"
     }
 ]

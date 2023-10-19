@@ -1,6 +1,6 @@
 <script setup>
 import {router, useForm} from "@inertiajs/vue3";
-import {provide} from "vue";
+import {provide, ref} from "vue";
 import BlockShow from "@/Pages/Pages/Partials/BlockShow.vue";
 import BlockForm from "@/Pages/Admin/Pages/Partials/BlockForm.vue";
 import ArrowUpDown from "@/Svg/ArrowUpDown.vue";
@@ -8,6 +8,7 @@ import CloseCross from "@/Svg/CloseCross.vue";
 import PencilIcon from "@/Svg/PencilIcon.vue";
 import LinkIcon from "@/Svg/LinkIcon.vue";
 import ValidationErrorsFlash from "@/Layouts/Partials/ValidationErrorsFlash.vue";
+import Nodes from "@/Pages/Admin/Pages/Partials/Nodes.vue";
 
 let props = defineProps({page: Object});
 
@@ -17,6 +18,10 @@ let form = useForm({
     blocks: props.page.blocks,
 });
 
+let openedNodes = ref(JSON.parse(sessionStorage.getItem('openedNodes')) ?? [1]);
+
+provide('openedNodes', openedNodes)
+provide('activePage', props.page)
 provide('form', form);
 
 let submit = () => {
@@ -52,7 +57,9 @@ function dragDrop(event, order) {
             <!-- Title&Slug Form -->
             <form @submit.prevent="submit">
                 <div class="my-2 flex gap-2 items-center">
-                    <h1 class="text-xl font-bold">Страница id:{{ page.id }}</h1>
+                    <h1 class="text-xl font-bold">
+                        <a :href="'/' + page.slug" target="_blank">Страница id:{{ page.id }}</a>
+                    </h1>
 
                     <input class="ml-2 py-0 rounded border-gray-200" v-model="form.title"/>
                     <input class="ml-2 py-0 rounded border-gray-200" v-model="form.slug"/>
@@ -70,9 +77,14 @@ function dragDrop(event, order) {
         <!-- Page Blocks -->
         <div class="flex">
             <!-- Left -->
-            <div class="w-[250px] shrink-0 bg-red-50">
-                <div v-for="item in $page.props.pages">
-                    <Link :href="route('pages.edit', item.id)">{{ item.title }}</Link>
+            <div class="w-[250px] shrink-0">
+                <Link class="btn btn-green text-2xl font-bold pt-0 pb-0.5" :href="route('pages.create')">+</Link>
+
+                <Nodes :parent="{'nodes':$page.props.menu}"/>
+
+                <div class="mt-4 mb-2">Непривязанные страницы</div>
+                <div v-for="unboundPage in Object.values($page.props.pages).filter((v)=> !v.nodes.length)">
+                    <Link :class="{'text-blue-600':unboundPage.id===page.id}" :href="route('pages.edit', unboundPage)">{{ unboundPage.title }}</Link>
                 </div>
             </div>
 
@@ -100,24 +112,26 @@ function dragDrop(event, order) {
 
                     <BlockForm :block="block" class="relative ml-3"/>
 
-                    <a :href="route('blocks.show', block.id)"
-                       class="absolute rounded p-1 top-1 right-24 w-8 text-black cursor-pointer"
-                       target="_blank"
-                    >
-                        <LinkIcon/>
-                    </a>
+                    <div class="px-2 py-2 absolute top-0 right-0 bg-[rgba(255,255,255,0.7)] flex gap-2">
+                        <a :href="'/' + page.slug + '#block_' + block.id"
+                           class="w-8 text-black cursor-pointer hover:text-blue-500"
+                           target="_blank"
+                        >
+                            <LinkIcon/>
+                        </a>
 
-                    <Link :href="route('blocks.edit', block.id)"
-                          class="absolute rounded p-1 top-1 right-12 w-8 text-white bg-yellow-400 hover:text-yellow-400 hover:bg-white cursor-pointer"
-                    >
-                        <PencilIcon/>
-                    </Link>
+                        <Link :href="route('blocks.edit', block.id)"
+                              class="w-8 text-white bg-yellow-400 hover:text-yellow-400 hover:bg-white cursor-pointer"
+                        >
+                            <PencilIcon/>
+                        </Link>
 
-                    <Link @click="deleteBlock(block)"
-                          class="absolute rounded top-1 right-1 w-8 text-white bg-red-600 hover:text-red-600 hover:bg-white cursor-pointer"
-                    >
-                        <CloseCross/>
-                    </Link>
+                        <Link @click="deleteBlock(block)"
+                              class="w-8 text-white bg-red-600 hover:text-red-600 hover:bg-white cursor-pointer"
+                        >
+                            <CloseCross/>
+                        </Link>
+                    </div>
                 </div>
             </div>
         </div>

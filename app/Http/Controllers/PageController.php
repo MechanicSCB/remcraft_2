@@ -33,7 +33,8 @@ class PageController extends Controller
      */
     public function index(): Response|ResponseFactory
     {
-        $pages = Page::query()->with('blocks.component.galleries.images')->get();
+        // $pages = Page::query()->with('blocks.component.galleries.images')->get();
+        $pages = Page::query()->get();
 
         return inertia('Admin/Pages/Index', compact('pages'));
     }

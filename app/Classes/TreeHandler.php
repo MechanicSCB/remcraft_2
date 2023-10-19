@@ -41,7 +41,7 @@ class TreeHandler
         $tree = [];
 
         foreach ($nodes as $node) {
-            $keys = explode(Node::$separator, $node['parent_path']);
+            $keys = explode(Node::$separator, $node['parent_path'] ?? '');
 
             $tmp = &$tree;
 

@@ -35,45 +35,57 @@ let handleScroll = function (event) {
     </div>
 </template>
 <style>
-.main{
+.main {
     line-height: 28px;
 }
 
-.main a{
+.main a {
     color: #1071ff;
 }
 
-.block-container
-{
-    margin-left:auto;
-    margin-right:auto;
+.block-container {
+    margin-left: auto;
+    margin-right: auto;
     max-width: 1080px;
 }
 
-.main h1
-{
+.main h1 {
     font-size: 48px;
     line-height: 48px;
     padding-bottom: 24px;
 }
 
-.main h2
-{
+.main h2 {
     font-size: 36px;
     padding-bottom: 18px;
 }
 
-.block-gray{
+.main p {
+    padding-bottom: 5px;
+}
+
+.main ul {
+    padding-left: 20px;
+}
+
+.main ul li::before {
+    content: "\2022"; /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #1071ff; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+
+.block-gray {
     background: #f3f2f0;
 }
 
-.block-dark
-{
+.block-dark {
     background-color: #313334;
 }
 
-.mobile-px
-{
+.mobile-px {
     @apply px-2.5 lg:px-0;
 }
 
@@ -89,12 +101,12 @@ let handleScroll = function (event) {
         max-width: none;
         line-height: 24px;
     }
-    .block-container h1
-    {
+
+    .block-container h1 {
         font-size: 32px;
     }
-    .block-container h2
-    {
+
+    .block-container h2 {
         font-size: 28px;
     }
 }

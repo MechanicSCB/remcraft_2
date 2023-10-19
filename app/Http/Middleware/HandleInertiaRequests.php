@@ -2,6 +2,7 @@
 
 namespace App\Http\Middleware;
 
+use App\Models\Block;
 use App\Models\Component;
 use App\Models\Image;
 use App\Models\Item;
@@ -57,30 +58,18 @@ class HandleInertiaRequests extends Middleware
         if(in_array('auth',$request->route()->middleware())){
             $return = [
                 ...$return,
-                'pages' => Page::query()->get()->keyBy('id'),
-                'components' => Component::query()->get()->keyBy('id'),
+                'pages' => Page::query()->with('nodes')->get()->keyBy('id'),
+                'blocks' => Block::query()->with('page:id,slug')->get(['id','page_id'])->append('url')->keyBy('id'),
+                'components' => Component::query()
+                    ->join('blocks', 'blocks.component_id', '=', 'components.id')
+                    ->select(['components.id','title','type','page_id'])
+                    ->get()
+                    ->keyBy('id'),
+                // 'components' => Component::query()->with('blocks')->get(['id','title','type','updated_at'])->append('pages')->keyBy('id'),
+                'componentTypes' => Component::$types,
             ];
         }
 
         return $return;
     }
-
-    // public function shareOrig(Request $request): array
-    // {
-    //     return [
-    //         ...parent::share($request),
-    //         'ziggy' => fn() => [
-    //             ...(new Ziggy)->toArray(),
-    //             'location' => $request->url(),
-    //             'request_all' => $request->all(),
-    //         ],
-    //         'flash' => [
-    //             'message' => fn() => $request->session()->get('message'),
-    //             'success' => fn() => $request->session()->get('success'),
-    //             'warning' => fn() => $request->session()->get('warning'),
-    //             'error' => fn() => $request->session()->get('error'),
-    //         ],
-    //         'imgFormats' => Image::$formats,
-    //     ];
-    // }
 }
