@@ -1,9 +1,13 @@
 <script setup>
 import {inject} from "vue";
 import AirSummernote from "@/Pages/Admin/Partials/Summernote/AirSummernote.vue";
-import HtmlForm from "@/Pages/Admin/Components/Datum/HtmlForm.vue";
+import HtmlForm from "@/Pages/Admin/Components/Datum/old/HtmlForm.vue";
 
 let form = inject('form');
+
+function summernoteSubmit(data, id) {
+    form.datum[props.field ?? 'body'] = data;
+}
 </script>
 <template>
     <div class="">
@@ -38,7 +42,9 @@ let form = inject('form');
                     </div>
 
                     <div class="main">
-                        <textarea class="w-full min-h-[140px]" v-model="form.datum.items[itemId].expand"></textarea>
+                        <AirSummernote class="hidden" v-on:submitted="summernoteSubmit" classes="rounded"
+                                       :summernoteId="'expand_' + itemId"/>
+                        <textarea :id="'expand_' + itemId" v-model="form.datum.items[itemId].expand">{{ form.datum.items[itemId].expand }}</textarea>
                     </div>
                 </div>
                 <div @click="(form.datum.items ??= []).push({'name':'', 'price':'', 'expand':'', 'description':''})"

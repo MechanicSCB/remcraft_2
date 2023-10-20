@@ -10,27 +10,11 @@
     * {
         scrollbar-width: thin;
     }
-    .input-block{
-        @apply mb-5;
-    }
-
-    .input-block input{
-        @apply ml-2 py-0 rounded;
-    }
-
-    .input-block select{
-        @apply ml-2 py-0 rounded;
-    }
-
-    .input-error{
-        position: absolute;
-        background-color: white;
-    }
 }
 
 @layer components {
     .btn {
-        @apply inline-block px-2 py-1 h-fit rounded cursor-pointer border;
+        @apply inline-block w-fit px-2 py-1 h-fit rounded cursor-pointer border;
     }
     .btn-green {
         @apply bg-green-500 hover:bg-green-600 text-white;

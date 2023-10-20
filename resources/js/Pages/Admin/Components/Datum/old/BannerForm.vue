@@ -1,6 +1,6 @@
 <script setup>
 import {inject} from "vue";
-import HtmlForm from "@/Pages/Admin/Components/Datum/HtmlForm.vue";
+import HtmlForm from "@/Pages/Admin/Components/Datum/old/HtmlForm.vue";
 
 let form = inject('form');
 

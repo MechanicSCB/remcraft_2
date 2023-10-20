@@ -28,5 +28,15 @@
         "id": 6,
         "slug": "etapy-remonta",
         "title": "Этапы ремонта"
+    },
+    {
+        "id": 7,
+        "slug": "demontazhnye-raboty",
+        "title": "Демонтажные работы"
+    },
+    {
+        "id": 8,
+        "slug": "test",
+        "title": "Тест"
     }
 ]

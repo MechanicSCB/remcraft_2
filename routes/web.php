@@ -44,6 +44,9 @@ Route::middleware('auth')->group(function () {
     Route::post('/nodes/move/{target_node}/to/{dest_node}', [NodeController::class, 'move'])->name('nodes.move');
 
 
+    // Admin Components
+    Route::get('/components/{component}/get-data', [ComponentController::class, 'getData'])->name('components.get-data');
+
     // Admin Blocks
     Route::post('/reorder-block/{block}/{order}', [BlockController::class, 'reorder'])->name('blocks.reorder');
 

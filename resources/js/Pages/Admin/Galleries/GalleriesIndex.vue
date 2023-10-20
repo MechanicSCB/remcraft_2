@@ -1,7 +1,7 @@
 <script setup>
 import {router} from "@inertiajs/vue3";
 import PencilIcon from "@/Svg/PencilIcon.vue";
-import LinkIcon from "@/Svg/LinkIcon.vue";
+import LinkIcon from "@/Svg/BlankLinkIcon.vue";
 import CloseCross from "@/Svg/CloseCross.vue";
 import {onMounted, ref} from "vue";
 import GalleryShow from "@/Pages/Admin/Galleries/GalleryShow.vue";

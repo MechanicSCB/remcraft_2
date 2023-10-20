@@ -1,7 +1,7 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-import InputBlock from "@/Pages/Admin/Partials/InputBlock.vue";
+import InputBlock from "@/Pages/Admin/Partials/old/InputBlock.vue";
 import {provide} from "vue";
 
 let props = defineProps({block: Object,});

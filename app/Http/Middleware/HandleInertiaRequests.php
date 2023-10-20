@@ -60,12 +60,7 @@ class HandleInertiaRequests extends Middleware
                 ...$return,
                 'pages' => Page::query()->with('nodes')->get()->keyBy('id'),
                 'blocks' => Block::query()->with('page:id,slug')->get(['id','page_id'])->append('url')->keyBy('id'),
-                'components' => Component::query()
-                    ->join('blocks', 'blocks.component_id', '=', 'components.id')
-                    ->select(['components.id','title','type','page_id'])
-                    ->get()
-                    ->keyBy('id'),
-                // 'components' => Component::query()->with('blocks')->get(['id','title','type','updated_at'])->append('pages')->keyBy('id'),
+                'components' => Component::getComponentsWithPages(),
                 'componentTypes' => Component::$types,
             ];
         }

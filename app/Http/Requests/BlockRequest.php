@@ -25,7 +25,7 @@ class BlockRequest extends FormRequest
             'page_id' => 'exists:pages,id',
             'component_id' => 'exists:components,id',
             'order' => 'numeric|nullable|min:0',
-            'classes' => 'string|nullable',
+            'classes' => 'string|nullable|min:2',
             'inner_classes' => 'string|nullable',
             'style' => 'string|nullable',
             'pt' => 'integer|nullable|min:0',

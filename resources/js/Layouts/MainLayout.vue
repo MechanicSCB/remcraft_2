@@ -60,12 +60,20 @@ let handleScroll = function (event) {
     padding-bottom: 18px;
 }
 
+.main h3 {
+    @apply text-[24px] pb-5;
+}
+
 .main p {
     padding-bottom: 5px;
 }
 
 .main ul {
     padding-left: 20px;
+}
+
+.main ul li {
+    display: flex;
 }
 
 .main ul li::before {

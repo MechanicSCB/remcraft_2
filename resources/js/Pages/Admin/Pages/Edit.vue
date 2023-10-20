@@ -6,7 +6,7 @@ import BlockForm from "@/Pages/Admin/Pages/Partials/BlockForm.vue";
 import ArrowUpDown from "@/Svg/ArrowUpDown.vue";
 import CloseCross from "@/Svg/CloseCross.vue";
 import PencilIcon from "@/Svg/PencilIcon.vue";
-import LinkIcon from "@/Svg/LinkIcon.vue";
+import LinkIcon from "@/Svg/BlankLinkIcon.vue";
 import ValidationErrorsFlash from "@/Layouts/Partials/ValidationErrorsFlash.vue";
 import Nodes from "@/Pages/Admin/Pages/Partials/Nodes.vue";
 

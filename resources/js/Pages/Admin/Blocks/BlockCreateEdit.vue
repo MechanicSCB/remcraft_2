@@ -1,11 +1,14 @@
 <script setup>
 import {router, useForm} from "@inertiajs/vue3";
-import {onMounted, provide} from "vue";
-import InputBlock from "@/Pages/Admin/Partials/InputBlock.vue";
-import SelectBlock from "@/Pages/Admin/Partials/SelectBlock.vue";
-import ComponentCreateEdit from "@/Pages/Admin/Components/ComponentCreateEdit.vue";
+import {onMounted} from "vue";
+// import ComponentCreateEdit from "@/Pages/Admin/Components/ComponentCreateEdit.vue";
 import ArrowLeftIcon from "@/Svg/ArrowLeft.vue";
 import SelectComponent from "@/Pages/Admin/Partials/SelectComponent.vue";
+import SelectPage from "@/Pages/Admin/Partials/SelectPage.vue";
+import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
+import PencilIcon from "@/Svg/PencilIcon.vue";
+import ModalEditComponent from "@/Pages/Admin/Components/Partials/ModalEditComponent.vue";
+import FormErrorMsg from "@/Pages/Admin/Partials/FormErrorMsg.vue";
 
 let props = defineProps({block: Object});
 
@@ -22,7 +25,7 @@ let form = useForm({
 });
 
 // TODO remove provide
-provide('form', form);
+// provide('form', form);
 
 let submit = () => {
     if (props.block) {
@@ -37,8 +40,7 @@ onMounted(() => {
 });
 
 let setQueryArgsToFilterForm = () => {
-    // request_all added to HandleInertiaRequests.php
-    let fields = router.page.props.ziggy.request_all;
+    let fields = router.page.props.ziggy.request_all; // request_all added to HandleInertiaRequests.php
 
     for(let [field, val] of Object.entries(fields)){
         form[field] = val;
@@ -59,31 +61,28 @@ let setQueryArgsToFilterForm = () => {
         <h1 class="mb-3 text-xl font-bold">{{ block ? 'Редактировать' : 'Создать' }} блок</h1>
 
         <form @submit.prevent="submit" class="">
-            <SelectBlock label="Страница"
-                         field="page_id"
-                         :options="$page.props.pages"
-                         valueField="id"
-                         name-field="title"
-            />
-
-            <div class="flex items-center gap-2 mb-5">
-                Компонент: <SelectComponent class="" v-model="form.component_id"/>
+            <div class="flex items-center gap-2 mb-4">
+                Страница: <SelectPage v-model="form.page_id" :error-msg="form.errors.page_id"/>
             </div>
 
+            <div class="flex items-center gap-2 mb-4">
+                Компонент: <SelectComponent v-model="form.component_id" :error-msg="form.errors.component_id"/>
+                <ModalEditComponent v-if="form.component_id" :component-id="form.component_id"><PencilIcon class="w-5"/></ModalEditComponent>
+            </div>
 
-            <InputBlock label="Порядок" field="order" input-type="number"/>
-            <InputBlock label="Классы" field="classes"/>
-            <InputBlock label="Внутренние классы" field="inner_classes"/>
-            <InputBlock label="Css стили" field="style"/>
-            <InputBlock label="отступ сверху" field="pt"/>
-            <InputBlock label="отступ снизу" field="pb"/>
-            <InputBlock label="Данные" field="datum"/>
+            <LabelInput v-model="form.order" :errorMsg="form.errors['order']" type="number">Порядок</LabelInput>
+            <LabelInput v-model="form.classes" :errorMsg="form.errors['classes']" placeholder="введите классы">Классы</LabelInput>
+            <LabelInput v-model="form.inner_classes" :errorMsg="form.errors['inner_classes']" placeholder="введите классы">Внутренние классы</LabelInput>
+            <LabelInput v-model="form.style" placeholder="введите Css стили">Css стили</LabelInput>
+            <LabelInput v-model="form.pt" :errorMsg="form.errors['pt']" type="number">отступ сверху</LabelInput>
+            <LabelInput v-model="form.pb" :errorMsg="form.errors['pb']" type="number">отступ снизу</LabelInput>
+            <LabelInput v-model="form.datum" :errorMsg="form.errors['datum']" placeholder='{"format":"json string"}'>Данные</LabelInput>
 
             <button type="submit" class="mt-8 btn btn-blue" :disabled="form.processing">Сохранить</button>
         </form>
 
         <!--  Component Edit  -->
-        <ComponentCreateEdit v-if="block?.component" :component="block?.component"/>
+        <!--<ComponentCreateEdit v-if="block?.component" :component="block?.component"/>-->
     </div>
 </template>
 <script>

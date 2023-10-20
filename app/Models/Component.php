@@ -16,6 +16,26 @@ class Component extends Model
     protected $guarded = [];
     public static array $types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Recommendation', 'YoutubeChannel', 'Banner'];
 
+    public static function getComponentsWithPages(): array
+    {
+        $components = [];
+        $items = Component::query()
+            ->leftJoin('blocks', 'blocks.component_id', '=', 'components.id')
+            ->select(['components.id', 'title', 'type', 'page_id'])
+            ->get()
+            ->groupBy('id')
+            ->toArray();
+
+        foreach ($items as $id => $item){
+            $pages = array_filter(array_column($item,'page_id'));
+            unset($item[0]['page_id']);
+            $components[$id] = $item[0];
+            $components[$id]['pages'] = $pages;
+        }
+
+        return $components;
+    }
+
     public function galleries(): HasMany
     {
         return $this->hasMany(Gallery::class)->orderBy('order');
@@ -41,8 +61,7 @@ class Component extends Model
     protected function pages(): Attribute
     {
         return Attribute::make(
-            get: fn() => $this->blocks()->pluck('page_id')->toArray(),
+            get: fn() => $this->blocks()->pluck('page_id'),
         );
     }
-
 }

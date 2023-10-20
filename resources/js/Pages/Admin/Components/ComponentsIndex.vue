@@ -1,19 +1,20 @@
 <script setup>
 import {router} from "@inertiajs/vue3";
 import PencilIcon from "@/Svg/PencilIcon.vue";
-import LinkIcon from "@/Svg/LinkIcon.vue";
+import LinkIcon from "@/Svg/BlankLinkIcon.vue";
 import CloseCross from "@/Svg/CloseCross.vue";
 import {ref} from "vue";
-import ComponentsFilter from "@/Pages/Admin/Components/Partials/FilterComponents.vue";
+import IndexFilterComponents from "@/Pages/Admin/Components/Partials/IndexFilterComponents.vue";
+import ModalEditComponent from "@/Pages/Admin/Components/Partials/ModalEditComponent.vue";
 
 let props = defineProps({components: Object});
 
 let showedComponent = ref(props.components[0]);
 
 let deleteComponent = (component) => {
-    if (confirm('Вы действительно хотите удалить компонент: ' + component.title + '?')) {
-        router.delete(route('components.destroy', component));
-    }
+    router.delete(route('components.destroy', component), {
+        onBefore: () => confirm('Вы действительно хотите удалить компонент: ' + component.title + '?'),
+    });
 }
 </script>
 <template>
@@ -26,11 +27,13 @@ let deleteComponent = (component) => {
                 <div class="mt-3 flex items-center">
                     <h3 class="text-xl font-bold">Компоненты</h3>
 
-                    <Link class="ml-12 my-2 btn btn-blue text-sm" :href="route('components.create')">Создать компонент</Link>
+                    <ModalEditComponent>
+                        <div class="btn btn-blue text-center">Создать компонент</div>
+                    </ModalEditComponent>
                 </div>
 
                 <!-- Filtering items -->
-                <ComponentsFilter/>
+                <IndexFilterComponents/>
             </div>
 
             <!-- Components list -->
@@ -45,9 +48,10 @@ let deleteComponent = (component) => {
                         <div>{{ component.title }} - {{ component.type }}</div>
                         <div class="flex gap-2">
                             <div class="flex">с. <span v-for="block in component.blocks">{{ block.page_id}};</span></div>
-                            <Link :href="route('components.edit', component.id)" class="hover:text-red-700">
-                                <PencilIcon class="w-3.5"/>
-                            </Link>
+                            <!--<Link :href="route('components.edit', component.id)" class="hover:text-red-700">-->
+                            <!--    <PencilIcon class="w-3.5"/>-->
+                            <!--</Link>-->
+                            <ModalEditComponent :component-id="component.id"><PencilIcon  class="w-3.5"/></ModalEditComponent>
                             <a :href="route('components.show', component.id)" class="hover:text-red-700" target="_blank">
                                 <LinkIcon class="w-3.5"/>
                             </a>

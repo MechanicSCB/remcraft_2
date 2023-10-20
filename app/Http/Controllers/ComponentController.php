@@ -12,6 +12,13 @@ use Inertia\ResponseFactory;
 class ComponentController extends Controller
 {
     /**
+     * return components data
+     */
+    public function getData(Component $component): Component
+    {
+        return $component;
+    }
+    /**
      * Display a listing of the resource.
      */
     public function index(Request $request): Response|ResponseFactory
@@ -45,7 +52,7 @@ class ComponentController extends Controller
      */
     public function create(): Response|ResponseFactory
     {
-        return inertia('Admin/Components/ComponentCreateEdit');
+        return inertia('Admin/Components/CreateEdit');
     }
 
     /**
@@ -53,6 +60,7 @@ class ComponentController extends Controller
      */
     public function store(ComponentRequest $request): RedirectResponse
     {
+        dd(tmr(),$request->all());
         Component::query()->create($request->validated());
 
         return back()->with('success', 'Компонент создан!');

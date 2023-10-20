@@ -1,7 +1,7 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-import SelectComponent from "@/Pages/Admin/Partials/SelectComponent.vue";
+import SelectComponent from "@/Pages/Admin/Partials/old/SelectComponent.vue";
 import {provide} from "vue";
 
 let props = defineProps({gallery: Object,});

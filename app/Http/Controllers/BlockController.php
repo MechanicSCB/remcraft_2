@@ -66,7 +66,7 @@ class BlockController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): Response|ResponseFactory
     {
         return inertia('Admin/Blocks/BlockCreateEdit');
     }

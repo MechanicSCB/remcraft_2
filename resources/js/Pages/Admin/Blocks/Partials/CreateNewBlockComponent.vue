@@ -1,12 +1,12 @@
 <script setup>
 import {inject, provide, ref} from "vue";
 import {router, useForm} from "@inertiajs/vue3";
-import HtmlForm from "@/Pages/Admin/Components/Datum/HtmlForm.vue";
+import HtmlForm from "@/Pages/Admin/Components/Datum/old/HtmlForm.vue";
 import MasonryForm from "@/Pages/Admin/Components/Datum/MasonryForm.vue";
 import CalculatorForm from "@/Pages/Admin/Components/Datum/Calculator/CalculatorForm.vue";
-import RecommendationForm from "@/Pages/Admin/Components/Datum/RecommendationForm.vue";
-import CostForm from "@/Pages/Admin/Components/Datum/CostForm.vue";
-import BannerForm from "@/Pages/Admin/Components/Datum/BannerForm.vue";
+import RecommendationForm from "@/Pages/Admin/Components/Datum/old/RecommendationForm.vue";
+import CostForm from "@/Pages/Admin/Components/Datum/old/CostForm.vue";
+import BannerForm from "@/Pages/Admin/Components/Datum/old/BannerForm.vue";
 
 let form = useForm({
     title: '',
