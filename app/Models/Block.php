@@ -20,10 +20,9 @@ class Block extends Model
     {
         static::saved(function (Block $block) {
             // if order has been changed and saved refresh page ordering of blocks
-            if($block->isDirty('order')){
+            if($block->isDirty('order') || !$block['order']){
                 $block->page->refreshBlockOrders();
             }
-
         });
     }
 

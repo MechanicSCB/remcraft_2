@@ -2,5 +2,5 @@
 defineProps({datum: Object});
 </script>
 <template>
-    <div v-html="datum?.body"></div>
+    <div class="block-container mobile-px" v-html="datum?.body"></div>
 </template>

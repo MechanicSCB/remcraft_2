@@ -17,7 +17,7 @@ class PageController extends Controller
      */
     public function show(Request $request, Page $page): Response|ResponseFactory|Collection
     {
-        $limit = 30;
+        $limit = 300;
 
         // Get only limited number of blocks
         $page->setRelation(
@@ -33,10 +33,9 @@ class PageController extends Controller
      */
     public function index(): Response|ResponseFactory
     {
-        // $pages = Page::query()->with('blocks.component.galleries.images')->get();
-        $pages = Page::query()->get();
+        $page = Page::query()->with('blocks.component.galleries.images')->first();
 
-        return inertia('Admin/Pages/Index', compact('pages'));
+        return inertia('Admin/Pages/Edit', compact('page'));
     }
 
     /**
@@ -89,6 +88,6 @@ class PageController extends Controller
     {
         $page->delete();
 
-        return back()->with('success', 'Удалено!');
+        return redirect(route('pages.index'))->with('success', 'Удалено!');
     }
 }

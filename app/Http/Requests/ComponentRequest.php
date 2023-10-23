@@ -2,6 +2,7 @@
 
 namespace App\Http\Requests;
 
+use App\Models\Component;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
@@ -34,7 +35,7 @@ class ComponentRequest extends FormRequest
      */
     public function rules(): array
     {
-        $types = ['Html','Gallery','Pile','Masonry','Cost','Calculator','Recommendation', 'Banner'];
+        $types = Component::$types;
 
         return [
             'title' => 'required|min:3',

@@ -3,6 +3,7 @@ import Header from "@/Layouts/Partials/Header.vue";
 import Footer from "@/Layouts/Partials/Footer.vue";
 import {onMounted, provide, ref} from "vue";
 import MobileMenu from "@/Layouts/Partials/MobileMenu.vue";
+import Flash from "@/Layouts/Partials/Flash.vue";
 
 let showMobileMenu = ref(false);
 let isScrolled = ref(false);
@@ -24,6 +25,8 @@ let handleScroll = function (event) {
 
 <template>
     <div class="">
+        <Flash/>
+
         <Header/>
         <MobileMenu class="block xl:hidden " v-if="showMobileMenu"/>
 
@@ -51,17 +54,19 @@ let handleScroll = function (event) {
 
 .main h1 {
     font-size: 48px;
-    line-height: 48px;
+    line-height: 52px;
     padding-bottom: 24px;
 }
 
 .main h2 {
     font-size: 36px;
     padding-bottom: 18px;
+    line-height: 40px;
 }
 
 .main h3 {
     @apply text-[24px] pb-5;
+    line-height: 28px;
 }
 
 .main p {
@@ -69,6 +74,17 @@ let handleScroll = function (event) {
 }
 
 .main ul {
+    padding-left: 40px;
+    max-width: 785px;
+}
+
+.main ol {
+    list-style: decimal;
+    padding-left: 40px;
+    max-width: 785px;
+}
+
+.main ol li {
     padding-left: 20px;
 }
 
@@ -83,6 +99,12 @@ let handleScroll = function (event) {
     display: inline-block; /* Needed to add space between the bullet and the text */
     width: 1em; /* Also needed for space (tweak if needed) */
     margin-left: -1em; /* Also needed for space (tweak if needed) */
+    padding-right: 16px;
+}
+
+.main blockquote {
+    border-left: 1px solid;
+    padding-left: 20px;
 }
 
 .block-gray {
@@ -118,4 +140,38 @@ let handleScroll = function (event) {
         font-size: 28px;
     }
 }
+
+.main {
+    table {
+        border-collapse: collapse;
+        width: 100%;
+        margin: 0;
+        overflow: hidden;
+
+        td,
+        th {
+            min-width: 1em;
+            border: 2px solid #ced4da;
+            padding: 3px 5px;
+            vertical-align: top;
+            box-sizing: border-box;
+            position: relative;
+
+            > * {
+                margin-bottom: 0;
+            }
+        }
+
+        th {
+            font-weight: bold;
+            text-align: left;
+            background-color: #f1f3f5;
+        }
+
+        p {
+            margin: 0;
+        }
+    }
+}
+
 </style>

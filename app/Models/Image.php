@@ -17,8 +17,8 @@ class Image extends Model
     public static array $formats = [
         'webp',
         '720x480',
-        '360x240',
         '480x320',
+        '360x240',
         '195x130'
     ];
 

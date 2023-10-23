@@ -1,8 +1,8 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
-import InputError from "@/Components/InputError.vue";
-import SelectComponent from "@/Pages/Admin/Partials/old/SelectComponent.vue";
 import {provide} from "vue";
+import SelectComponent from "@/Pages/Admin/Partials/SelectComponent.vue";
+import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
 
 let props = defineProps({gallery: Object,});
 
@@ -28,25 +28,10 @@ let submit = () => {
 </script>
 <template>
     <form @submit.prevent="submit">
-        <div class="input-block">
-            <label for="title">Название галереи</label>
-            <input class=" " v-model="form.title" id="title" placeholder="Введите название галереи" required/>
-            <InputError class="input-error" :message="form.errors.title"/>
-        </div>
-
-        <div class="input-block">
-            <label for="slug">slug</label>
-            <input v-model="form.slug" id="slug" placeholder="Введите слаг"/>
-            <InputError :message="form.errors.slug" class="h-0"/>
-        </div>
-
-        <SelectComponent/>
-
-        <div class="input-block">
-            <label for="order">Порядковый номер</label>
-            <input v-model="form.order" id="order" placeholder="Введите порядковый номер"/>
-            <InputError :message="form.errors.order" class="h-0"/>
-        </div>
+        <LabelInput v-model="form.title" :error-msg="form.errors.title" placeholder="Введите имя галереи" required>Имя галереи</LabelInput>
+        <LabelInput v-model="form.slug" :error-msg="form.errors.slug" placeholder="Введите слаг">слаг</LabelInput>
+        <SelectComponent class="mb-4" v-model="form.component_id"/>
+        <LabelInput v-model="form.order" :error-msg="form.errors.order" placeholder="№ п/п" type="number">№ п/п</LabelInput>
 
         <button type="submit" class="mt-4 btn btn-blue" :disabled="form.processing">
             Сохранить

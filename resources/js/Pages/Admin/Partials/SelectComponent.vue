@@ -11,7 +11,7 @@ let selectedComponent;
 defineEmits(['update:modelValue']);
 
 let showModal = ref(false);
-let filterFields = ref({'search':'','page_id':null,'type':null});
+let filterFields = ref({'search':'','page_id':-1,'type':null});
 let filterItems = (components) => {
     components = Object.values(components).filter(function (v){
         let res = true;

@@ -13,10 +13,11 @@ let volume = ref(100);
 function getPrice(item, index){
     let price = item*volume.value;
 
-    if(volume.value >= 150) {
-        price *= 0.9;
-    }else if(volume.value >= 80) {
-        price *= 0.95;
+    for(let item of (props.datum.coefs ?? []).sort((a,b) => b.volume - a.volume)){
+        if(volume.value >= item.volume) {
+            price *= item.percent/100;
+            break;
+        }
     }
 
     if(index === 1) price=(Math.round(price/100)*100);
@@ -39,7 +40,7 @@ provide('activeTab', activeTab)
 </script>
 
 <template>
-    <div>
+    <div class="block-container mobile-px">
         <div class="pt-6 border">
             <!-- WIDE SCREEN BOOKMARKS -->
             <div class="hidden md:flex">

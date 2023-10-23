@@ -6,6 +6,7 @@ import CloseCross from "@/Svg/CloseCross.vue";
 import {onMounted, ref} from "vue";
 import GalleryShow from "@/Pages/Admin/Galleries/GalleryShow.vue";
 import GalleriesFilter from "@/Pages/Admin/Galleries/Partials/GalleriesFilter.vue";
+import ModalEditGallery from "@/Pages/Admin/Galleries/Partials/ModalEditGallery.vue";
 
 let props = defineProps({galleries: Object});
 let showedGallery = ref(props.galleries[0]);
@@ -22,10 +23,13 @@ let deleteGallery = (gallery) => {
     <div class="flex h-screen">
         <!-- LEFT -->
         <div class="w-[350px] shrink-0 border-r h-screen">
-            <div class="fixed">
+            <div class="fixed z-10">
                 <div class="mt-3 flex items-center">
                     <h3 class="text-xl font-bold">Галереи</h3>
 
+                    <!--<ModalEditGallery>-->
+                    <!--    <div class="btn btn-blue text-center">Создать галерею</div>-->
+                    <!--</ModalEditGallery>-->
                     <Link class="ml-28 my-2 btn btn-blue text-sm" :href="route('galleries.create')">Создать галерею</Link>
                 </div>
 

@@ -40,12 +40,11 @@ let deleteBlock = (block) => {
                          class="py-1 flex items-center space-x-4 text-xs hover:bg-blue-100 cursor-pointer"
                          :class="{'bg-blue-200':showedBlock===block}"
                     >
-                        <!--<span>{{ block.component.title }} - {{ block.component.type }}</span>-->
                         <span>{{ $page.props.components[block.component_id].title }} - {{ $page.props.components[block.component_id].type }}</span>
                         <Link :href="route('blocks.edit', block.id)" class="hover:text-red-700">
                             <PencilIcon class="w-3.5"/>
                         </Link>
-                        <a :href="route('blocks.show', block.id)" class="hover:text-red-700" target="_blank">
+                        <a :href="'/' + $page.props.pages[block.page_id].slug + '#block_' + block.id" class="hover:text-red-700" target="_blank">
                             <LinkIcon class="w-3.5"/>
                         </a>
                         <div @click="deleteBlock(block)" class="cursor-pointer hover:text-red-700">

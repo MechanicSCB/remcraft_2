@@ -32,8 +32,6 @@ let setQueryArgsToFilterForm = () => {
     }
 };
 
-//  TODO replace to common shared data
-const types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Recommendation', 'YoutubeChannel'];
 </script>
 <template>
     <form @submit.prevent class="flex gap-1 text-sm items-end">
@@ -52,7 +50,7 @@ const types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Reco
             <label for="type">тип</label>
             <select class="text-sm py-0 pl-1 pr-7 w-32" id="type" v-model="filterForm.type" @change="submit">
                 <option value="">--</option>
-                <option v-for="type in types">{{ type }}</option>
+                <option v-for="type in $page.props.componentTypes">{{ type }}</option>
             </select>
         </div>
         <Link :href="route('blocks.index')" class="" title="очистить фильтр">

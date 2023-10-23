@@ -5,14 +5,11 @@ import {inject} from "vue";
 import PencilIcon from "@/Svg/PencilIcon.vue";
 import ChevronRightIcon from "@/Svg/ChevronRightIcon.vue";
 import CollapseIcon from "@/Svg/CollapseIcon.vue";
+import {ordered} from "@/Stores/Common.js";
 
 
 let props = defineProps({parent: Object});
 let openedNodes = inject('openedNodes');
-
-let ordered = (nodes) => {
-    return Object.values(nodes ?? {}).sort((a,b) => a.order - b.order)
-};
 
 function dragStart(event, draggedNode) {
     event.dataTransfer.setData("draggedNodeId", draggedNode.id);
@@ -70,8 +67,8 @@ function toggle(node) {
                     <div>{{ node.order }} - {{ node.title }}</div>
 
                     <div class="fill-blue-500">
-                        <ChevronRightIcon @click="toggle(node)" v-if="Object.keys(node.nodes).length && !openedNodes.includes(node.id)" class="h-6"/>
-                        <CollapseIcon @click="toggle(node)" v-if="Object.keys(node.nodes).length && openedNodes.includes(node.id)" class="w-6"/>
+                        <ChevronRightIcon @click="toggle(node)" v-if="Object.keys(node.nodes ?? {}).length && !openedNodes.includes(node.id)" class="h-6"/>
+                        <CollapseIcon @click="toggle(node)" v-if="Object.keys(node.nodes ?? {}).length && openedNodes.includes(node.id)" class="w-6"/>
                     </div>
 
                     <Link class="mt-1 text-sm flex" :href="route('nodes.edit', node)">

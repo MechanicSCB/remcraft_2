@@ -7,7 +7,10 @@ let props = defineProps({block: Object});
 onBeforeMount(() => {
     // Overwrite component's datum values with block's datum values
     if (['Pile', 'Gallery'].includes(props.block.component.type)) {
-        props.block.component.datum = {...props.block.component.datum, ...props.block.datum};
+        for (let field in props.block.datum ?? []){
+            props.block.component.datum ??= {};
+            props.block.component.datum[field] = props.block.datum[field];
+        }
     }
 })
 </script>

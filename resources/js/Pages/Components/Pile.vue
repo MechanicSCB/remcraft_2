@@ -1,29 +1,50 @@
 <script setup>
 import {ref} from "vue";
 import SwiperSlider from "@/Pages/Components/Sliders/SwiperSlider.vue";
+import LazyImg from "@/Pages/Components/Partials/LazyImg.vue";
+import BlankLinkIcon from "@/Svg/BlankLinkIcon.vue";
 
 
-defineProps({datum: Object, galleries:Object});
+let props = defineProps({datum: Object, galleries:Object});
 let activeGallery = ref(0);
+
+let getObjectPageLink = () => {
+    let res;
+
+    res = props.datum?.links?.filter(function (link) {
+        return link.gallerySlug === props.galleries[activeGallery.value].slug;
+    })
+    // console.log(props.galleries[activeGallery.value].slug,res[0]?.href);
+
+    return (res ?? [])[0]?.href;
+};
 </script>
 <template>
-    <div>
+    <div class="block-container">
         <div class="lg:-mx-16 flex flex-col md:flex-row md:h-[380px] lg:h-[500px] gap-8">
             <!-- Main Gallery Slider -->
-            <div class="w-full sm:min-w-[480px] lg:w-[720px] h-full">
+            <div class="relative w-full sm:min-w-[480px] lg:w-[720px] h-full">
+                <Link v-if="getObjectPageLink()"
+                      class="absolute top-1 right-1 z-10 rounded bg-[#1071ff] !text-white p-2 w-10 h-10"
+                      :href="getObjectPageLink()"
+                >
+                    <BlankLinkIcon/>
+                </Link>
+
                 <SwiperSlider :gallery="galleries[activeGallery]" disableCaption="true"/>
             </div>
 
             <!-- Wide gallery selector -->
             <div class="hidden md:flex">
-                <div v-if="datum?.type!==1" class="flex flex-col space-y-3 overflow-y-auto">
+                <div v-if="datum?.prev !== false" class="flex flex-col space-y-3 overflow-y-auto">
                     <div @click="activeGallery=index"
                          v-for="(gallery,index) in galleries"
                          :key="gallery.id"
                          class="flex space-x-4 group cursor-pointer">
                         <div class="max-w-[200px] h-fit bg-[#313334]">
                             <!-- TODO сравнять размер блока превью с размером файла -->
-                            <img class="group-hover:opacity-70 transition-all duration-500"
+                            <LazyImg class="group-hover:opacity-70 transition-all duration-500 "
+                                 :alt="gallery?.images[0]?.name"
                                  :class="{'!opacity-40':activeGallery===index}"
                                  :src="'/storage/galleries/' + gallery.slug + '/195x130/' + gallery?.images[0]?.name + '.webp'" />
                         </div>
@@ -36,14 +57,16 @@ let activeGallery = ref(0);
                     </div>
                     <div @click="activeGallery=id" v-for="(gallery,id) in galleries"
                          class="flex space-x-4 group cursor-pointer">
-                        <div class="text-[#909597] underline underline-offset-4 decoration-dashed">- {{ gallery.title }}</div>
+                        <div class="text-[#909597] hover:underline underline-offset-4 decoration-dashed"
+                             :class="{ 'text-black' : activeGallery===id }"
+
+                        >- {{ gallery.title }}</div>
                     </div>
                 </div>
             </div>
 
-
             <!-- Mobile gallery selector -->
-            <div v-if="datum?.type!==1" class="max-h-56 overflow-y-auto block md:hidden w-full bg-repeat bg-contain"
+            <div v-if="datum?.prev !== false" class="max-h-56 overflow-y-auto block md:hidden w-full bg-repeat bg-contain"
                  :style="'background-image: url(/storage/galleries/' + galleries[activeGallery]?.slug + '/webp/' + galleries[activeGallery]?.images[0].name +'.webp); scrollbar-width: none;'"
             >
                 <div @click="activeGallery=id" v-for="(gallery,id) in galleries"

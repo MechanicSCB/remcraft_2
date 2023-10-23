@@ -14,15 +14,18 @@ class ImageController extends Controller
     public function upload(UploadImgRequest $request, Gallery $gallery): RedirectResponse
     {
         $dir = "galleries/$gallery->slug/orig";
-        $lastKey = +Str::beforeLast(Str::afterLast(last(Storage::files("public/$dir")), '/'), '.');
+        $existedNames = array_map( fn($v) => Str::beforeLast(Str::afterLast($v,'/'), '.'), Storage::files("public/$dir"));
 
         foreach ($request->validated('photos') ?? [] as $key => $photo) {
-            // increment the last filename
-            $filename = str_pad($lastKey + $key + 1, 3, 0, STR_PAD_LEFT);
+            do{
+                $filename = strtolower(Str::random(3));
+            }while(in_array($filename, $existedNames));
+
+            $existedNames[] = $filename;
             $ext = Str::afterLast($photo->guessExtension(), '/');
             $photo->storePubliclyAs($dir, "$filename.$ext", ['disk' => 'public']);
             $image = Image::query()->create([
-                'order' => intval($filename),
+                'order' => count($existedNames),
                 'name' => $filename,
                 'ext' => $ext,
                 'gallery_id' => $gallery['id'],
@@ -33,6 +36,29 @@ class ImageController extends Controller
 
         return redirect()->back()->with('success', 'Uploaded!');
     }
+
+    // public function upload(UploadImgRequest $request, Gallery $gallery): RedirectResponse
+    // {
+    //     $dir = "galleries/$gallery->slug/orig";
+    //     $lastKey = +Str::beforeLast(Str::afterLast(last(Storage::files("public/$dir")), '/'), '.');
+    //
+    //     foreach ($request->validated('photos') ?? [] as $key => $photo) {
+    //         // increment the last filename
+    //         $filename = str_pad($lastKey + $key + 1, 3, 0, STR_PAD_LEFT);
+    //         $ext = Str::afterLast($photo->guessExtension(), '/');
+    //         $photo->storePubliclyAs($dir, "$filename.$ext", ['disk' => 'public']);
+    //         $image = Image::query()->create([
+    //             'order' => intval($filename),
+    //             'name' => $filename,
+    //             'ext' => $ext,
+    //             'gallery_id' => $gallery['id'],
+    //         ]);
+    //
+    //         $image->createOptimized();
+    //     }
+    //
+    //     return redirect()->back()->with('success', 'Uploaded!');
+    // }
 
     /**
      * Remove the specified resource from storage.

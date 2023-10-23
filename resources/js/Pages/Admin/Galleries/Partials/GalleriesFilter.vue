@@ -2,6 +2,7 @@
 import {router, useForm} from "@inertiajs/vue3";
 import {onMounted} from "vue";
 import CloseCross from "@/Svg/CloseCross.vue";
+import SelectPage from "@/Pages/Admin/Partials/SelectPage.vue";
 
 
 // FILTER
@@ -37,7 +38,8 @@ let setQueryArgsToFilterForm = () => {
             <label for="title">Имя</label>
             <input id="title" class="text-sm p-0 w-32" @input="submit" v-model="filterForm.title"/>
         </div>
-        <div class="flex flex-col">
+        <!--<SelectPage @update:modelValue="submit" v-model="filterForm.page_id"/>-->
+        <div class="flex flex-col max-w-[185px]">
             <label for="page">стр.</label>
             <select class="text-sm py-0 pl-1 pr-7" id="page" v-model="filterForm.page_id" @change="submit">
                 <option value="">все</option>

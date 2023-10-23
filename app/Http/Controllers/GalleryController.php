@@ -85,10 +85,8 @@ class GalleryController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    // public function update(Request $request, Gallery $gallery):RedirectResponse
     public function update(GalleryRequest $request, Gallery $gallery): RedirectResponse
     {
-        //dd(tmr(), $request->all(), $request->validated(), $gallery);
         $validated = $request->validated();
 
         $gallery->update($validated);

@@ -14,14 +14,14 @@ class Component extends Model
     use HasFactory, HasSlug, HasDatum;
 
     protected $guarded = [];
-    public static array $types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Recommendation', 'YoutubeChannel', 'Banner'];
+    public static array $types = ['Html', 'Masonry', 'Calculator', 'Cost', 'Gallery', 'Pile', 'Recommendation', 'YoutubeChannel', 'Banner', 'Article', 'IFrame', 'Reply', 'Bid'];
 
     public static function getComponentsWithPages(): array
     {
         $components = [];
         $items = Component::query()
             ->leftJoin('blocks', 'blocks.component_id', '=', 'components.id')
-            ->select(['components.id', 'title', 'type', 'page_id'])
+            ->select(['components.id', 'title', 'type', 'page_id','components.updated_at'])
             ->get()
             ->groupBy('id')
             ->toArray();

@@ -15,7 +15,7 @@ let props = defineProps({block: Object});
 let form = useForm({
     page_id: props.block?.page_id ?? '',
     component_id: props.block?.component_id ?? '',
-    order: props.block?.order ?? '',
+    order: props.block?.order ?? 999,
     classes: props.block?.classes ?? '',
     inner_classes: props.block?.inner_classes ?? '',
     style: props.block?.style ?? '',
@@ -23,9 +23,6 @@ let form = useForm({
     pb: props.block?.pb ?? '',
     datum: JSON.stringify(props.block?.datum) ?? '',
 });
-
-// TODO remove provide
-// provide('form', form);
 
 let submit = () => {
     if (props.block) {
@@ -70,19 +67,28 @@ let setQueryArgsToFilterForm = () => {
                 <ModalEditComponent v-if="form.component_id" :component-id="form.component_id"><PencilIcon class="w-5"/></ModalEditComponent>
             </div>
 
-            <LabelInput v-model="form.order" :errorMsg="form.errors['order']" type="number">Порядок</LabelInput>
-            <LabelInput v-model="form.classes" :errorMsg="form.errors['classes']" placeholder="введите классы">Классы</LabelInput>
-            <LabelInput v-model="form.inner_classes" :errorMsg="form.errors['inner_classes']" placeholder="введите классы">Внутренние классы</LabelInput>
+            <LabelInput v-model="form.order" :errorMsg="form.errors['order']" type="number" required>Порядок</LabelInput>
+            <div class="flex gap-2">
+                <LabelInput v-model="form.classes" :errorMsg="form.errors['classes']" placeholder="введите классы">Классы</LabelInput>
+                <div>block-dark</div>
+            </div>
+            <div class="flex gap-2">
+                <LabelInput v-model="form.inner_classes" :errorMsg="form.errors['inner_classes']" placeholder="введите классы">Внутренние классы</LabelInput>
+                <!-- TODO ref to buttons or select or dataset -->
+                <div>block-container mobile-px</div>
+            </div>
+
             <LabelInput v-model="form.style" placeholder="введите Css стили">Css стили</LabelInput>
             <LabelInput v-model="form.pt" :errorMsg="form.errors['pt']" type="number">отступ сверху</LabelInput>
             <LabelInput v-model="form.pb" :errorMsg="form.errors['pb']" type="number">отступ снизу</LabelInput>
-            <LabelInput v-model="form.datum" :errorMsg="form.errors['datum']" placeholder='{"format":"json string"}'>Данные</LabelInput>
+            <div class="flex gap-2">
+                <LabelInput v-model="form.datum" :errorMsg="form.errors['datum']" placeholder='{"format":"json string"}'>Данные</LabelInput>
+                <div>{"type":"mosaic"}</div>
+            </div>
+
 
             <button type="submit" class="mt-8 btn btn-blue" :disabled="form.processing">Сохранить</button>
         </form>
-
-        <!--  Component Edit  -->
-        <!--<ComponentCreateEdit v-if="block?.component" :component="block?.component"/>-->
     </div>
 </template>
 <script>

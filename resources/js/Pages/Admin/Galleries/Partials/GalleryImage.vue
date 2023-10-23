@@ -34,6 +34,6 @@ function GetImageSizeInBytes(imgURL) {
                  @load="imgLoad($el)"
             >
         </div>
-        <div>{{ src.slice(src.lastIndexOf('/') + 1) }} ({{ info.width }} x {{ info.height }}) {{ info.weight / 1000 }}Kb</div>
+        <div>{{ image.order }} - {{ src.slice(src.lastIndexOf('/') + 1) }} ({{ info.width }} x {{ info.height }}) {{ info.weight / 1000 }}Kb</div>
     </div>
 </template>

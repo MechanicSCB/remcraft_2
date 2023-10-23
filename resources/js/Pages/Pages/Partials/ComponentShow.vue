@@ -8,6 +8,10 @@ import Cost from "@/Pages/Components/Cost.vue";
 import Calculator from "@/Pages/Components/Calculator/Calculator.vue";
 import Recommendation from "@/Pages/Components/Recommendation.vue";
 import Banner from "@/Pages/Components/Banner.vue";
+import Article from "@/Pages/Components/Article.vue";
+import IFrame from "@/Pages/Components/IFrame.vue";
+import Bid from "@/Pages/Components/Bid.vue";
+import Reply from "@/Pages/Components/Reply.vue";
 
 defineProps({component: Object});
 
@@ -21,6 +25,10 @@ const components = {
     'Calculator': Calculator,
     'Recommendation': Recommendation,
     'Banner': Banner,
+    'Article': Article,
+    'IFrame': IFrame,
+    'Reply': Reply,
+    'Bid': Bid,
 }
 </script>
 <template>

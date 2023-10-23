@@ -8,7 +8,7 @@ import CloseCross from "@/Svg/CloseCross.vue";
 import PencilIcon from "@/Svg/PencilIcon.vue";
 import LinkIcon from "@/Svg/BlankLinkIcon.vue";
 import ValidationErrorsFlash from "@/Layouts/Partials/ValidationErrorsFlash.vue";
-import Nodes from "@/Pages/Admin/Pages/Partials/Nodes.vue";
+import PageNodes from "@/Pages/Admin/Pages/Partials/PageNodes.vue";
 
 let props = defineProps({page: Object});
 
@@ -28,11 +28,19 @@ let submit = () => {
     form.patch(route('pages.update', props.page));
 };
 
+let deletePage = (page) => {
+    router.delete(route('pages.destroy', page), {
+        onBefore: () => confirm('Вы действительно хотите удалить страницу: ' + page.id + ' : ' + page.title + ' вместе с блоками (' + page.blocks.length + ' шт.)?'),
+    });
+}
+
 let deleteBlock = (block) => {
     if (confirm('Вы действительно хотите удалить блок: ' + block.id + '?')) {
         router.delete(route('blocks.destroy', block));
     }
 }
+
+let unboundedPages = () => Object.values(router.page.props.pages).filter((v) => !v.nodes.length);
 
 // Drag and Drop Images
 function dragStart(event, draggedBlockId) {
@@ -50,9 +58,10 @@ function dragDrop(event, order) {
 }
 </script>
 <template>
-    <Head :title="'Редактировать страницу ' + page.id"/>
+    <Head :title="page.title + ' - редактировать'"/>
 
     <div class="">
+        <!-- Header -->
         <div class="flex items-center gap-2">
             <!-- Title&Slug Form -->
             <form @submit.prevent="submit">
@@ -61,8 +70,8 @@ function dragDrop(event, order) {
                         <a :href="'/' + page.slug" target="_blank">Страница id:{{ page.id }}</a>
                     </h1>
 
-                    <input class="ml-2 py-0 rounded border-gray-200" v-model="form.title"/>
-                    <input class="ml-2 py-0 rounded border-gray-200" v-model="form.slug"/>
+                    <input class="ml-2 py-0 rounded border-gray-200 w-[450px]" v-model="form.title"/>
+                    <input class="ml-2 py-0 rounded border-gray-200 w-[350px]" v-model="form.slug"/>
 
                     <ValidationErrorsFlash :errors="form.errors"/>
 
@@ -72,19 +81,22 @@ function dragDrop(event, order) {
 
             <!-- Add block button -->
             <Link :href="route('blocks.create',[{'page_id':page.id}])" class="btn btn-blue">+ Блок</Link>
+
+            <!-- Delete page -->
+            <div @click="deletePage(page)" class="ml-12 btn btn-red">Удалить страницу и блоки ({{ page.blocks.length }} шт.)</div>
         </div>
 
         <!-- Page Blocks -->
-        <div class="flex">
+        <div class="flex pb-8">
             <!-- Left -->
-            <div class="w-[250px] shrink-0">
+            <div class="w-[250px] text-sm shrink-0">
                 <Link class="btn btn-green text-2xl font-bold pt-0 pb-0.5" :href="route('pages.create')">+</Link>
 
-                <Nodes :parent="{'nodes':$page.props.menu}"/>
+                <PageNodes :parent="{'nodes':$page.props.menu}"/>
 
-                <div class="mt-4 mb-2">Непривязанные страницы</div>
-                <div v-for="unboundPage in Object.values($page.props.pages).filter((v)=> !v.nodes.length)">
-                    <Link :class="{'text-blue-600':unboundPage.id===page.id}" :href="route('pages.edit', unboundPage)">{{ unboundPage.title }}</Link>
+                <div v-if="unboundedPages().length" class="mt-4 font-bold mb-2">Непривязанные к меню страницы</div>
+                <div v-for="unboundPage in unboundedPages()">
+                    <Link class="hover:text-blue-500" :class="{'text-blue-600':unboundPage.id===page.id}" :href="route('pages.edit', unboundPage)">{{ unboundPage.title }}</Link>
                 </div>
             </div>
 
@@ -110,27 +122,28 @@ function dragDrop(event, order) {
                                  draggable="true"
                     />
 
-                    <BlockForm :block="block" class="relative ml-3"/>
+                    <BlockForm :block="block" class="relative ml-6"/>
 
                     <div class="px-2 py-2 absolute top-0 right-0 bg-[rgba(255,255,255,0.7)] flex gap-2">
                         <a :href="'/' + page.slug + '#block_' + block.id"
-                           class="w-8 text-black cursor-pointer hover:text-blue-500"
+                           class="w-fit border rounded p-1 flex items-center bg-white text-sm font-bold text-black cursor-pointer hover:text-blue-500 gap-2"
                            target="_blank"
                         >
-                            <LinkIcon/>
+                            {{ block.component.type }}
+                            <LinkIcon class="w-4"/>
                         </a>
 
                         <Link :href="route('blocks.edit', block.id)"
-                              class="w-8 text-white bg-yellow-400 hover:text-yellow-400 hover:bg-white cursor-pointer"
+                              class="w-8 p-1.5 rounded text-white bg-yellow-400 hover:text-yellow-400 hover:bg-white cursor-pointer"
                         >
                             <PencilIcon/>
                         </Link>
 
-                        <Link @click="deleteBlock(block)"
-                              class="w-8 text-white bg-red-600 hover:text-red-600 hover:bg-white cursor-pointer"
+                        <div @click="deleteBlock(block)"
+                              class="w-8 text-white rounded bg-red-600 hover:text-red-600 hover:bg-white cursor-pointer"
                         >
                             <CloseCross/>
-                        </Link>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
   <span v-bind="$attrs"
         :aria-hidden="!title"
         :aria-label="title"
-        class="material-design-icon format-bold-icon"
+        class="material-design-icon"
         role="img"
         @click="$emit('click', $event)">
     <svg :fill="fillColor"

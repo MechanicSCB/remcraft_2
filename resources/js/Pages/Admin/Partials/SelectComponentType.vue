@@ -22,7 +22,7 @@ let showModal = ref(false);
 
         <!-- Modal -->
         <div v-if="showModal" @click="showModal=false"
-             class="fixed left-0 top-0 w-full h-screen p-10 bg-[rgba(0,0,0,0.7)] cursor-pointer"
+             class="fixed z-10 left-0 top-0 w-full h-screen p-10 bg-[rgba(0,0,0,0.7)] cursor-pointer"
         >
             <div @click.stop class="relative w-fit bg-white border p-5 cursor-default">
                 <!-- Close Modal List Button -->

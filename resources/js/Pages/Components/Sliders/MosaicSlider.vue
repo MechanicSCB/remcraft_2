@@ -55,15 +55,15 @@ function slideRight() {
             </button>
         </div>
 
+        <!-- TODO set heights -->
         <!-- Wide Screen > 1024px -->
         <div class="hidden lg:block mx-auto max-w-[720px] xl:max-w-none">
             <div v-for="(image, imgIndex) in gallery?.images" :key="image.id"
-                 class="relative float-left"
+                 class="relative float-left bg-gray-100"
             >
                 <LazyImg :src="getImagePath(image,imgIndex%3 === 0 ? '720x480' : '360x240')"
-                         class=""
-                         :class="imgIndex%3 === 0 ? 'w-[720px]' : 'w-[360px]'"
-                         alt=""
+                         :class="imgIndex%3 === 0 ? 'w-[720px] h-[480px]' : 'w-[360px] h-[240px]'"
+                         :alt="gallery.title"
                 />
                 <div @click="showModalImg = true; selectedImage = imgIndex"
                      class="top-0 absolute border border-4 border-white w-full h-full cursor-pointer"
@@ -74,7 +74,7 @@ function slideRight() {
         <!-- 640px < Laptop Screen < 1024px -->
         <div class="hidden sm:block lg:hidden mx-auto max-w-[720px] xl:max-w-none">
             <div v-for="(image, imgIndex) in gallery?.images" :key="image.id"
-                 class="relative w-full max-w-[720px] min-h-[240px]"
+                 class="relative aspect-[3/2] w-full max-w-[720px] bg-gray-100"
             >
                 <LazyImg :src="getImagePath(image,'720x480')"
                          class="w-[720px]"
@@ -89,7 +89,7 @@ function slideRight() {
         <!-- Mobile Screen < 640px -->
         <div class="block sm:hidden mx-auto max-w-[480px] xl:max-w-none">
             <div v-for="(image, imgIndex) in gallery?.images" :key="image.id"
-                 class="relative w-full max-w-[480px] min-h-[150px]"
+                 class="relative w-full max-w-[480px] aspect-[3/2] bg-gray-100"
             >
                 <LazyImg :src="getImagePath(image,'480x320')"
                          class="w-[480px]"

@@ -44,8 +44,8 @@ const onSlideChange = () => {
         :pagination="{ clickable: true }"
         :scrollbar="{ draggable: true }"
     >
-        <swiper-slide  class="max-w-[480px] sm:max-w-[720px]" v-for="(src, id) in getImagesPaths()">
-            <img :loading="id ? 'lazy' : 'eager'" :src="src" alt="">
+        <swiper-slide  class="aspect-[3/2] max-w-[480px] sm:max-w-[720px] bg-gray-100" v-for="(src, id) in getImagesPaths()">
+            <img :loading="id > -1 ? 'lazy' : 'eager'" :src="src" alt="">
         </swiper-slide>
     </swiper>
 </template>

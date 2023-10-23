@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\ComponentRequest;
 use App\Models\Component;
+use App\Models\Gallery;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Response;
@@ -16,8 +17,11 @@ class ComponentController extends Controller
      */
     public function getData(Component $component): Component
     {
+        $component->load('galleries');
+
         return $component;
     }
+
     /**
      * Display a listing of the resource.
      */
@@ -60,10 +64,20 @@ class ComponentController extends Controller
      */
     public function store(ComponentRequest $request): RedirectResponse
     {
-        dd(tmr(),$request->all());
-        Component::query()->create($request->validated());
+        $component = Component::query()->create($request->validated());
+        $msg = "Компонент создан!";
 
-        return back()->with('success', 'Компонент создан!');
+        // Create related gallery
+        if (in_array($component['type'], ['Gallery', 'Recommendation', 'Banner', 'YoutubeChannel', 'Cost', 'Article', 'Reply'])) {
+            Gallery::query()->create([
+                'title' => $component['title'] . ' - ' . $component['type'],
+                'component_id' => $component['id'],
+            ]);
+
+            $msg = "Компонент и галерея созданы!";
+        }
+
+        return back()->with('success', $msg);
     }
 
     /**

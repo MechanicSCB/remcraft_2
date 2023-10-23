@@ -12,10 +12,11 @@ use Spatie\Sluggable\SlugOptions;
 
 class Gallery extends Model
 {
-    // TODO create a method for checking galleries-images-imageFiles consistency
     use HasFactory, HasSlug;
 
     protected $guarded = [];
+
+    // TODO rename folder, then gallery slug has been changed
 
     /**
      * Get the images associated with the gallery.

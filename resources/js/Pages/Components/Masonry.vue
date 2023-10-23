@@ -2,9 +2,9 @@
 let props = defineProps({datum: Object});
 </script>
 <template>
-    <div>
-        <h2 class="">{{ datum.title }}</h2>
-        <div class="mt-8 lg:-ml-16 xl:columns-2 gap-x-20 space-y-4">
+    <div class="block-container mobile-px">
+        <h2 v-if="datum?.title" class="mb-8">{{ datum?.title }}</h2>
+        <div class="lg:-ml-16 xl:columns-2 gap-x-20 space-y-4">
             <div v-for="brick in datum?.bricks" class="py-10 px-3 lg:px-16 break-inside-avoid"
                  :class="{'corner':brick.corner}"
             >
@@ -13,7 +13,7 @@ let props = defineProps({datum: Object});
                          :src="'/storage/images/masonry-icons/' + brick.icon + '.svg'" :alt="brick.icon">
                     <h3 class="text-2xl">{{ brick.title }}</h3>
                 </div>
-                <div class="mt-4">{{ brick.body }}</div>
+                <div class="mt-4" v-html="brick.body"/>
                 <div class="mt-5 text-sm underline">
                     <Link v-for="link in brick.links" :href="link.href" class="mr-2 ">{{ link.text }}</Link>
                 </div>

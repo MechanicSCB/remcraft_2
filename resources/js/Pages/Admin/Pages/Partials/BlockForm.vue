@@ -1,8 +1,8 @@
 <script setup>
 import {useForm} from "@inertiajs/vue3";
 import InputError from "@/Components/InputError.vue";
-import InputBlock from "@/Pages/Admin/Partials/old/InputBlock.vue";
 import {provide} from "vue";
+import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
 
 let props = defineProps({block: Object,});
 
@@ -18,7 +18,7 @@ let form = useForm({
 provide('form', form);
 
 let submit = () => {
-    form.patch(route('blocks.update', props.block));
+    form.patch(route('blocks.update', props.block), { preserveScroll:true });
 };
 </script>
 <template>
@@ -52,9 +52,9 @@ let submit = () => {
             </div>
         </div>
         <div>
-            <InputBlock class="mb-2" field="classes" placeholder="внешний"/>
-            <InputBlock class="mb-2" field="inner_classes" placeholder="внутренн"/>
-            <InputBlock class="mb-2" field="style" placeholder="стили"/>
+            <LabelInput v-model="form.classes" placeholder="внешние классы"/>
+            <LabelInput v-model="form.inner_classes" placeholder="внутренние классы"/>
+            <LabelInput v-model="form.style" placeholder="стили"/>
         </div>
 
         <button type="submit" class="hidden"></button>

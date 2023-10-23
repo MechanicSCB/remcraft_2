@@ -14,13 +14,16 @@
 
 @layer components {
     .btn {
-        @apply inline-block w-fit px-2 py-1 h-fit rounded cursor-pointer border;
+        @apply inline-block w-fit px-2 py-0.5 h-fit rounded cursor-pointer border hover:text-white hover:bg-gray-700;
     }
     .btn-green {
         @apply bg-green-500 hover:bg-green-600 text-white;
     }
     .btn-blue {
         @apply bg-blue-500 hover:bg-blue-600 text-white;
+    }
+    .btn-red {
+        @apply bg-red-500 hover:bg-red-600 text-white;
     }
     .btn-disabled {
         @apply cursor-not-allowed bg-gray-500;

@@ -35,7 +35,7 @@ function dragEnter(event, el) {/* ev.preventDefault(); return true;*/}
 function dragOver(event, el) {/* ev.preventDefault();*/}
 
 function dragDrop(event, order) {
-    router.post(route('images.reorder', [event.dataTransfer.getData("draggedImgId"), order]));
+    router.post(route('images.reorder', [event.dataTransfer.getData("draggedImgId"), order]), {},{preserveScroll: true});
 }
 </script>
 <template>
@@ -58,7 +58,7 @@ function dragDrop(event, order) {
     </div>
 
     <!--  Modal  -->
-    <div @click="showModal=null" v-if="showModal" class="fixed top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center">
+    <div @click="showModal=null" v-if="showModal" class="fixed z-[1] top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center">
         <img :src="showModal" alt="">
     </div>
 </template>

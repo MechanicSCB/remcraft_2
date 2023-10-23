@@ -24,7 +24,7 @@ class BlockRequest extends FormRequest
         return [
             'page_id' => 'exists:pages,id',
             'component_id' => 'exists:components,id',
-            'order' => 'numeric|nullable|min:0',
+            'order' => 'numeric|min:0',
             'classes' => 'string|nullable|min:2',
             'inner_classes' => 'string|nullable',
             'style' => 'string|nullable',
