@@ -21,7 +21,7 @@ let showMobileMenu = inject('showMobileMenu');
 
         <!-- Menu -->
         <div class="hidden xl:flex h-full">
-            <div v-for="item in ordered($page.props.menu[1].nodes)" class="group/main h-full flex px-4 items-center">
+            <div v-for="item in ordered($page.props.menu[1].nodes[65].nodes)" class="group/main h-full flex px-4 items-center">
                 <Link :href="item.href ?? item.slug ?? ''" class="">{{ item.title }}</Link>
 
                 <!-- menu items background -->
@@ -40,7 +40,7 @@ let showMobileMenu = inject('showMobileMenu');
                                 </div>
                             </div>
                             <div v-if="Object.keys(subItem.nodes ?? {}).length" class="absolute h-0 w-0">
-                                <div class="invisible group-hover/sub:visible group-hover/sub:duration-0 transition-all duration-300 flex flex-col space-y-3 text-[18px] text-[#909597] bg-white relative left-[150px] top-[-30px] px-8 py-4 w-[350px] shadow-xl">
+                                <div class="invisible group-hover/sub:visible group-hover/sub:duration-0 transition-all duration-300 flex flex-col space-y-3 text-[18px] text-[#909597] bg-white relative left-[150px] top-[-30px] px-8 py-4 w-[350px] shadow-xl max-h-[500px] overflow-y-auto pb-10">
                                     <Link :href="subSubItem.href ?? subSubItem.slug ?? ''" v-for="subSubItem in ordered(subItem.nodes)" class="hover:text-black hover:underline transition-all duration-300">
                                         {{ subSubItem.title }}
                                     </Link>

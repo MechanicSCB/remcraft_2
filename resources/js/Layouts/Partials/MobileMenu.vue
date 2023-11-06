@@ -14,7 +14,7 @@ let expandedSubItem = ref(null);
     <div class="fixed z-50  w-full text-[#909597] bg-[#fbfafa] transition-all duration-300 overflow-y-auto max-h-screen"
          :class="isScrolled ? 'top-16' : 'top-24'"
     >
-        <div v-for="(item, itemKey) in ordered($page.props.menu[1].nodes)" class=" flex flex-col">
+        <div v-for="(item, itemKey) in ordered($page.props.menu[1].nodes[65].nodes)" class=" flex flex-col">
             <!-- Main Items -->
             <Link class="px-10 border-t flex justify-between items-center hover:text-black"
                   :class="expandedItem===itemKey ? 'bg-[#1071ff] !text-white' : ''"

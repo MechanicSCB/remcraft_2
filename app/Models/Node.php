@@ -25,7 +25,7 @@ class Node extends Model
             ->get(['nodes.id', 'nodes.title', 'parent_path', 'path', 'level', 'order', 'page_id', 'href', 'slug']);
 
         return (new TreeHandler())->getTree(stdToArray($nodes));
-        return (new TreeHandler())->getOrderedTree(stdToArray($nodes));
+        // return (new TreeHandler())->getOrderedTree(stdToArray($nodes));
     }
 
     /**
