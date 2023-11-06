@@ -22,7 +22,7 @@ class Node extends Model
             ->leftJoin('pages', 'page_id', '=', 'pages.id')
             ->orderBy('level') // if you use getTree or data_set in getTreeRec nodes must be sorted by level
             ->orderBy('order')
-            ->get(['nodes.id', 'nodes.title', 'parent_path', 'path', 'level', 'order', 'page_id', 'href', 'slug']);
+            ->get(['nodes.id', 'nodes.title', 'parent_path', 'path', 'level', 'order', 'page_id', 'href', 'slug', 'published_at']);
 
         return (new TreeHandler())->getTree(stdToArray($nodes));
         // return (new TreeHandler())->getOrderedTree(stdToArray($nodes));
