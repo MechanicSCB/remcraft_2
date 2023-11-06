@@ -1,6 +1,5 @@
 <script setup>
 import {onMounted} from "vue";
-import axios from "axios";
 import BlockShow from "@/Pages/Pages/Partials/BlockShow.vue";
 
 let props = defineProps({page: Object})
@@ -18,7 +17,6 @@ onMounted(() => {
     //         document.body.clientHeight, document.documentElement.clientHeight,
     //     );
     //
-    //     // TODO prevent repeated requests
     //     let bottomOfWindow = window.scrollY + window.innerHeight >= scrollHeight - 350;
     //
     //     if (bottomOfWindow) {
@@ -40,6 +38,7 @@ onMounted(() => {
             <meta typeof="description" :content="page['title']">
         </Head>
 
+        <div v-if="page.published_at === null" class="fixed z-50 left-2 top-1 bg-orange-500 rounded px-1 text-white text-xs">Не опубликовано!</div>
         <BlockShow v-for="block in page['blocks']" :block="block"/>
     </div>
 </template>

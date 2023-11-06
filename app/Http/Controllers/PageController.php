@@ -15,15 +15,16 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Request $request, Page $page): Response|ResponseFactory|Collection
+    public function show(Page $page): Response|ResponseFactory|Collection
     {
-        $limit = 300;
+        if(! $page->published_at && ! auth()->check()){
+            abort(401);
+        }
+
+        $page->load('blocks.component.galleries.images');
 
         // Get only limited number of blocks
-        $page->setRelation(
-            'blocks',
-            $page->blocks()->with('component.galleries.images')->take($limit)->get()
-        );
+        // $page->setRelation('blocks', $page->blocks()->with('component.galleries.images')->take(300)->get());
 
         return inertia('Pages/Show', compact('page'));
     }
@@ -78,7 +79,7 @@ class PageController extends Controller
 
         $page->update($validated);
 
-        return back()->with('success', 'updated!');
+        return back()->with('success', 'Обновлено!');
     }
 
     /**

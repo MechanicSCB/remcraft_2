@@ -15,7 +15,8 @@ let props = defineProps({page: Object});
 let form = useForm({
     title: props.page.title,
     slug: props.page.slug,
-    blocks: props.page.blocks,
+    published_at: props.page.published_at,
+    // blocks: props.page.blocks,
 });
 
 let openedNodes = ref(JSON.parse(sessionStorage.getItem('openedNodes')) ?? [1]);
@@ -26,6 +27,16 @@ provide('form', form);
 
 let submit = () => {
     form.patch(route('pages.update', props.page));
+};
+
+let publishPage = () => {
+    form.published_at = new Date().toISOString().replace("T"," ").substring(0, 19);
+    submit();
+};
+
+let unpublishPage = () => {
+    form.published_at = null;
+    submit();
 };
 
 let deletePage = (page) => {
@@ -62,20 +73,28 @@ function dragDrop(event, order) {
 
     <div class="">
         <!-- Header -->
-        <div class="flex items-center gap-2">
+        <div class="mb-4 flex flex-wrap items-center gap-2">
             <!-- Title&Slug Form -->
             <form @submit.prevent="submit">
-                <div class="my-2 flex gap-2 items-center">
+                <div class="my-2 flex flex-wrap gap-2 items-center">
                     <h1 class="text-xl font-bold">
                         <a :href="'/' + page.slug" target="_blank">Страница id:{{ page.id }}</a>
                     </h1>
 
-                    <input class="ml-2 py-0 rounded border-gray-200 w-[450px]" v-model="form.title"/>
-                    <input class="ml-2 py-0 rounded border-gray-200 w-[350px]" v-model="form.slug"/>
+
+                    <div class="text-white text-xs cursor-pointer">
+                        <div @click="unpublishPage()" v-if="page.published_at" class="bg-gray-500 rounded px-1">
+                            снять с публикации
+                        </div>
+                        <div @click="publishPage()" v-else class="bg-orange-500 rounded px-1">опубликовать</div>
+                    </div>
+
+                    <input class="ml-2 py-0 rounded border-gray-200 w-[350px]" v-model="form.title"/>
+                    <input class="ml-2 py-0 rounded border-gray-200 w-[300px]" v-model="form.slug"/>
 
                     <ValidationErrorsFlash :errors="form.errors"/>
 
-                    <button type="submit" class="hidden" :disabled="form.processing">Опубликовать</button>
+                    <button type="submit" class="hidden" :disabled="form.processing"/>
                 </div>
             </form>
 

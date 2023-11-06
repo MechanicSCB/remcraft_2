@@ -4,12 +4,15 @@ import {onUpdated} from "vue";
 let props = defineProps({errors:Object})
 
 onUpdated(() => {
-    console.log(props.errors)
+    let el = document.querySelector('div#flash-validation-error');
+
+    if(el === null) return;
+
     setTimeout(() => {
-        document.querySelector('div#flash-validation-error').classList.add('fade')
+        el.classList.add('fade')
     }, 3000);
 
-    document.querySelector('div#flash-validation-error').classList.remove('fade')
+    el.classList.remove('fade')
 });
 </script>
 

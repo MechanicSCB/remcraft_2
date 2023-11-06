@@ -30,8 +30,7 @@ class PageRequest extends FormRequest
                 'min:3',
                 Rule::unique('pages')->ignore($this->page),
             ],
-            //'blocks' => 'array|nullable',
-
+            'published_at' => 'nullable|date_format:Y-m-d H:i:s'
         ];
     }
 }

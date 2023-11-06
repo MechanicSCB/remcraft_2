@@ -1,4 +1,6 @@
 <script setup>
+import LazyIFrame from "@/Pages/Components/Partials/LazyIFrame.vue";
+
 let props = defineProps({datum: Object, galleries: Object});
 
 let getSrc = () => {
@@ -14,6 +16,6 @@ let getSrc = () => {
 <template>
     <div class="block-container mobile-px">
         <h2 v-if="datum.title" class="mb-16">{{ datum.title }}</h2>
-        <iframe class="mx-auto w-full h-[240px] sm:h-[360px] md:h-[420px] lg:h-[500px] xl:h-[600px]" :src="getSrc()"/>
+        <LazyIFrame class="mx-auto w-full h-[240px] sm:h-[360px] md:h-[420px] lg:h-[500px] xl:h-[600px]" :src="getSrc()"/>
     </div>
 </template>

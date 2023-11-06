@@ -1,653 +1,746 @@
 [
     {
+        "created_at": null,
         "id": 1,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartir",
         "title": "Ремонт квартир в Москве качественно",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 2,
-        "slug": "otdelka-kottedzhey",
+        "published_at": "2023-11-06 13:23:58",
+        "slug": "otdelka-kottedzhey-pod-klyuch-v-moskve",
         "title": "Отделка коттеджей под ключ в Москве",
-        "created_at": null,
-        "updated_at": null
+        "updated_at": "2023-11-06 13:23:58"
     },
     {
+        "created_at": null,
         "id": 3,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "dizayn-interera-pod-klyuch",
         "title": "Дизайн интерьера под ключ в Москве",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 4,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "kompleksnyy-montazh-inzhenernyh-sistem",
         "title": "Комплексный монтаж инженерных систем",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 5,
+        "published_at": "2023-11-06 13:10:45",
         "slug": "remont-kvartir-pod-klyuch-tseny",
         "title": "Ремонт квартир под ключ: цены за м.кв и прайс лист",
-        "created_at": null,
-        "updated_at": null
+        "updated_at": "2023-11-06 13:10:45"
     },
     {
+        "created_at": null,
         "id": 6,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "etapy-remonta-kvartiry",
         "title": "Этапы ремонта квартиры, фотографии и подробное описание",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 7,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "demontazhnye-raboty-v-kvartire",
         "title": "Демонтажные работы в квартире. Услуги строительно-демонтажных работ в Москве",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 9,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "ustroystvo-peregorodok",
         "title": "Устройство перегородок",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 10,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "mehanizirovannaya-shtukaturka-sten",
         "title": "Механизированная штукатурка стен в Москве. Расценки на штукатурные работы.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 11,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "styazhka-pola-mehanizirovannaya",
         "title": "Стяжка пола (механизированная) в Москве. Монтаж стяжки пола под ключ в квартире или загородном доме",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 12,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "gipsokartonnye-raboty",
         "title": "Гипсокартонные работы в Москве: стоимость монтажа гипсокартона",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 13,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "plitochnye-raboty",
         "title": "Укладка плитки в Москве. Облицовочно-плиточные работы под ключ",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 14,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "ustanovka-metalloplastikovyh-okon",
         "title": "Установка металлопластиковых окон в Москве. Заказать монтаж окон быстро и качественно",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 15,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "shumoizolyatsiya-sten-v-kvartire",
         "title": "Шумоизоляция стен в квартире. Стоимость шумоизоляции квартиры – прайс-лист",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 16,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "ukladka-napolnyh-pokrytiy",
         "title": "Укладка напольных покрытий в Москве (паркетная и массивная доска, ламинат)",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 17,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "malyarnye-raboty",
         "title": "Малярные работы в квартире. Выгодные цены на  малярные работы в Москве. Выполнение всех видов малярных работ",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 18,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "dekorativnaya-shtukaturka-v-kvartire",
         "title": "Декоративная штукатурка в квартире. Изготовление декоративной штукатуркой и отделка стен декоративной штукатуркой в Москве",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 19,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "uteplenie-balkonov-i-lodzhiy-pod-klyuch",
         "title": "Утепление балконов и лоджий под ключ. Наружное и внутреннее утепление балконов в Москве",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 20,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "ustroystvo-monolitnoy-lestnitsy",
         "title": "Устройство монолитной лестницы",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 21,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "montazh-natyazhnyh-potolkov",
         "title": "Монтаж натяжных потолков в Москве. Цены на монтаж двухуровневых и многоуровневых натяжных потолков",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 22,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "tseny-na-remont-kottedzhey",
         "title": "Цены на ремонт коттеджей и стоимость отделки дома за м.кв",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 23,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzhey-pod-klyuch",
         "title": "Ремонт коттеджей под ключ - качественно от 8000 руб в Москве и МО, гарантия 5 лет",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 24,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-i-otdelka-taunhausov",
         "title": "Ремонт и отделка таунхаусов под ключ - качественно от 7000 руб в Москве и МО",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 25,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-fasada-chastnogo-doma",
         "title": "Отделка фасада частного дома: варианты, фотографии и технологии",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 26,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-i-remont-derevyannogo-doma",
         "title": "Отделка и ремонт деревянного дома",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 27,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "varianty-vneshney-otdelki-fasadov",
         "title": "Варианты внешней отделки фасадов частных домов фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 28,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-fasadov-shtukaturkoy",
         "title": "Отделка фасадов частных домов штукатуркой, фото и цены",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 29,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-blok-hausom",
         "title": "Отделка дома снаружи блок хаусом, фото и цены",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 30,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-doma-kirpichom",
         "title": "Отделка дома кирпичом фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 31,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-fasada-doma-v-stile-fahverk-foto",
         "title": "Отделка фасада дома в стиле фахверк, фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 32,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-kamnem-fasada-doma",
         "title": "Отделка камнем фасада дома, фото и цены",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 33,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-doma-klinkernoy-plitkoy",
         "title": "Отделка дома клинкерной плиткой: цены, фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 34,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-fasadnymi-panelyami",
         "title": "Отделка фасадов частных домов фасадными панелями фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 35,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-fasada-doma-iskusstvennym-kamnem",
         "title": "Отделка фасада дома искусственным камнем, цены, фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 36,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otdelka-fasada-doma-panelyami-pod-kamen",
         "title": "Отделка фасада дома панелями под камень, цены, фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 38,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "otzyvy-o-rabote-stroitelnoy-kompanii-remcraft",
         "title": "Отзывы о работе строительной компании REMCRAFT",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 39,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "tseny-na-otdelku-derevyannyh-domov",
         "title": "Цены на отделку деревянных домов",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 40,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "vneshnyaya-otdelka-derevyannogo-doma",
         "title": "Внешняя отделка деревянного дома: цены, фото, варианты",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 41,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "vnutrennyaya-otdelka-sten-derevyannogo-doma",
         "title": "Внутренняя отделка стен деревянного дома",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 42,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "vnutrennyaya-otdelka-doma-iz-brevna",
         "title": "Внутренняя отделка дома из бревна: цены, фото",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 43,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "vneshnyaya-otdelka-doma-iz-brusa",
         "title": "Внешняя отделка дома из бруса",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 44,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "rastsenki-na-vnutrennyuyu-otdelku-derevyannogo-doma",
         "title": "Расценки на внутреннюю отделку деревянного дома",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 45,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "foto-vnutrenney-otdelki-derevyannogo-doma",
         "title": "Фото внутренней отделки деревянного дома",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 46,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "stoimost-dizayn-proekta",
         "title": "Стоимость дизайн-проекта квартиры и загородного дома",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 47,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "sostav-dizayn-proekta",
         "title": "Состав дизайн-проекта",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 48,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "dizayn-proekt-kvartiry",
         "title": "Дизайн-проект квартиры",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 49,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "elektromontazhnye-raboty",
         "title": "Электромонтажные работы в Москве и подмосковье",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 50,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "montazh-sistemy-otopleniya",
         "title": "Монтаж системы отопления в квартире и частном доме",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 51,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "ustanovka-i-montazh-konditsionerov",
         "title": "Установка и монтаж кондиционеров в квартире и частном доме",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 52,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "proektirovanie-inzhenernyh-sistem",
         "title": "Проектирование инженерных систем",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 54,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "kachestvennyy-remont-kvartir",
         "title": "Качественный ремонт квартир и коттеджей от компании REMCRAFT",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 55,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "sotrudniki-i-mastera-kompanii",
         "title": "Сотрудники и мастера компании",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 56,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "kontakty",
         "title": "Контакты",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 57,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "vakansii",
         "title": "Вакансии",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 58,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "aleksey-zemskov-remont-kvartir-po-ego-proektam",
         "title": "Алексей Земсков - ремонт квартир по его проектам",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 59,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "kosmeticheskiy-remont-kvartir",
         "title": "Косметический ремонт квартир",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 60,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-svoimi-rukami",
         "title": "Ремонт своими руками",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 61,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "nedorogoy-remont-kvartir-v-moskve",
         "title": "Недорогой ремонт квартир в Москве",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 62,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartir-v-novostroykah-moskvy-i-moskovskoy-oblasti",
         "title": "Ремонт квартир в новостройках Москвы и Московской области",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 63,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "kapitalnyy-remont-kottedzhey",
         "title": "Капитальный ремонт коттеджей",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 64,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "mnenie-eksperta-alekseya-zemskova-o-sovremennom-dizayne",
         "title": "Мнение эксперта Алексея Земскова о современном дизайне",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 65,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "portfolio-razrabotannyh-dizayn-proektov",
         "title": "Портфолио разработанных дизайн проектов",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 66,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "skolko-stoit-horoshiy-remont-kvartiry-tseny-na-materialy-i-raboty",
         "title": "Сколько стоит хороший ремонт квартиры? Цены на материалы и работы",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 67,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "vyravnivanie-potolkov-shtukaturka-gipsokarton-ili-natyazhnoy",
         "title": "Выравнивание потолков: штукатурка, гипсокартон или натяжной",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 68,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "portfolio-remonta-kottedzhey-i-zagorodnyh-domov",
         "title": "Портфолио ремонта коттеджей и загородных домов",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 69,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzha-v-poselke-montevil-260-mkv",
         "title": "Ремонт коттеджа в поселке Монтевиль 260 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 70,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "portfolio-remonta-i-otdelki-kvartir",
         "title": "Фото ремонта и отделки квартир",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 71,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzha-v-pavlovo-2-ploschadyu-800-mkv",
         "title": "Ремонт коттеджа в Павлово 2 площадью 800 м.кв",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 72,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzha-v-pos-montevil-ploschadyu-560-mkv",
         "title": "Ремонт коттеджа в пос. \"Монтевиль\", площадью 560 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 73,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzha-v-kp-montevil-ploschadyu-450-mkv",
         "title": "Ремонт коттеджа в кп Монтевиль площадью 450 м.кв",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 74,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzha-v-poselke-kotton-veyn-500-mkv",
         "title": "Ремонт коттеджа в поселке Коттон вейн 500 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 75,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "palitsy-260-mkv",
         "title": "Палицы 260 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 76,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "rozhdestvenno-500-mkv",
         "title": "Рождественно 500 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 77,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "taym-1-450-mkv",
         "title": "Тайм-1 450 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 78,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-taunhausa-leningradskoe-shosse-posivakino-pokrovskoe-240-mkv",
         "title": "Ремонт таунхауса Ленинградское шоссе пос.\"Ивакино покровское\" 240 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 79,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kottedzha-260-mkv-v-poselke-novorizhskiy",
         "title": "Ремонт коттеджа 260 м.кв в поселке Новорижский",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 80,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "zhk-prime-park-120-mkv",
         "title": "ЖК Prime Park 120 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 81,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "zhk-dinastiya-110-mkv",
         "title": "ЖК Династия 110 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 82,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "zhk-mosfilmovskiy-120-mkv",
         "title": "ЖК Мосфильмовский 120 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 83,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "zhk-vesterdam-100-mkv",
         "title": "ЖК Вестердам 100 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 84,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "zhk-vavilova-120-mkv",
         "title": "ЖК Вавилова 120 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 85,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "mytischi-zhk-nyuton-kvartira-100-mkv",
         "title": "Мытищи ЖК Ньютон | Квартира 100 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 86,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartiry-v-zhk-dominion-lomonosovskiy-prospekt-180-mkv",
         "title": "Ремонт квартиры в ЖК Доминион Ломоносовский проспект, 180 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 87,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "italyanskiy-kvartal-kvartira-100-mkv",
         "title": "Итальянский квартал, квартира 100 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 88,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartiry-v-zhk-skayfort-140-mkv",
         "title": "Ремонт квартиры в ЖК Скайфорт 140 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 89,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartiry-krasnogorsk-podmoskovnyy-bulvar-100-mkv",
         "title": "Ремонт квартиры Красногорск, Подмосковный бульвар, 100 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 90,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "akademika-volgina-kvartira-100-mkv",
         "title": "Академика Волгина квартира 100 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 91,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "kurkino-rodionovskaya-d10-120-mkv",
         "title": "Куркино, Родионовская, д.10, 120 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 92,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartiry-aprelevka-parkovaya-120-mkv",
         "title": "Ремонт квартиры Апрелевка, Парковая, 120 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 93,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartiry-v-zhk-skayfort-120-mkv",
         "title": "Ремонт квартиры в ЖК Скайфорт 120 м.кв.",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 94,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "portfolio-vypolnennyh-inzhenernyh-rabot",
         "title": "Портфолио выполненных инженерных работ",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 95,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "remont-kvartir-stati",
         "title": "Статьи про ремонт квартир",
-        "created_at": null,
         "updated_at": null
     },
     {
+        "created_at": null,
         "id": 96,
+        "published_at": "2023-11-06 12:30:35",
         "slug": "stati-po-remontu-kottedzhey",
         "title": "Статьи по ремонту коттеджей",
-        "created_at": null,
         "updated_at": null
     }
 ]
