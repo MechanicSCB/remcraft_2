@@ -61,7 +61,7 @@ class Gallery extends Model
     protected function folderPath(): Attribute
     {
         return Attribute::make(
-            get: fn() => storage_path("app/public/galleries/{$this->slug}")
+            get: fn() => storage_path("app/public/galleries/$this->slug")
         );
     }
 }

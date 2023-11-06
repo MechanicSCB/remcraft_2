@@ -16,7 +16,7 @@ class NodeSeeder extends Seeder
         (new DatabaseSeeder())->seedTableFromJsonFile('nodes');
     }
 
-    protected function getItems()
+    protected function getItems(): array
     {
         return [
             [

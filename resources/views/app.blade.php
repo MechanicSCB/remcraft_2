@@ -3,6 +3,7 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="Компания REMCRAFT выполняет качественный ремонт квартир в Москве и Московской области. Спектр наших услуг, опыт и профессионализм мастеров, а также компетенции руководителей проектов позволяют с высоким качеством провести абсолютно все внутренние отделочные работы в вашей квартире силами одного подрядчика.">
 
         <title inertia>{{ config('app.name', 'Laravel') }}</title>
 

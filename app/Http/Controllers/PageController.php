@@ -73,7 +73,7 @@ class PageController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(PageRequest $request, Page $page)
+    public function update(PageRequest $request, Page $page): RedirectResponse
     {
         $validated = $request->validated();
 

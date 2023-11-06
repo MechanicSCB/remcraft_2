@@ -4,6 +4,7 @@ use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\Str;
+use JetBrains\PhpStorm\NoReturn;
 use Symfony\Component\VarDumper\VarDumper;
 
 function stdToArray($input): array
@@ -35,7 +36,7 @@ function flatten(array $array, string $parentKey = null)
 }
 
 if (!function_exists('df')) {
-    function df(...$vars)
+    #[NoReturn] function df(...$vars): void
     {
         $file = str_replace(base_path(), '', debug_backtrace()[0]['file']);
         $line = debug_backtrace()[0]['line'];
