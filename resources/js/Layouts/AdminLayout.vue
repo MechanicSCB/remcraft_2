@@ -56,7 +56,7 @@ let migrateFreshSeed = () => {
             </AdminMenuItem>
 
             <AdminMenuItem route-name="bids.index" title="Заявки">
-                <CardAccountMail size="16"/>
+                <CardAccountMail :size="16"/>
                 Заявки
             </AdminMenuItem>
 
@@ -64,12 +64,12 @@ let migrateFreshSeed = () => {
                 <RefreshIcon class="-ml-0.5 w-5"/>
                 Обновить
             </Link>
-            <Link @click="router.post(route('logout'))" title="Выйти">
-                <LogoutIcon size="20"/>
+            <Link @click.prevent="router.post(route('logout'))" href="/logout" title="Выйти">
+                <LogoutIcon :size="20"/>
                 Выйти
             </Link>
-            <Link @click="migrateFreshSeed" class="!pl-0.5 bg-yellow-500 hover:!bg-yellow-600" title="Восстановить исходные данные">
-                <BackupRestore size="20"/>
+            <Link @click.prevent="migrateFreshSeed" href="/migrateFreshSeed" class="!pl-0.5 bg-yellow-500 hover:!bg-yellow-600" title="Восстановить исходные данные">
+                <BackupRestore :size="20"/>
                 Восстановить
             </Link>
         </div>

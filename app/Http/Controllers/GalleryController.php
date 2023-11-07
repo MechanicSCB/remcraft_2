@@ -18,7 +18,7 @@ class GalleryController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
-        $query = Gallery::query()->with('images', 'component.blocks');
+        $query = Gallery::query()->with('images', 'component.blocks.page');
 
         // FILTER
         if (@$request['title']) {
@@ -32,9 +32,17 @@ class GalleryController extends Controller
             }
         }
 
+        if (! is_null($request['type'])) {
+            if($request['type'] === '0'){
+                $query->doesntHave('component');
+            }else{
+                $query->whereRelation('component', 'type', '=', $request['type']);
+            }
+        }
+
         $query->latest();
 
-        $galleries = $query->get();
+        $galleries = $query->paginate($request->perPage ?? 50)->withQueryString();
 
         return inertia('Admin/Galleries/GalleriesIndex', compact('galleries'));
     }
@@ -91,7 +99,7 @@ class GalleryController extends Controller
 
         $gallery->update($validated);
 
-        return redirect(route('galleries.edit', $gallery))->withSuccess('updated!');
+        return back()->with('success', 'Обновлено!');
     }
 
     /**

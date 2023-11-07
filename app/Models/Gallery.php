@@ -43,7 +43,8 @@ class Gallery extends Model
             ->generateSlugsFrom('title')
             ->saveSlugsTo('slug')
             ->usingLanguage('ru')
-            ->startSlugSuffixFrom(2);
+            ->startSlugSuffixFrom(2)
+            ->doNotGenerateSlugsOnUpdate();
     }
 
     public function refreshOrders()

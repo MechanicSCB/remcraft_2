@@ -1,8 +1,9 @@
 <script setup>
-import Gallery from "@/Pages/Components/Gallery.vue";
+import GalleryImages from "@/Pages/Admin/Galleries/Partials/GalleryImages.vue";
 
 defineProps({gallery: Object});
 </script>
 <template>
-    <Gallery :galleries="[gallery]"/>
+    <!-- Show gallery's images -->
+    <GalleryImages :gallery="gallery"/>
 </template>
