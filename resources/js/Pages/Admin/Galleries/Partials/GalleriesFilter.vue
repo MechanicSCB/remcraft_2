@@ -3,6 +3,7 @@ import {router, useForm} from "@inertiajs/vue3";
 import {onMounted, ref, watch} from "vue";
 import CloseCross from "@/Svg/CloseCross.vue";
 import SelectPage from "@/Pages/Admin/Partials/SelectPage.vue";
+import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
 
 
 // FILTER
@@ -47,19 +48,18 @@ let setQueryArgsToFilterForm = () => {
 </script>
 <template>
     <form @submit.prevent class="flex gap-1 text-sm items-end">
-        <div class="flex flex-col">
-            <label for="title">Имя</label>
-            <input id="title" class="text-sm p-0 w-32" @input="submit" v-model="filterForm.title"/>
-        </div>
+        <LabelInput class="mb-0" @input="submit" v-model="filterForm.title" placeholder="поиск по имени"/>
 
-        <SelectPage v-model="filterForm.page_id"/>
+        <SelectPage class="w-[220px] h-[26px] overflow-hidden pl-1 pt-0.5 border border-gray-200 rounded" v-model="filterForm.page_id">
+            все страницы
+        </SelectPage>
 
-        <select class="text-sm py-0 pl-1 pr-7" v-model="filterForm.page_id">
+        <select class="rounded border-gray-200 text-sm py-0.5 pl-1 pr-7" v-model="filterForm.page_id">
             <option value="">все стр.</option>
             <option value="0">без стр.</option>
         </select>
 
-        <select class="text-sm py-0 pl-1 pr-7" v-model="filterForm.type" @change="submit">
+        <select class="rounded border-gray-200 text-sm py-0.5 text-sm pl-1 pr-7" v-model="filterForm.type" @change="submit">
             <option value="">все типы</option>
             <option value="0">без компонента</option>
             <option v-for="type in $page.props.componentTypes">{{ type }}</option>
@@ -67,7 +67,7 @@ let setQueryArgsToFilterForm = () => {
 
         <div class="flex flex-col max-w-[185px]">
             <label for="page">показать</label>
-            <select class="text-sm py-0 pl-1 pr-7" id="page" v-model="filterForm.perPage" @change="submit">
+            <select class="rounded border-gray-200 text-sm py-0.5 text-sm py-0 pl-1 pr-7" id="page" v-model="filterForm.perPage" @change="submit">
                 <option value="10000">все</option>
                 <option>10</option>
                 <option>20</option>

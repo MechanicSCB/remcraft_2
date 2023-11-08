@@ -36,7 +36,9 @@ let submit = () => {
             <SelectNode v-model="form.parent_path" class="mb-4"/>
 
             <!--  Select Page  -->
-            <SelectPage v-model="form.page_id" class="mb-4"/>
+            <SelectPage v-model="form.page_id" class="mb-4">
+                <div class="btn py-0.5">выберите страницу</div>
+            </SelectPage>
 
             <LabelInput v-model="form.href" :error-msg="form.errors.href" name="nodeHref">Ссылка</LabelInput>
 

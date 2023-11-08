@@ -22,7 +22,7 @@ let deleteGallery = (gallery) => {
     <Head title="Галереи"/>
 
     <div class="flex h-screen">
-        <div class="h-screen pt-[180px]">
+        <div class="h-screen pt-[200px]">
             <div class="fixed top-0 z-10">
                 <div class="mt-3 flex items-center">
                     <h3 class="text-xl font-bold">Галереи</h3>
@@ -34,7 +34,8 @@ let deleteGallery = (gallery) => {
                 <GalleriesFilter/>
 
                 <!-- Paginator -->
-                <Pagination :links="galleries.links" class="mt-3 mb-4"/>
+                <Pagination :links="galleries.links" class="mt-4 mb-4"/>
+                <div class="text-sm">{{ galleries.to - galleries.from + 1 }} показано с {{ galleries.from }} по {{ galleries.to }} из {{ galleries.total }}</div>
 
                 <!-- Table Header -->
                 <div class="w-[700px] flex justify-between space-x-4">

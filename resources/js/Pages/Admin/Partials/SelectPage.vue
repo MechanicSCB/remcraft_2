@@ -32,7 +32,8 @@ let filterItems = (pages) => {
             <div v-if="selectedPage = $page.props.pages[modelValue]">
                 {{ selectedPage.id }} - {{ selectedPage.title }}
             </div>
-            <div v-else class="btn py-0.5">выберите страницу</div>
+            <div v-else><slot/></div>
+            <!--<div v-else class="btn py-0.5">выберите страницу</div>-->
 
             <!-- Form Errors  -->
             <FormErrorMsg :error-msg="errorMsg"/>
