@@ -18,6 +18,7 @@ class GalleryController extends Controller
      */
     public function index(Request $request): Response|ResponseFactory
     {
+        $perPage = 20;
         $query = Gallery::query()->with('images', 'component.blocks.page');
 
         // FILTER
@@ -42,7 +43,7 @@ class GalleryController extends Controller
 
         $query->latest();
 
-        $galleries = $query->paginate($request->perPage ?? 50)->withQueryString();
+        $galleries = $query->paginate($request->perPage ?? $perPage)->withQueryString();
 
         return inertia('Admin/Galleries/GalleriesIndex', compact('galleries'));
     }

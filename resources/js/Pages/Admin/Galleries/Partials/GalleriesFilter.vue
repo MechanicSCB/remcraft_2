@@ -10,7 +10,7 @@ let filterForm = useForm({
     title: '',
     sort_by: 'id',
     page_id: '',
-    perPage: '50',
+    perPage: '20',
     type: '',
 });
 
@@ -70,6 +70,7 @@ let setQueryArgsToFilterForm = () => {
             <select class="text-sm py-0 pl-1 pr-7" id="page" v-model="filterForm.perPage" @change="submit">
                 <option value="10000">все</option>
                 <option>10</option>
+                <option>20</option>
                 <option>50</option>
                 <option>100</option>
             </select>

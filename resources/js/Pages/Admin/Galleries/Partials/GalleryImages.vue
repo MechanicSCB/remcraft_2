@@ -4,10 +4,10 @@ import GalleryImage from "@/Pages/Admin/Galleries/Partials/GalleryImage.vue";
 import CloseCross from "@/Svg/CloseCross.vue";
 import {ref} from "vue";
 
-let props = defineProps({gallery: Object,});
+let props = defineProps({gallery: Object});
 let showModal = ref(null);
 
-let imgFormat = ref('orig');
+let imgFormat = ref('195x130');
 
 let getSrc = (image) => {
     let src = '/storage/galleries/' + props.gallery.slug + '/' + imgFormat.value + '/' + image.name + '.';
