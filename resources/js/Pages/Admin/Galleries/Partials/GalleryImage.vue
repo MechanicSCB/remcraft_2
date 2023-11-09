@@ -1,7 +1,7 @@
 <script setup>
 import {onMounted, ref} from "vue";
 
-let props = defineProps({image: Object, src: Object});
+let props = defineProps({image: Object, src: String});
 
 let info = ref({});
 

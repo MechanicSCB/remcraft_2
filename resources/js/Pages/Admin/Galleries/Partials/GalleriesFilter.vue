@@ -48,7 +48,7 @@ let setQueryArgsToFilterForm = () => {
 </script>
 <template>
     <form @submit.prevent class="flex gap-1 text-sm items-end">
-        <LabelInput class="mb-0" @input="submit" v-model="filterForm.title" placeholder="поиск по имени"/>
+        <LabelInput class="!mb-0" @input="submit" v-model="filterForm.title" placeholder="поиск по имени"/>
 
         <SelectPage class="w-[220px] h-[26px] overflow-hidden pl-1 pt-0.5 border border-gray-200 rounded" v-model="filterForm.page_id">
             все страницы

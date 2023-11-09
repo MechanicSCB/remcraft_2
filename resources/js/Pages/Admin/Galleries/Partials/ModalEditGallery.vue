@@ -21,7 +21,7 @@ let showModal = ref(false);
                 <CloseCross @click="showModal=false" class="m-2 w-10 absolute top-0 right-0 cursor-pointer bg-white text-gray-500 hover:text-black"/>
 
                 <!-- Show gallery's images -->
-                <GalleryImages :key="12" :gallery="gallery"/>
+                <GalleryImages :gallery="gallery"/>
 
                 <!-- Upload Photos -->
                 <UploadImages class="my-4" v-if="gallery" :gallery="gallery"/>

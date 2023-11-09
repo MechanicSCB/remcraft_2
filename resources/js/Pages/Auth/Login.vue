@@ -37,6 +37,11 @@ const submit = () => {
             {{ status }}
         </div>
 
+        <div class="text-sm mb-2">
+            <div>Email: admin@remcraft.ru</div>
+            <div>Пароль: admin@remcraft.ru</div>
+        </div>
+
         <form @submit.prevent="submit">
             <div>
                 <InputLabel for="email" value="Email" />

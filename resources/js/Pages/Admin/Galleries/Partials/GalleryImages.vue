@@ -7,7 +7,7 @@ import {ref} from "vue";
 let props = defineProps({gallery: Object});
 let showModal = ref(null);
 
-let imgFormat = ref('195x130');
+let imgFormat = ref('webp');
 
 let getSrc = (image) => {
     let src = '/storage/galleries/' + props.gallery.slug + '/' + imgFormat.value + '/' + image.name + '.';
@@ -58,7 +58,7 @@ function dragDrop(event, order) {
     </div>
 
     <!--  Modal  -->
-    <div @click="showModal=null" v-if="showModal" class="fixed z-[1] top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center">
+    <div @click="showModal=null" v-if="showModal" class="fixed z-[10] top-0 left-0 w-full h-screen bg-[rgba(0,0,0,0.7)] flex items-center justify-center">
         <img :src="showModal" alt="">
     </div>
 </template>

@@ -10,7 +10,7 @@ import GalleryImages from "@/Pages/Admin/Galleries/Partials/GalleryImages.vue";
 import Pagination from "@/Layouts/Partials/Pagination.vue";
 
 let props = defineProps({galleries: Object});
-let showedGallery = ref(props.galleries.data[0]);
+let showedGalleryDataId = ref(0);
 
 let deleteGallery = (gallery) => {
     if (confirm('Вы действительно хотите удалить галерею: ' + gallery.title + '?')) {
@@ -38,7 +38,7 @@ let deleteGallery = (gallery) => {
                 <div class="text-sm">{{ galleries.to - galleries.from + 1 }} показано с {{ galleries.from }} по {{ galleries.to }} из {{ galleries.total }}</div>
 
                 <!-- Table Header -->
-                <div class="w-[700px] flex justify-between space-x-4">
+                <div class="w-[700px] flex text-sm font-bold justify-between space-x-4">
                         <div class="w-[500px]">
                             Имя
                         </div>
@@ -54,17 +54,17 @@ let deleteGallery = (gallery) => {
 
             <div class="flex h-full">
                 <!-- Left -->
-                <div class="h-full shrink-0 w-[700px] overflow-y-auto pb-6 pr-3">
-                    <div v-for="gallery in galleries.data"
-                         @click="showedGallery=gallery"
+                <div class="h-full shrink-0 w-[550px] overflow-y-auto pb-6 pr-3">
+                    <div v-for="(gallery, id) in galleries.data"
+                         @click="showedGalleryDataId=id"
                          class="py-1 w-full flex items-center justify-between space-x-4 text-xs hover:bg-blue-100 cursor-pointer"
-                         :class="{'bg-blue-200':showedGallery===gallery}"
+                         :class="{'bg-blue-200':showedGalleryDataId===id}"
                     >
-                        <div class="w-[500px]">
-                            {{ gallery.id }})  {{ gallery.title }} ({{ gallery?.images?.length }}) - {{ gallery.component?.type }}
+                        <div class="w-[400px]">
+                            id:{{ gallery.id }}  {{ gallery.title }} ({{ gallery?.images?.length }}) - {{ gallery.component?.type ?? 'No Component' }}
                         </div>
 
-                        <div class="flex overflow-y-auto gap-2 w-[150px]">
+                        <div class="flex overflow-y-auto gap-2 w-[100px]">
                             <a v-for="block in gallery.component?.blocks"
                                :href="'/' + block.page.slug + '#block_' + block.id"
                                target="_blank"
@@ -80,7 +80,6 @@ let deleteGallery = (gallery) => {
                                 <PencilIcon class="w-3.5"/>
                             </ModalEditGallery>
 
-                            <!--<Link :href="route('galleries.edit', gallery.id)" class="hover:text-red-700"><PencilIcon class="w-3.5"/></Link>-->
                             <a :href="route('galleries.show', gallery.id)" class="hover:text-red-700" target="_blank">
                                 <LinkIcon class="w-3.5"/>
                             </a>
@@ -93,8 +92,8 @@ let deleteGallery = (gallery) => {
 
                 <!--  Right  -->
                 <div class="px-4 h-full overflow-y-auto">
-                    <div class="mb-2">{{showedGallery.slug}}</div>
-                    <GalleryImages :gallery="showedGallery"/>
+                    <div class="mb-2">{{galleries.data[showedGalleryDataId]?.slug}}</div>
+                    <GalleryImages :gallery="galleries.data[showedGalleryDataId]"/>
                 </div>
             </div>
         </div>

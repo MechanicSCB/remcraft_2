@@ -14,9 +14,20 @@ class UserSeeder extends Seeder
     public function run(): void
     {
         // (new DatabaseSeeder())->seedTable('users');
-        $users = [];
+        $users = [
+            [
+                'id' => 1,
+                'name' => 'admin',
+                'email' => "admin@remcraft.ru",
+                'password' => bcrypt("admin@remcraft.ru"),
+                'current_team_id' => 1,
+                'profile_photo_path' => "profile-photos/a1.jpg",
+                'created_at' => now(),
+                'updated_at' => now(),
+            ],
+        ];
 
-        for ($i = 1; $i <= 5; $i++) {
+        for ($i = 2; $i <= 6; $i++) {
             $avatar= "a$i.jpg";
 
             $name = 'user' . sprintf("%03d", $i);

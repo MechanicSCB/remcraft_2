@@ -68,10 +68,10 @@ let migrateFreshSeed = () => {
                 <LogoutIcon :size="20"/>
                 Выйти
             </Link>
-            <Link @click.prevent="migrateFreshSeed" href="/migrateFreshSeed" class="!pl-0.5 bg-yellow-500 hover:!bg-yellow-600" title="Восстановить исходные данные">
+            <div @click.prevent="migrateFreshSeed"  class="py-1 !pl-0.5 bg-yellow-500 hover:!bg-yellow-600 flex gap-2 cursor-pointer" title="Восстановить исходные данные">
                 <BackupRestore :size="20"/>
                 Восстановить
-            </Link>
+            </div>
         </div>
 
         <main class="ml-10 w-full">
