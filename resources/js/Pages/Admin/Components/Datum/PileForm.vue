@@ -1,14 +1,22 @@
 <script setup>
 import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
+import TipTap from "@/Pages/Admin/Components/Datum/Partials/TipTap/TipTap.vue";
 
 let props = defineProps({modelValue:Object, galleries:Array});
 </script>
 <template>
-    <LabelInput v-model="modelValue['title']"/>
     <select v-model="modelValue['prev']">
         <option :value=true>с превью</option>
         <option :value=false>без превью</option>
     </select>
+
+    <div class="mt-6 main">
+        <div>Текст перед слайдером</div>
+        <TipTap no-fix class="border min-h-[150px]" v-model="modelValue['pre']"/>
+
+        <div class="mt-6">Текст после слайдера</div>
+        <TipTap no-fix class="mt-4 border min-h-[150px]" v-model="modelValue['ps']"/>
+    </div>
 
     <!-- Links -->
     <div class="mt-5 text-sm flex flex-col gap-1">

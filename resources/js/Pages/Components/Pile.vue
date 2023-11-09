@@ -20,6 +20,10 @@ let getObjectPageLink = () => {
 </script>
 <template>
     <div class="block-container">
+        <!-- Html before slider -->
+        <div v-if="datum?.pre" class="w-full mobile-px" v-html="datum?.pre"></div>
+
+        <!-- Pile block -->
         <div class="lg:-mx-16 flex flex-col md:flex-row md:h-[380px] lg:h-[500px] gap-8">
             <!-- Main Gallery Slider -->
             <div class="relative w-full sm:min-w-[480px] lg:w-[720px] h-full">
@@ -76,5 +80,8 @@ let getObjectPageLink = () => {
                 </div>
             </div>
         </div>
+
+        <!-- Html after slider -->
+        <div v-if="datum?.ps" class="w-full mobile-px" v-html="datum?.ps"></div>
     </div>
 </template>

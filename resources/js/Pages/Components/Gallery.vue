@@ -8,7 +8,7 @@ let props = defineProps({datum: Object, galleries:Object});
 <template>
     <div class="flex flex-col">
         <!-- Html before slider -->
-        <div class="w-full block-container mobile-px" v-if="datum?.pre" v-html="datum?.pre"></div>
+        <div v-if="datum?.pre" class="w-full block-container mobile-px" v-html="datum?.pre"></div>
 
         <!-- Slider -->
         <div class="w-full">
@@ -18,6 +18,6 @@ let props = defineProps({datum: Object, galleries:Object});
         </div>
 
         <!-- Html after slider -->
-        <div class="w-full block-container mobile-px" v-if="datum?.ps" v-html="datum?.ps"></div>
+        <div v-if="datum?.ps" class="w-full block-container mobile-px" v-html="datum?.ps"></div>
     </div>
 </template>

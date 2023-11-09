@@ -83,4 +83,8 @@ const onSlideChange = () => {
 .swiper:hover .swiper-pagination{
     margin-bottom: 30px;
 }
+
+.swiper-scrollbar-drag{
+    cursor: pointer;
+}
 </style>

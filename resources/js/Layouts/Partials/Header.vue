@@ -5,6 +5,7 @@ import HamburgerButton from "@/Layouts/Partials/HamburgerButton.vue";
 import ChevronRightIcon from "@/Svg/ChevronRightIcon.vue";
 import {ordered} from "@/Stores/Common.js";
 import Bid from "@/Pages/Components/Bid.vue";
+import RefreshIcon from "@/Svg/RefreshIcon.vue";
 
 let isScrolled = inject('isScrolled');
 let showMobileMenu = inject('showMobileMenu');
@@ -75,6 +76,8 @@ let showMobileMenu = inject('showMobileMenu');
         <div class="hidden md:flex space-x-8 items-center">
             <div class="hidden xl:flex">
                 <Link :href="route('admin')" preserve-scroll>+7&nbsp;(985)&nbsp;740-30-30</Link>
+                <!-- TODO dev! -->
+                <Link href="#" class="hover:text-red-600" preserve-scroll><RefreshIcon class="w-4"/></Link>
             </div>
             <Bid :datum='{"slot":"Оставить&nbsp;заявку", "modal":"true"}'/>
         </div>

@@ -17,6 +17,7 @@ let props = defineProps({datum: Object, galleries: Object});
         <div v-else class="flex justify-center items-center h-full">
             <!-- TODO hide adds and controls if vk -->
             <LazyIFrame class="absolute mx-auto z-0 w-[300%] h-full xl:h-[150%] bg-gray-950" :src="datum?.src"/>
+            <div class="relative w-full h-full bg-[rgba(0,0,0,0.5)]"></div>
         </div>
 
         <div class="z-1 absolute w-full h-full bg-[rgba(0,0,0,0.5)]"></div>
