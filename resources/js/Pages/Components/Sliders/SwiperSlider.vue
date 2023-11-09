@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/scrollbar';
 
-let props = defineProps({gallery:Object});
+let props = defineProps({gallery:Object, datum:Object, pagination:Boolean});
 
 function getImagesPaths(){
     let paths = [];
@@ -41,10 +41,12 @@ const onSlideChange = () => {
         :space-between="1"
         :modules="modules"
         navigation
-        :pagination="{ clickable: true }"
+        :pagination="pagination || datum?.pagination ? { clickable: true } : false"
         :scrollbar="{ draggable: true }"
     >
-        <swiper-slide  class="aspect-[3/2] max-w-[480px] sm:max-w-[720px] bg-gray-100" v-for="(src, id) in getImagesPaths()">
+        <swiper-slide  class="aspect-[3/2] max-w-[480px] sm:max-w-[720px] bg-gray-100"
+                       v-for="(src, id) in getImagesPaths()"
+        >
             <img :loading="id > -1 ? 'lazy' : 'eager'" :src="src" alt="">
         </swiper-slide>
     </swiper>
@@ -81,5 +83,4 @@ const onSlideChange = () => {
 .swiper:hover .swiper-pagination{
     margin-bottom: 30px;
 }
-
 </style>

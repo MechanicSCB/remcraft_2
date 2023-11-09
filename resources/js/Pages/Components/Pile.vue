@@ -14,7 +14,6 @@ let getObjectPageLink = () => {
     res = props.datum?.links?.filter(function (link) {
         return link.gallerySlug === props.galleries[activeGallery.value].slug;
     })
-    // console.log(props.galleries[activeGallery.value].slug,res[0]?.href);
 
     return (res ?? [])[0]?.href;
 };
@@ -31,7 +30,7 @@ let getObjectPageLink = () => {
                     <BlankLinkIcon/>
                 </Link>
 
-                <SwiperSlider :gallery="galleries[activeGallery]" disableCaption="true"/>
+                <SwiperSlider :gallery="galleries[activeGallery]" :datum='datum' :pagination="datum?.prev === false" disableCaption="true"/>
             </div>
 
             <!-- Wide gallery selector -->

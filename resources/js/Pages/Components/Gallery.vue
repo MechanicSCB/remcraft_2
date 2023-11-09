@@ -14,7 +14,7 @@ let props = defineProps({datum: Object, galleries:Object});
         <div class="w-full">
             <MosaicSlider class="block-container" v-if="datum?.type === 'mosaic'" :gallery='galleries[0]'/>
             <QuatroSlider class="block-container" v-else-if="datum?.type === 'quatro'" :gallery='galleries[0]'/>
-            <SwiperSlider v-else :gallery='galleries[0]'/>
+            <SwiperSlider v-else :gallery='galleries[0]' :datum="datum"/>
         </div>
 
         <!-- Html after slider -->
