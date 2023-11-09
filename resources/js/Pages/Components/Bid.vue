@@ -28,6 +28,7 @@ let showModal = ref(false);
                     <!-- Close Modal List Button -->
                     <CloseCross @click="showModal=false" class="m-2 w-10 absolute top-0 right-0 cursor-pointer bg-white text-gray-500 hover:text-black"/>
 
+                    <h2 class="text-4xl mb-6">Заявка на расчет стоимости ремонта</h2>
                     <BidForm/>
                 </div>
             </div>
