@@ -2,6 +2,7 @@
 import {provide, ref} from "vue";
 import TabBookmark from "@/Pages/Components/Calculator/TabBookmark.vue";
 import TabBookmarkSmall from "@/Pages/Components/Calculator/TabBookmarkSmall.vue";
+import Bid from "@/Pages/Components/Bid.vue";
 
 let props = defineProps({datum:Object});
 let activeTab = ref('standard');
@@ -134,9 +135,7 @@ provide('activeTab', activeTab)
                                     <span class="text-xs text-[#1071ff] cursor-pointer">Подробный перечень работ</span>
                                 </div>
                             </div>
-                            <div class="mt-5 md:ml-24 px-6 py-4 flex items-center justify-center bg-[#1071ff] text-white text-sm">
-                                Отправить заявку
-                            </div>
+                            <Bid class="w-full md:w-fit mt-5 md:ml-24 flex items-center justify-center bg-[#1071ff]" :datum="{'slot':'Отправить заявку'}"/>
                         </div>
                     </div>
                 </div>

@@ -28,7 +28,7 @@ let getObjectPageLink = () => {
             <!-- Main Gallery Slider -->
             <div class="relative w-full sm:min-w-[480px] lg:w-[720px] h-full">
                 <Link v-if="getObjectPageLink()"
-                      class="absolute top-1 right-1 z-10 rounded bg-[#1071ff] !text-white p-2 w-10 h-10"
+                      class="absolute top-1 right-1 z-10 rounded bg-[#1071ff] !text-white p-2 w-10 h-10 opacity-50 hover:opacity-100"
                       :href="getObjectPageLink()"
                 >
                     <BlankLinkIcon/>

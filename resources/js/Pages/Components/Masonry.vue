@@ -14,8 +14,8 @@ let props = defineProps({datum: Object});
                     <h3 class="text-2xl">{{ brick.title }}</h3>
                 </div>
                 <div class="mt-4" v-html="brick.body"/>
-                <div class="mt-5 text-sm underline">
-                    <Link v-for="link in brick.links" :href="link.href" class="mr-2 ">{{ link.text }}</Link>
+                <div class="mt-5 text-sm">
+                    <Link v-for="link in brick.links" :href="link.href" class="mr-2 underline hover:no-underline">{{ link.text }}</Link>
                 </div>
             </div>
         </div>

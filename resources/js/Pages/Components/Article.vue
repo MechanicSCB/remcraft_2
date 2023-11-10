@@ -6,14 +6,14 @@ let props = defineProps({datum: Object, galleries: Object});
 <template>
     <div class="block-container mobile-px">
         <h2 class="mb-3" v-if="datum.title">{{ datum.title }}</h2>
-        <div class="mb-8" v-if="datum.pre" v-html="datum.pre"/>
+        <div class="" v-if="datum.pre" v-html="datum.pre"/>
 
         <!-- ITEMS -->
         <div class="">
             <div v-for="(item, id) in datum.items"
                  class="w-full mb-12"
             >
-                <h3>{{ item.title }}</h3>
+                <h3 v-if="item.title">{{ item.title }}</h3>
 
                 <div>
                     <div v-if="item.pre" v-html="item.pre" class="mb-5"/>

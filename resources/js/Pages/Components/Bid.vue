@@ -15,7 +15,7 @@ let showModal = ref(false);
         </div>
         <div v-else>
             <!-- Modal show button -->
-            <div class="mx-auto bg-blue-500 text-white w-fit h-fit px-6 py-3 cursor-pointer"
+            <div class="mx-auto bg-[#1071ff] text-white w-fit h-fit px-6 py-3 cursor-pointer"
                  @click="showModal=true"
                  v-html="datum?.slot ?? 'Оставить&nbsp;заявку'"
             />

@@ -38,12 +38,12 @@ let deleteGallery = (gallery) => {
                 <div class="text-sm">{{ galleries.to - galleries.from + 1 }} показано с {{ galleries.from }} по {{ galleries.to }} из {{ galleries.total }}</div>
 
                 <!-- Table Header -->
-                <div class="w-[700px] flex text-sm font-bold justify-between space-x-4">
-                        <div class="w-[500px]">
+                <div class="w-[550px] flex text-sm font-bold justify-between space-x-4">
+                        <div class="w-[350px]">
                             Имя
                         </div>
 
-                        <div class="w-[150px]">
+                        <div class="w-[100px]">
                             страницы
                         </div>
 

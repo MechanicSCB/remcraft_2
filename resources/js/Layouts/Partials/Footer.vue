@@ -24,9 +24,9 @@ import Instagram from "@/Svg/Instagram.vue";
 
             <!-- Social -->
             <div class="flex space-x-6 items-center">
-                <Facebook/>
-                <Youtube/>
-                <Instagram/>
+                <a href="https://facebook.com/remcraft.ru" target="_blank"><Facebook/></a>
+                <a href="https://www.youtube.com/c/REMCRAFT" target="_blank"><Youtube/></a>
+                <a href="https://www.instagram.com/remcraft.ru" target="_blank"><Instagram/></a>
             </div>
 
             <!--  Right  -->

@@ -30,10 +30,9 @@ let filterItems = (pages) => {
         <!-- The selected page and a button to display modal -->
         <div @click="showModal=!showModal" class="cursor-pointer hover:text-blue-500 overflow-y-auto">
             <div v-if="selectedPage = $page.props.pages[modelValue]">
-                {{ selectedPage.id }} - {{ selectedPage.title }}
+                стр.{{ selectedPage.id }} - {{ selectedPage.title }}
             </div>
             <div v-else><slot/></div>
-            <!--<div v-else class="btn py-0.5">выберите страницу</div>-->
 
             <!-- Form Errors  -->
             <FormErrorMsg :error-msg="errorMsg"/>
