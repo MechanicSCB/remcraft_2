@@ -24,7 +24,7 @@ let showMobileMenu = inject('showMobileMenu');
         <!-- Menu -->
         <div class="hidden xl:flex h-full">
             <div v-for="item in ordered($page.props.menu[1].nodes[65].nodes)" class="group/main h-full flex px-4 items-center">
-                <Link v-if="item.published_at ?? item.href" :href="item.href ?? item.slug ?? ''" class="hover:text-blue-500">{{ item.title }}</Link>
+                <Link v-if="item.published_at ?? item.href" :href="item.href ?? '/' + item.slug ?? ''" class="hover:text-blue-500">{{ item.title }}</Link>
                 <span v-else>{{ item.title }}</span>
 
                 <!-- menu items background -->
@@ -37,7 +37,7 @@ let showMobileMenu = inject('showMobileMenu');
                              class="mb-2 mr-10 group/sub w-full text-[#909597]"
                         >
                             <div class="flex items-center">
-                                <Link v-if="subItem.published_at ?? subItem.href" :href="subItem.href ?? subItem.slug ?? ''" class="hover:text-[#353535] hover:underline">{{ subItem.title }}</Link>
+                                <Link v-if="subItem.published_at ?? subItem.href" :href="subItem.href ?? '/' + subItem.slug ?? ''" class="hover:text-[#353535] hover:underline">{{ subItem.title }}</Link>
                                 <span v-else>{{ subItem.title }}</span>
                                 <div v-if="Object.keys(subItem.nodes ?? {}).length" class="ml-4 h-full pt-1">
                                     <ChevronRightIcon class="w-5 h-5 fill-indigo-500"/>
@@ -46,7 +46,7 @@ let showMobileMenu = inject('showMobileMenu');
                             <div v-if="Object.keys(subItem.nodes ?? {}).length" class="absolute h-0 w-0">
                                 <div class="invisible group-hover/sub:visible group-hover/sub:duration-0 transition-all duration-300 flex flex-col space-y-3 text-[18px] text-[#909597] bg-white relative left-[150px] top-[-30px] px-8 py-4 w-[350px] shadow-xl max-h-[500px] overflow-y-auto pb-10">
                                     <div v-for="subSubItem in ordered(subItem.nodes)">
-                                        <Link v-if="subSubItem.published_at ?? subSubItem.href" :href="subSubItem.href ?? subSubItem.slug ?? ''" class="hover:text-black hover:underline transition-all duration-300">
+                                        <Link v-if="subSubItem.published_at ?? subSubItem.href" :href="subSubItem.href ?? '/' + subSubItem.slug ?? ''" class="hover:text-black hover:underline transition-all duration-300">
                                             {{ subSubItem.title }}
                                         </Link>
                                     </div>

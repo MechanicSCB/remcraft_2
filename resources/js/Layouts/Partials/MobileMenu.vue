@@ -18,7 +18,7 @@ let expandedSubItem = ref(null);
             <!-- Main Items -->
             <Link class="px-10 border-t flex justify-between items-center hover:text-black"
                   :class="expandedItem===itemKey ? 'bg-[#1071ff] !text-white' : ''"
-                  :href="item.href ?? item.slug ?? ''"
+                  :href="item.href ?? '/' + item.slug ?? ''"
                   @click="showMobileMenu=false"
             >
                 <div class="py-4">{{ item.title }}</div>
@@ -32,14 +32,14 @@ let expandedSubItem = ref(null);
                  class="border-t bg-[rgba(232,232,232,0.54)] flex flex-col"
             >
                 <div class="ml-20 flex items-center mr-10">
-                    <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="subItem.href ?? subItem.slug ?? ''">{{ subItem.title }}</Link>
+                    <Link @click="showMobileMenu=false" class="w-full h-full py-4" :href="subItem.href ?? '/' + subItem.slug ?? ''">{{ subItem.title }}</Link>
                     <ExpandIcon v-if="Object.keys(subItem.nodes ?? {}).length && expandedSubItem!==subItemKey" @click="expandedSubItem=subItemKey" class="pt-1 w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
                     <CollapseIcon v-if="Object.keys(subItem.nodes ?? {}).length && expandedSubItem===subItemKey" @click="expandedSubItem=null" class="w-7 h-7 bg-[#d8d8d8] rounded-full cursor-pointer"/>
                 </div>
 
                 <!-- Expanded SubSubItems -->
                 <div v-if="expandedSubItem===subItemKey" v-for="(subSubItem, subSubItemKey) in ordered(subItem.nodes)" class="pl-20 border-t flex justify-between items-center pr-10 bg-[rgba(232,232,232,0.54)]">
-                    <Link @click="showMobileMenu=false" class="ml-10 w-full h-full py-4" :href="subSubItem.href ?? subSubItem.slug  ?? ''">{{ subSubItem.title }}</Link>
+                    <Link @click="showMobileMenu=false" class="ml-10 w-full h-full py-4" :href="subSubItem.href ?? '/' + subSubItem.slug  ?? ''">{{ subSubItem.title }}</Link>
                 </div>
             </div>
         </div>

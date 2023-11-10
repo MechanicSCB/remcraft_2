@@ -55,7 +55,8 @@ class Component extends Model
             ->generateSlugsFrom(['title', 'type'])
             ->saveSlugsTo('slug')
             ->usingLanguage('ru')
-            ->startSlugSuffixFrom(2);
+            ->startSlugSuffixFrom(2)
+            ->doNotGenerateSlugsOnUpdate();
     }
 
     protected function pages(): Attribute

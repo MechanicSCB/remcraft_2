@@ -31,7 +31,8 @@ class ComponentController extends Controller
 
         // FILTER
         if (@$request['title']) {
-            $query->where('title', 'like', "%$request->title%");
+            $query->where('title', 'like', "%$request->title%")
+                ->orWhere('id', 'like', "%$request->title%");
         }
         if (!is_null($request['page_id'])) {
             if ($request['page_id'] === '0') {
