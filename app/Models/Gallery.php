@@ -58,7 +58,6 @@ class Gallery extends Model
         Image::query()->upsert($images, 'id');
     }
 
-
     protected function folderPath(): Attribute
     {
         return Attribute::make(

@@ -111,7 +111,8 @@ class GalleryController extends Controller
         $gallery->delete();
 
         // Remove gallery folder
-        File::deleteDirectory($gallery['folderPath']);
+        // TODO temporary disabled gallery folder removal
+        // File::deleteDirectory($gallery['folderPath']);
 
         return back()->with('success', 'Галерея удалена!');
     }

@@ -37,15 +37,16 @@ class Image extends Model
     public function remove()
     {
         // remove all Image files ('orig', 'webp', 'w720', ...)
-        $origPath = $this->origPath;
-
-        foreach (self::$formats as $format) {
-            $formatPath = str_replace('/orig/', "/$format/", $origPath);
-            $formatPath = str_replace(".$this->ext", '.webp', $formatPath);
-            File::delete($formatPath);
-        }
-
-        File::delete($origPath);
+        // TODO temporary disabled image files removal
+        // $origPath = $this->origPath;
+        //
+        // foreach (self::$formats as $format) {
+        //     $formatPath = str_replace('/orig/', "/$format/", $origPath);
+        //     $formatPath = str_replace(".$this->ext", '.webp', $formatPath);
+        //     File::delete($formatPath);
+        // }
+        //
+        // File::delete($origPath);
 
         $this->delete();
     }
