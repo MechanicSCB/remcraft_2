@@ -7,18 +7,20 @@ import SelectPage from "@/Pages/Admin/Partials/SelectPage.vue";
 import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
 import PencilIcon from "@/Svg/PencilIcon.vue";
 import ModalEditComponent from "@/Pages/Admin/Components/Partials/ModalEditComponent.vue";
+import ModalEditGallery from "@/Pages/Admin/Galleries/Partials/ModalEditGallery.vue";
+import ImageIcon from "@/Svg/TipTap/ImageIcon.vue";
 
 let props = defineProps({block: Object});
 
 let form = useForm({
-    page_id: props.block?.page_id.toString() ?? '',
-    component_id: props.block?.component_id.toString() ?? '',
-    order: props.block?.order.toString() ?? 999,
+    page_id: props.block?.page_id?.toString() ?? '',
+    component_id: props.block?.component_id?.toString() ?? '',
+    order: props.block?.order?.toString() ?? 999,
     classes: props.block?.classes ?? '',
     inner_classes: props.block?.inner_classes ?? '',
     style: props.block?.style ?? '',
-    pt: props.block?.pt.toString() ?? '',
-    pb: props.block?.pb.toString() ?? '',
+    pt: props.block?.pt?.toString() ?? '',
+    pb: props.block?.pb?.toString() ?? '',
     datum: JSON.stringify(props.block?.datum) ?? '',
 });
 
@@ -69,8 +71,12 @@ let setQueryArgsToFilterForm = () => {
                 Компонент:
                 <SelectComponent v-model="form.component_id" :error-msg="form.errors.component_id"/>
                 <ModalEditComponent v-if="form.component_id" :component-id="form.component_id">
-                    <PencilIcon class="w-5"/>
+                    <PencilIcon class="w-5 hover:text-red-600"/>
                 </ModalEditComponent>
+
+                <ModalEditGallery v-if="block?.component?.galleries[0]" :gallery="block?.component?.galleries[0]">
+                    <ImageIcon class="hover:text-red-600"/>
+                </ModalEditGallery>
             </div>
 
             <LabelInput v-model="form.order" :errorMsg="form.errors['order']" type="number" required>

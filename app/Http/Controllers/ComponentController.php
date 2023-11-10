@@ -17,7 +17,7 @@ class ComponentController extends Controller
      */
     public function getData(Component $component): Component
     {
-        $component->load('galleries');
+        $component->load('galleries.images');
 
         return $component;
     }
