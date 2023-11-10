@@ -75,9 +75,10 @@ let showMobileMenu = inject('showMobileMenu');
         <!-- Right -->
         <div class="hidden md:flex space-x-8 items-center">
             <div class="hidden xl:flex">
-                <Link :href="route('admin')" preserve-scroll>+7&nbsp;(985)&nbsp;740-30-30</Link>
+                <span>+7&nbsp;(985)&nbsp;740-30-30</span>
+                <!--<Link :href="route('admin')" preserve-scroll>+7&nbsp;(985)&nbsp;740-30-30</Link>-->
                 <!-- TODO dev! -->
-                <Link href="#" class="hover:text-red-600" preserve-scroll><RefreshIcon class="w-4"/></Link>
+                <!--<Link href="#" class="hover:text-red-600" preserve-scroll><RefreshIcon class="w-4"/></Link>-->
             </div>
             <Bid :datum='{"slot":"Оставить&nbsp;заявку", "modal":"true"}'/>
         </div>

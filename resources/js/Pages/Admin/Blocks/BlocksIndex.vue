@@ -11,7 +11,7 @@ let props = defineProps({blocks: Object});
 let showedBlock = ref(props.blocks[0]);
 
 let deleteBlock = (block) => {
-    if (confirm('Вы действительно хотите удалить блок: ' + block.component.title + '?')) {
+    if (confirm('Вы действительно хотите удалить блок: ' + block.component_id + '?')) {
         router.delete(route('blocks.destroy', block));
     }
 }

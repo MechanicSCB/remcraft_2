@@ -1,26 +1,24 @@
 <script setup>
 import {router, useForm} from "@inertiajs/vue3";
 import {onMounted} from "vue";
-// import ComponentCreateEdit from "@/Pages/Admin/Components/ComponentCreateEdit.vue";
 import ArrowLeftIcon from "@/Svg/ArrowLeft.vue";
 import SelectComponent from "@/Pages/Admin/Partials/SelectComponent.vue";
 import SelectPage from "@/Pages/Admin/Partials/SelectPage.vue";
 import LabelInput from "@/Pages/Admin/Partials/LabelInput.vue";
 import PencilIcon from "@/Svg/PencilIcon.vue";
 import ModalEditComponent from "@/Pages/Admin/Components/Partials/ModalEditComponent.vue";
-import FormErrorMsg from "@/Pages/Admin/Partials/FormErrorMsg.vue";
 
 let props = defineProps({block: Object});
 
 let form = useForm({
-    page_id: props.block?.page_id ?? '',
-    component_id: props.block?.component_id ?? '',
-    order: props.block?.order ?? 999,
+    page_id: props.block?.page_id.toString() ?? '',
+    component_id: props.block?.component_id.toString() ?? '',
+    order: props.block?.order.toString() ?? 999,
     classes: props.block?.classes ?? '',
     inner_classes: props.block?.inner_classes ?? '',
     style: props.block?.style ?? '',
-    pt: props.block?.pt ?? '',
-    pb: props.block?.pb ?? '',
+    pt: props.block?.pt.toString() ?? '',
+    pb: props.block?.pb.toString() ?? '',
     datum: JSON.stringify(props.block?.datum) ?? '',
 });
 
@@ -75,7 +73,8 @@ let setQueryArgsToFilterForm = () => {
                 </ModalEditComponent>
             </div>
 
-            <LabelInput v-model="form.order" :errorMsg="form.errors['order']" type="number" required>Порядок
+            <LabelInput v-model="form.order" :errorMsg="form.errors['order']" type="number" required>
+                Порядок
             </LabelInput>
             <div class="flex gap-2">
                 <LabelInput v-model="form.classes" :errorMsg="form.errors['classes']" placeholder="введите классы">
